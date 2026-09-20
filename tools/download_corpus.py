@@ -31,6 +31,14 @@ FAILURE_FIELDS = (
     "landing_url", "pdf_url", "status", "failure_reason", "attempts", "last_attempt",
 )
 USER_AGENT = "byd-transfer-paper-corpus/1.0 (research corpus; contact unavailable)"
+VENUE_PRIORITY = [
+    "CoRL", "NeurIPS", "ICML", "ICRA", "IROS", "RSS", "CVPR", "ICCV",
+    "TRO", "IJRR", "RA-L", "ICLR", "MLSys", "OSDI", "NSDI", "HPCA",
+    "ASPLOS", "ISCA", "MICRO", "FAST", "SC", "JMLR", "TPAMI", "AAAI",
+    "IJCAI", "HRI", "CDC", "ACL", "EMNLP", "SOSP", "SIGCOMM", "EuroSys",
+    "TOCS", "TPDS", "TC",
+]
+
 
 
 def now() -> str:
@@ -473,6 +481,8 @@ def main() -> int:
     parser.add_argument("--year", type=int)
     parser.add_argument("--retry-failed", action="store_true")
     parser.add_argument("--max-workers", type=int, default=4)
+    parser.add_argument("--limit", type=int, help="maximum number of pending records to process")
+
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
     phases = args.discover or args.download or args.check or args.reports
@@ -520,8 +530,25 @@ def main() -> int:
         return 0
 
     if run_download:
-        eligible = interleave_by_venue([(index, row) for index, row in enumerate(rows, 1)
-                    if row.get("status") != "downloaded" and (args.retry_failed or row.get("status") in ("pending", None))])
+        eligible = [(index, row) for index, row in enumerate(rows, 1)
+                    if row.get("status") != "downloaded" and (args.retry_failed or row.get("status") in ("pending", None))]
+        priority = {venue: position for position, venue in enumerate(VENUE_PRIORITY)}
+        grouped = defaultdict(lambda: defaultdict(list))
+        for item in eligible:
+            grouped[item[1].get("domain", "OTHER")][item[1].get("venue", "")].append(item)
+        ordered = []
+        domains = ["AI", "SYSTEMS"] + sorted(set(grouped) - {"AI", "SYSTEMS"})
+        while any(grouped.get(domain) for domain in domains):
+            for domain in domains:
+                venue_map = grouped.get(domain, {})
+                if not venue_map:
+                    continue
+                venue = min(venue_map, key=lambda name: priority.get(name, len(priority)))
+                ordered.extend(sorted(venue_map.pop(venue), key=lambda item: item[0]))
+        eligible = ordered
+        if args.limit is not None:
+            eligible = eligible[:max(0, args.limit)]
+
         with ThreadPoolExecutor(max_workers=max(1, min(args.max_workers, 48))) as executor:
             futures = [executor.submit(download_one, item) for item in eligible]
             for completed, future in enumerate(as_completed(futures), 1):

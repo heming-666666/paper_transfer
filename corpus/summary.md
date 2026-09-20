@@ -1,20 +1,20 @@
 # Paper corpus download summary
 
-> Generated: 2026-09-20T10:21:14+08:00
+> Generated: 2026-09-20T11:18:13+08:00
 
 - Target records: 23737
-- Downloaded: 13827
-- Unavailable: 9910
-- Downloaded bytes: 75670391273
+- Downloaded: 16255
+- Unavailable: 7482
+- Downloaded bytes: 91801874202
 
 ## Status
 
 | Status | Count |
 |---|---:|
 | access_denied | 30 |
-| downloaded | 13827 |
-| http_error | 7083 |
-| incomplete_pdf | 17 |
+| downloaded | 16255 |
+| http_error | 4671 |
+| incomplete_pdf | 1 |
 | invalid_pdf | 9 |
 | pdf_url_missing | 2771 |
 
