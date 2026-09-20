@@ -1,6 +1,6 @@
 # Paper corpus download summary
 
-> Generated: 2026-09-20T11:18:13+08:00
+> Generated: 2026-09-20T11:28:14+08:00
 
 - Target records: 23737
 - Downloaded: 16255

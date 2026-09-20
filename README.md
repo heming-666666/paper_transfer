@@ -18,7 +18,9 @@
 | `--venue` | 否 | 可重复简称，如 `--venue CoRL` | 只处理指定 venue。 |
 | `--year` | 否 | 四位年份 | 只处理配置中该目标年份的 venue。 |
 | `--retry-failed` | 否 | 开关 | 重试 manifest 中此前失败的论文。 |
-| `--max-workers` | 否 | 整数，默认 `4`，上限 `24` | PDF 下载并发数。 |
+| `--max-workers` | 否 | 整数，默认 `4`，上限 `48` | PDF 下载并发数；这是单个协调进程的线程数。 |
+| `--limit` | 否 | 非负整数 | 本次最多处理多少条待下载记录；按 venue 优先级并在 AI/系统领域间交替取一个 venue。 |
+| `--reports` | 否 | 开关 | 只根据现有 manifest 重建 CSV、Markdown、校验和报告，不重新发现或下载。 |
 | `--dry-run` | 否 | 开关 | 仅打印计划，不联网、不写输出。 |
 
 ```powershell
@@ -39,4 +41,13 @@ python -m unittest tests.test_download_corpus -v
 python tools/download_corpus.py --dry-run
 python tools/download_corpus.py --discover --venue CoRL
 python tools/download_corpus.py --download --check --venue CoRL
+```
+
+### 分批下载
+
+`--limit` 按 AI 一个 venue、系统一个 venue 的顺序交替推进，并使用 venue 优先级处理待下载记录。示例：
+
+```powershell
+python tools/download_corpus.py --retry-failed --download --limit 1000 --max-workers 48
+python tools/download_corpus.py --reports
 ```
