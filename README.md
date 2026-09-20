@@ -64,6 +64,20 @@ python -m tools.select_papers --refresh-systems
 `selection/selected_papers.jsonl`；`selection/README.md` 汇总会议与主题数量。
 系统论文补充阶段只获取公开元数据，不批量下载 PDF。
 
+## 生成论文分析报告
+
+基于已选中的 3000 篇论文生成逐篇快速理解和按会议汇总：
+
+```powershell
+python -m tools.build_review
+python C:\Users\Administrator\.codex\skills\markdown-to-pdf\scripts\markdown_to_pdf.py `
+  selection\reports\analysis_3000_papers.md `
+  -o selection\reports\analysis_3000_papers.pdf `
+  --render-dir selection\reports\render
+```
+
+报告会优先使用索引摘要；缺失摘要但存在本地 PDF 时读取 PDF 前三页补抽，仍缺失时明确标注标题/主题推断。
+
 ### 分批下载
 
 `--limit` 按 AI 一个 venue、系统一个 venue 的顺序交替推进，并使用 venue 优先级处理待下载记录。示例：

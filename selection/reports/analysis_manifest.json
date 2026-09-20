@@ -1,0 +1,9 @@
+{
+  "papers": 3000,
+  "evidence": {
+    "索引摘要": 1123,
+    "本地 PDF 前页": 1821,
+    "标题/主题推断": 56
+  },
+  "input": "D:\\Code\\byd_transfer\\selection\\selected_papers.csv"
+}
