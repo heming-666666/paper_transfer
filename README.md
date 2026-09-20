@@ -43,6 +43,27 @@ python tools/download_corpus.py --discover --venue CoRL
 python tools/download_corpus.py --download --check --venue CoRL
 ```
 
+## 生成 3000 篇阅读清单
+
+从已下载的最新一届 AI 会议论文中选出 2500 篇，并从 Semantic Scholar 补充
+2021–2026 年权威系统会议元数据后选出 500 篇：
+
+```powershell
+python -m tools.select_papers --dry-run
+python -m tools.select_papers --refresh-systems
+```
+
+| 参数 | 必需 | 格式/默认值 | 说明 |
+|---|---|---|---|
+| `--ai-count` | 否 | 非负整数；默认 `2500` | AI 论文数量。 |
+| `--systems-count` | 否 | 非负整数；默认 `500` | 系统论文数量。 |
+| `--refresh-systems` | 否 | 开关 | 重新从 Semantic Scholar 获取系统会议候选元数据。 |
+| `--dry-run` | 否 | 开关 | 只显示本地候选数量和目标，不联网、不写文件。 |
+
+结果保存在 `selection/selected_papers.csv` 和
+`selection/selected_papers.jsonl`；`selection/README.md` 汇总会议与主题数量。
+系统论文补充阶段只获取公开元数据，不批量下载 PDF。
+
 ### 分批下载
 
 `--limit` 按 AI 一个 venue、系统一个 venue 的顺序交替推进，并使用 venue 优先级处理待下载记录。示例：
