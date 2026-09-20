@@ -1,0 +1,205 @@
+[
+  {
+    "venue": "CoRL",
+    "year": 2025,
+    "source_id": "https://proceedings.mlr.press/v305/assets/bib/bibliography.bib",
+    "source_name": "official PMLR BibTeX",
+    "expected": 263,
+    "discovered": 263,
+    "error": ""
+  },
+  {
+    "venue": "ICML",
+    "year": 2025,
+    "source_id": "https://proceedings.mlr.press/v267/assets/bib/bibliography.bib",
+    "source_name": "official PMLR BibTeX",
+    "expected": 3330,
+    "discovered": 3330,
+    "error": ""
+  },
+  {
+    "venue": "ICLR",
+    "year": 2026,
+    "source_id": "S4306419637",
+    "source_name": "International Conference on Learning Representations",
+    "expected": 0,
+    "discovered": 0,
+    "error": ""
+  },
+  {
+    "venue": "RSS",
+    "year": 2026,
+    "source_id": "S4306420803",
+    "source_name": "Robotics: Science and Systems",
+    "expected": 0,
+    "discovered": 0,
+    "error": ""
+  },
+  {
+    "venue": "ICRA",
+    "year": 2026,
+    "source_id": "S4306419799",
+    "source_name": "International Conference on Robotics and Automation",
+    "expected": 0,
+    "discovered": 0,
+    "error": ""
+  },
+  {
+    "venue": "IROS",
+    "year": 2025,
+    "source_id": "S4363608614",
+    "source_name": "2011 IEEE/RSJ International Conference on Intelligent Robots and Systems",
+    "expected": 0,
+    "discovered": 0,
+    "error": ""
+  },
+  {
+    "venue": "TPAMI",
+    "year": 2025,
+    "source_id": "S199944782",
+    "source_name": "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+    "expected": 944,
+    "discovered": 944,
+    "error": ""
+  },
+  {
+    "venue": "TRO",
+    "year": 2025,
+    "source_id": "S144620930",
+    "source_name": "IEEE Transactions on Robotics",
+    "expected": 320,
+    "discovered": 320,
+    "error": ""
+  },
+  {
+    "venue": "IJRR",
+    "year": 2025,
+    "source_id": "S73484101",
+    "source_name": "The International Journal of Robotics Research",
+    "expected": 124,
+    "discovered": 124,
+    "error": ""
+  },
+  {
+    "venue": "RA-L",
+    "year": 2025,
+    "source_id": "S4210169774",
+    "source_name": "IEEE Robotics and Automation Letters",
+    "expected": 1716,
+    "discovered": 1716,
+    "error": ""
+  },
+  {
+    "venue": "SOSP",
+    "year": 2025,
+    "error": "source_not_found"
+  },
+  {
+    "venue": "ASPLOS",
+    "year": 2026,
+    "source_id": "S4306417705",
+    "source_name": "Architectural Support for Programming Languages and Operating Systems",
+    "expected": 0,
+    "discovered": 0,
+    "error": ""
+  },
+  {
+    "venue": "ISCA",
+    "year": 2026,
+    "source_id": "S4306420111",
+    "source_name": "International Symposium on Computer Architecture",
+    "expected": 0,
+    "discovered": 0,
+    "error": ""
+  },
+  {
+    "venue": "CVPR",
+    "year": 2026,
+    "source_id": "https://openaccess.thecvf.com/CVPR2026",
+    "source_name": "official proceedings",
+    "expected": 4042,
+    "discovered": 4042,
+    "error": ""
+  },
+  {
+    "venue": "ICCV",
+    "year": 2025,
+    "source_id": "https://openaccess.thecvf.com/ICCV2025",
+    "source_name": "official proceedings",
+    "expected": 2701,
+    "discovered": 2701,
+    "error": ""
+  },
+  {
+    "venue": "ACL",
+    "year": 2026,
+    "source_id": "https://aclanthology.org/events/acl-2026/",
+    "source_name": "official proceedings",
+    "expected": 2222,
+    "discovered": 2222,
+    "error": ""
+  },
+  {
+    "venue": "EMNLP",
+    "year": 2025,
+    "source_id": "https://aclanthology.org/events/emnlp-2025/",
+    "source_name": "official proceedings",
+    "expected": 1809,
+    "discovered": 1809,
+    "error": ""
+  },
+  {
+    "venue": "OSDI",
+    "year": 2026,
+    "source_id": "https://www.usenix.org/conference/osdi26/technical-sessions",
+    "source_name": "official proceedings",
+    "expected": 1,
+    "discovered": 1,
+    "error": ""
+  },
+  {
+    "venue": "JMLR",
+    "year": 2025,
+    "source_id": "https://jmlr.org/papers/v26/",
+    "source_name": "official proceedings",
+    "expected": 309,
+    "discovered": 309,
+    "error": ""
+  },
+  {
+    "venue": "NSDI",
+    "year": 2026,
+    "source_id": "https://www.usenix.org/conference/nsdi26/technical-sessions",
+    "source_name": "official proceedings",
+    "expected": 1,
+    "discovered": 1,
+    "error": ""
+  },
+  {
+    "venue": "FAST",
+    "year": 2026,
+    "source_id": "https://www.usenix.org/conference/fast26/technical-sessions",
+    "source_name": "official proceedings",
+    "expected": 1,
+    "discovered": 1,
+    "error": ""
+  },
+  {
+    "venue": "NeurIPS",
+    "year": 2025,
+    "source_id": "https://papers.nips.cc/paper_files/paper/2025/vol38-main-conference",
+    "source_name": "official proceedings",
+    "expected": 5823,
+    "discovered": 5823,
+    "error": ""
+  },
+  {
+    "venue": "MLSys",
+    "year": 2026,
+    "source_id": "https://proceedings.mlsys.org/paper_files/paper/2026",
+    "source_name": "official proceedings",
+    "expected": 135,
+    "discovered": 135,
+    "error": ""
+  }
+]
