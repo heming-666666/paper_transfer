@@ -24,6 +24,7 @@ if ([string]::IsNullOrWhiteSpace($ArchiveDirectory)) {
 New-Item -ItemType Directory -Force -Path $ArchiveDirectory | Out-Null
 $listDirectory = Join-Path $ArchiveDirectory 'lists'
 New-Item -ItemType Directory -Force -Path $listDirectory | Out-Null
+$snapshotPath = Join-Path $ArchiveDirectory "$ReleaseTag-snapshot.jsonl"
 
 function Get-PaperEntries {
     $files = @(Get-ChildItem -LiteralPath $paperRoot -Recurse -Force -File -Filter '*.pdf' | Sort-Object FullName)
@@ -70,7 +71,44 @@ function Get-Batches([object[]]$Entries) {
     return @($batches)
 }
 
-$entries = Get-PaperEntries
+if (Test-Path -LiteralPath $snapshotPath -PathType Leaf) {
+    $snapshotRows = @(Get-Content -LiteralPath $snapshotPath | Where-Object { -not [string]::IsNullOrWhiteSpace($_) } | ForEach-Object { $_ | ConvertFrom-Json })
+    if ($snapshotRows.Count -eq 0) {
+        throw "Paper snapshot is empty: $snapshotPath"
+    }
+    $entries = foreach ($row in $snapshotRows) {
+        $relative = ([string]$row.Relative).Replace('/', '\')
+        if ([IO.Path]::IsPathRooted($relative) -or -not $relative.StartsWith("papers\", [StringComparison]::OrdinalIgnoreCase)) {
+            throw "Invalid path in paper snapshot: $($row.Relative)"
+        }
+        $filePath = Join-Path $root $relative
+        if (-not (Test-Path -LiteralPath $filePath -PathType Leaf)) {
+            throw "Snapshot file is missing: $($row.Relative)"
+        }
+        $file = Get-Item -LiteralPath $filePath
+        $snapshotSize = [int64]$row.Size
+        if ([int64]$file.Length -ne $snapshotSize) {
+            throw "Snapshot file size changed: $($row.Relative)"
+        }
+        [pscustomobject]@{
+            File = $file
+            Relative = ([string]$row.Relative).Replace('\', '/')
+            Size = $snapshotSize
+        }
+    }
+    $entries = @($entries)
+    Write-Host "Using paper snapshot: $snapshotPath"
+} else {
+    $entries = Get-PaperEntries
+    $snapshotLines = foreach ($entry in $entries) {
+        [pscustomobject]@{
+            Relative = $entry.Relative
+            Size = $entry.Size
+        } | ConvertTo-Json -Compress
+    }
+    Set-Content -LiteralPath $snapshotPath -Value $snapshotLines -Encoding utf8NoBOM
+    Write-Host "Created paper snapshot: $snapshotPath"
+}
 $batches = Get-Batches $entries
 $partialFiles = @(Get-ChildItem -LiteralPath $paperRoot -Recurse -Force -File -Filter '*.part' -ErrorAction SilentlyContinue)
 $totalBytes = ($entries | Measure-Object -Property Size -Sum).Sum
@@ -126,8 +164,47 @@ function Get-ReleaseAssets([int64]$ReleaseId) {
     return @($all)
 }
 
-$releaseList = @(Invoke-GitHubJson 'GET' "https://api.github.com/repos/$Repository/releases?per_page=100")
-$release = $releaseList | Where-Object { $_.tag_name -eq $ReleaseTag } | Select-Object -First 1
+function Remove-ReleaseAsset([int64]$AssetId) {
+    Invoke-GitHubJson 'DELETE' "https://api.github.com/repos/$Repository/releases/assets/$AssetId" | Out-Null
+}
+
+function Upload-ReleaseAsset([string]$Uri, [string]$Path) {
+    $curlPath = $Path.Replace('\', '/')
+$curlConfig = @"
+url = "$Uri"
+request = POST
+proxy = "$Proxy"
+upload-file = "$curlPath"
+header = "Authorization: Bearer $token"
+header = "Accept: application/vnd.github+json"
+header = "Content-Type: application/octet-stream"
+user-agent = "byd-transfer-paper-release-uploader"
+connect-timeout = 60
+max-time = 7200
+silent
+show-error
+output = NUL
+write-out = "%{http_code}"
+"@
+    $curlOutput = @($curlConfig | & curl.exe --config - 2>&1)
+    $curlExitCode = $LASTEXITCODE
+    if ($curlExitCode -ne 0) {
+        throw "curl upload failed with exit code ${curlExitCode}: $($curlOutput -join ' ')"
+    }
+    $statusText = (($curlOutput | ForEach-Object { [string]$_ }) -join '').Trim()
+    return $statusText
+}
+
+$release = $null
+try {
+    $encodedTag = [uri]::EscapeDataString($ReleaseTag)
+    $release = Invoke-GitHubJson 'GET' "https://api.github.com/repos/$Repository/releases/tags/$encodedTag"
+} catch {
+    $statusCode = if ($null -ne $_.Exception.Response) { [int]$_.Exception.Response.StatusCode } else { 0 }
+    if ($statusCode -ne 404) {
+        throw
+    }
+}
 if ($null -eq $release) {
     $releaseBody = @{
         tag_name = $ReleaseTag
@@ -183,11 +260,17 @@ for ($index = 0; $index -lt $batches.Count; $index++) {
     $archiveFiles += ,$archive
     $asset = $assetMap[$archive.Name]
     if ($null -ne $asset) {
-        if ([int64]$asset.size -ne [int64]$archive.Length) {
+        if ([string]$asset.state -eq 'uploaded' -and [int64]$asset.size -eq [int64]$archive.Length) {
+            Write-Host ("Already uploaded {0} ({1:N2} GiB)" -f $archive.Name, ($archive.Length / 1GB))
+            continue
+        }
+        if ([string]$asset.state -eq 'starter') {
+            Write-Host "Removing unfinished remote asset $($archive.Name)"
+            Remove-ReleaseAsset $asset.id
+            $assetMap.Remove($archive.Name)
+        } else {
             throw "Remote asset has a different size: $($archive.Name)"
         }
-        Write-Host ("Already uploaded {0} ({1:N2} GiB)" -f $archive.Name, ($archive.Length / 1GB))
-        continue
     }
 
     $uploadUri = "https://uploads.github.com/repos/$Repository/releases/$($release.id)/assets?name=$([uri]::EscapeDataString($archive.Name))"
@@ -195,17 +278,30 @@ for ($index = 0; $index -lt $batches.Count; $index++) {
     for ($attempt = 1; $attempt -le 4; $attempt++) {
         try {
             Write-Host ("Uploading {0}/{1}: {2:N2} GiB (attempt {3})" -f $number, $batches.Count, ($archive.Length / 1GB), $attempt)
-            $response = Invoke-WebRequest -Uri $uploadUri -Method Post -Headers $apiHeaders -ContentType 'application/octet-stream' -InFile $archive.FullName -Proxy $Proxy -TimeoutSec 7200 -ErrorAction Stop
-            if ([int]$response.StatusCode -notin @(200, 201)) {
-                throw "Upload returned HTTP $($response.StatusCode)"
+            $uploadStatus = Upload-ReleaseAsset $uploadUri $archive.FullName
+            if ($uploadStatus -notmatch '^(200|201)$') {
+                throw "Upload returned HTTP $uploadStatus"
+            }
+            $remoteAfterUpload = @(Get-ReleaseAssets $release.id | Where-Object { $_.name -eq $archive.Name } | Select-Object -First 1)
+            if ($remoteAfterUpload.Count -ne 1 -or [string]$remoteAfterUpload[0].state -ne 'uploaded' -or [int64]$remoteAfterUpload[0].size -ne [int64]$archive.Length) {
+                throw "Remote asset is not fully uploaded yet: $($archive.Name)"
             }
             $uploaded = $true
             break
         } catch {
-            $remoteAfterFailure = Get-ReleaseAssets $release.id | Where-Object { $_.name -eq $archive.Name } | Select-Object -First 1
-            if ($null -ne $remoteAfterFailure -and [int64]$remoteAfterFailure.size -eq [int64]$archive.Length) {
+            $remoteAfterFailure = @(Get-ReleaseAssets $release.id | Where-Object { $_.name -eq $archive.Name } | Select-Object -First 1)
+            if ($remoteAfterFailure.Count -gt 0) {
+                $remoteAsset = $remoteAfterFailure[0]
+            } else {
+                $remoteAsset = $null
+            }
+            if ($null -ne $remoteAsset -and [string]$remoteAsset.state -eq 'uploaded' -and [int64]$remoteAsset.size -eq [int64]$archive.Length) {
                 $uploaded = $true
                 break
+            }
+            if ($null -ne $remoteAsset -and [string]$remoteAsset.state -eq 'starter') {
+                Remove-ReleaseAsset $remoteAsset.id
+                $assetMap.Remove($archive.Name)
             }
             if ($attempt -eq 4) {
                 throw "Upload failed for $($archive.Name): $($_.Exception.Message)"
@@ -223,7 +319,7 @@ for ($index = 0; $index -lt $batches.Count; $index++) {
 $finalAssets = Get-ReleaseAssets $release.id
 $missing = foreach ($archive in $archiveFiles) {
     $remote = $finalAssets | Where-Object { $_.name -eq $archive.Name } | Select-Object -First 1
-    if ($null -eq $remote -or [int64]$remote.size -ne [int64]$archive.Length) {
+    if ($null -eq $remote -or [string]$remote.state -ne 'uploaded' -or [int64]$remote.size -ne [int64]$archive.Length) {
         $archive
     }
 }

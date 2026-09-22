@@ -20,7 +20,7 @@ python -m tools.build_review
 
 ## `release_papers.ps1`
 
-把 `papers/` 下的完整 PDF 语料按容量分成 tar 分卷并上传到 GitHub Release。PDF 不写入 Git 历史；分卷默认约 1500 MB，便于低于 GitHub Release 的单附件限制。脚本使用 Git Credential Manager 中已有的 GitHub 凭据和指定代理，重复运行会跳过已完成分卷。未完成下载的 `*.part` 文件不会上传。
+把 `papers/` 下的完整 PDF 语料按容量分成 tar 分卷并上传到 GitHub Release。PDF 不写入 Git 历史；分卷默认约 1500 MB，便于低于 GitHub Release 的单附件限制。脚本使用 Git Credential Manager 中已有的 GitHub 凭据和指定代理，重复运行会跳过已完成分卷。首次运行会在归档目录创建 `<tag>-snapshot.jsonl`，后续运行会复用该清单并校验文件大小，避免新下载文件改变已生成分卷的边界。未完成下载的 `*.part` 文件不会上传。
 
 | 参数 | 必需 | 格式/默认值 | 说明 |
 |---|---|---|---|
@@ -29,7 +29,7 @@ python -m tools.build_review
 | `-ArchiveDirectory` | 否 | Windows 路径；默认仓库同级 `byd_release_work` | tar 分卷、文件列表和完成标记的本地目录。 |
 | `-VolumeSizeMB` | 否 | 整数 `500–1900`；默认 `1500` | 每个分卷的容量上限；单位 MB。 |
 | `-Proxy` | 否 | URL；默认 `http://127.0.0.1:7897` | GitHub API 和附件上传使用的 HTTP 代理。 |
-| `-CheckOnly` | 否 | 开关 | 只统计 PDF、容量和 `.part` 数量，不创建 Release、不写分卷、不上传。 |
+| `-CheckOnly` | 否 | 开关 | 统计 PDF、容量和 `.part` 数量，不创建 Release、不写 tar 分卷、不上传；首次运行仍会保存清单快照。 |
 
 示例：
 
