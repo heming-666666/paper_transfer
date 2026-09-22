@@ -160,8 +160,12 @@ function Get-ReleaseAssets([int64]$ReleaseId) {
     $page = 1
     do {
         $cacheBust = [guid]::NewGuid().ToString('N')
-        $pageAssets = @(Invoke-GitHubJson 'GET' "https://api.github.com/repos/$Repository/releases/$ReleaseId/assets?per_page=100&page=$page&cacheBust=$cacheBust")
-        $all += $pageAssets
+        $pageResult = Invoke-GitHubJson 'GET' "https://api.github.com/repos/$Repository/releases/$ReleaseId/assets?per_page=100&page=$page&cacheBust=$cacheBust"
+        $pageAssets = @()
+        foreach ($asset in $pageResult) {
+            $pageAssets += ,$asset
+            $all += ,$asset
+        }
         $page++
     } while ($pageAssets.Count -eq 100)
     return @($all)
