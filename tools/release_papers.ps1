@@ -229,6 +229,21 @@ if ($null -eq $release) {
     Write-Host ("Using existing release: {0} ({1})" -f $release.html_url, $release.id)
 }
 
+function Wait-ForUploadedAsset([string]$Name, [int64]$ExpectedSize, [int]$TimeoutSeconds = 900) {
+    $deadline = (Get-Date).AddSeconds($TimeoutSeconds)
+    do {
+        $remote = @(Get-ReleaseAssets $release.id | Where-Object { $_.name -eq $Name } | Select-Object -First 1)
+        if ($remote.Count -eq 1 -and [string]$remote[0].state -eq 'uploaded' -and [int64]$remote[0].size -eq $ExpectedSize) {
+            return $remote[0]
+        }
+        if ((Get-Date) -ge $deadline) {
+            break
+        }
+        Start-Sleep -Seconds 15
+    } while ($true)
+    return $null
+}
+
 $assetMap = @{}
 foreach ($asset in (Get-ReleaseAssets $release.id)) {
     $assetMap[$asset.name] = $asset
@@ -308,6 +323,12 @@ for ($index = 0; $index -lt $batches.Count; $index++) {
                 break
             }
             if ($null -ne $remoteAsset -and [string]$remoteAsset.state -eq 'starter') {
+                Write-Host "Waiting for GitHub to settle $($archive.Name)"
+                $settled = Wait-ForUploadedAsset $archive.Name $archive.Length
+                if ($null -ne $settled) {
+                    $uploaded = $true
+                    break
+                }
                 Remove-ReleaseAsset $remoteAsset.id
                 $assetMap.Remove($archive.Name)
             }
