@@ -169,30 +169,38 @@ function Remove-ReleaseAsset([int64]$AssetId) {
 }
 
 function Upload-ReleaseAsset([string]$Uri, [string]$Path) {
-    $curlPath = $Path.Replace('\', '/')
-    $curlConfig = @"
-url = "$Uri"
-request = POST
-proxy = "$Proxy"
-data-binary = "@$curlPath"
-header = "Authorization: Bearer $token"
-header = "Accept: application/vnd.github+json"
-header = "Content-Type: application/octet-stream"
-user-agent = "byd-transfer-paper-release-uploader"
-connect-timeout = 60
-max-time = 7200
-silent
-show-error
-output = NUL
-write-out = "%{http_code}"
-"@
-    $curlOutput = @($curlConfig | & curl.exe --config - 2>&1)
-    $curlExitCode = $LASTEXITCODE
-    if ($curlExitCode -ne 0) {
-        throw "curl upload failed with exit code ${curlExitCode}: $($curlOutput -join ' ')"
+    $handler = [Net.Http.HttpClientHandler]::new()
+    $handler.Proxy = [Net.WebProxy]::new($Proxy)
+    $handler.UseProxy = $true
+    $client = [Net.Http.HttpClient]::new($handler)
+    $client.Timeout = [TimeSpan]::FromHours(2)
+    $request = [Net.Http.HttpRequestMessage]::new([Net.Http.HttpMethod]::Post, $Uri)
+    $fileStream = [IO.File]::OpenRead($Path)
+    $content = [Net.Http.StreamContent]::new($fileStream)
+    $response = $null
+    try {
+        $request.Headers.Authorization = [Net.Http.Headers.AuthenticationHeaderValue]::new('Bearer', $token)
+        $request.Headers.Accept.Add([Net.Http.Headers.MediaTypeWithQualityHeaderValue]::new('application/vnd.github+json'))
+        $request.Headers.Add('X-GitHub-Api-Version', '2022-11-28')
+        $request.Headers.UserAgent.ParseAdd('byd-transfer-paper-release-uploader')
+        $content.Headers.ContentType = [Net.Http.Headers.MediaTypeHeaderValue]::new('application/octet-stream')
+        $content.Headers.ContentLength = $fileStream.Length
+        $request.Content = $content
+        $response = $client.SendAsync($request, [Net.Http.HttpCompletionOption]::ResponseHeadersRead).GetAwaiter().GetResult()
+        $statusCode = [int]$response.StatusCode
+        if ($statusCode -notin @(200, 201)) {
+            $body = $response.Content.ReadAsStringAsync().GetAwaiter().GetResult()
+            throw "HTTP ${statusCode}: $body"
+        }
+        return [string]$statusCode
+    } finally {
+        if ($null -ne $response) { $response.Dispose() }
+        $request.Dispose()
+        $content.Dispose()
+        $fileStream.Dispose()
+        $client.Dispose()
+        $handler.Dispose()
     }
-    $statusText = (($curlOutput | ForEach-Object { [string]$_ }) -join '').Trim()
-    return $statusText
 }
 
 $release = $null
