@@ -170,11 +170,11 @@ function Remove-ReleaseAsset([int64]$AssetId) {
 
 function Upload-ReleaseAsset([string]$Uri, [string]$Path) {
     $curlPath = $Path.Replace('\', '/')
-$curlConfig = @"
+    $curlConfig = @"
 url = "$Uri"
 request = POST
 proxy = "$Proxy"
-upload-file = "$curlPath"
+data-binary = "@$curlPath"
 header = "Authorization: Bearer $token"
 header = "Accept: application/vnd.github+json"
 header = "Content-Type: application/octet-stream"
