@@ -322,14 +322,15 @@ for ($index = 0; $index -lt $batches.Count; $index++) {
                 $uploaded = $true
                 break
             }
-            if ($null -ne $remoteAsset -and [string]$remoteAsset.state -eq 'starter') {
-                Write-Host "Waiting for GitHub to settle $($archive.Name)"
-                $settled = Wait-ForUploadedAsset $archive.Name $archive.Length
-                if ($null -ne $settled) {
-                    $uploaded = $true
-                    break
-                }
-                Remove-ReleaseAsset $remoteAsset.id
+            Write-Host "Waiting for GitHub to settle $($archive.Name)"
+            $settled = Wait-ForUploadedAsset $archive.Name $archive.Length
+            if ($null -ne $settled) {
+                $uploaded = $true
+                break
+            }
+            $remoteAfterWait = @(Get-ReleaseAssets $release.id | Where-Object { $_.name -eq $archive.Name } | Select-Object -First 1)
+            if ($remoteAfterWait.Count -gt 0 -and [string]$remoteAfterWait[0].state -eq 'starter') {
+                Remove-ReleaseAsset $remoteAfterWait[0].id
                 $assetMap.Remove($archive.Name)
             }
             if ($attempt -eq 4) {
