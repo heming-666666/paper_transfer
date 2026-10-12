@@ -1,0 +1,118 @@
+{
+  "schema_version": "1.0",
+  "items": [
+    {
+      "id": "lr",
+      "kind": "argparse",
+      "flags": [
+        "--lr"
+      ],
+      "default": 0.001,
+      "type": "float",
+      "choices": null,
+      "help": null,
+      "file": "train.py",
+      "line": 14,
+      "status": "confirmed_source",
+      "symbol_id": "sym:train.py:main:function",
+      "consumers": [
+        {
+          "file": "train.py",
+          "line": 20,
+          "text": "print(\"lr\", args.lr)",
+          "symbol_id": "sym:train.py:main:function",
+          "status": "candidate"
+        }
+      ],
+      "consumption": "candidate_consumers",
+      "selected_values": [
+        {
+          "entry_id": "entry:train",
+          "value": null,
+          "status": "unknown",
+          "reason": "实际配置加载/覆盖顺序未知；不把默认值当最终值"
+        },
+        {
+          "entry_id": "entry:eval",
+          "value": null,
+          "status": "unknown",
+          "reason": "实际配置加载/覆盖顺序未知；不把默认值当最终值"
+        }
+      ]
+    },
+    {
+      "id": "epochs",
+      "kind": "argparse",
+      "flags": [
+        "--epochs"
+      ],
+      "default": 2,
+      "type": "int",
+      "choices": null,
+      "help": null,
+      "file": "train.py",
+      "line": 15,
+      "status": "confirmed_source",
+      "symbol_id": "sym:train.py:main:function",
+      "consumers": [
+        {
+          "file": "train.py",
+          "line": 21,
+          "text": "for epoch in range(args.epochs):",
+          "symbol_id": "sym:train.py:main:function",
+          "status": "candidate"
+        }
+      ],
+      "consumption": "candidate_consumers",
+      "selected_values": [
+        {
+          "entry_id": "entry:train",
+          "value": null,
+          "status": "unknown",
+          "reason": "实际配置加载/覆盖顺序未知；不把默认值当最终值"
+        },
+        {
+          "entry_id": "entry:eval",
+          "value": null,
+          "status": "unknown",
+          "reason": "实际配置加载/覆盖顺序未知；不把默认值当最终值"
+        }
+      ]
+    },
+    {
+      "id": "unused_flag",
+      "kind": "argparse",
+      "flags": [
+        "--unused_flag"
+      ],
+      "default": 0,
+      "type": null,
+      "choices": null,
+      "help": null,
+      "file": "train.py",
+      "line": 16,
+      "status": "confirmed_source",
+      "symbol_id": "sym:train.py:main:function",
+      "consumers": [],
+      "consumption": "defined_not_consumed",
+      "selected_values": [
+        {
+          "entry_id": "entry:train",
+          "value": null,
+          "status": "unknown",
+          "reason": "实际配置加载/覆盖顺序未知；不把默认值当最终值"
+        },
+        {
+          "entry_id": "entry:eval",
+          "value": null,
+          "status": "unknown",
+          "reason": "实际配置加载/覆盖顺序未知；不把默认值当最终值"
+        }
+      ]
+    }
+  ],
+  "config_sources": [],
+  "limitations": [
+    "消费者是静态候选，不能证明运行时采用；插值/环境变量不求值"
+  ]
+}

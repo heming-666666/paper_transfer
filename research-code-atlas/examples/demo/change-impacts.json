@@ -1,0 +1,30 @@
+[
+  {
+    "target": "sym:models/net.py:Net.head.scale:function",
+    "goal": "理解把缩放因子2改为其他值的候选影响（不改源码）",
+    "entry_ids": [
+      "entry:eval"
+    ],
+    "why_here": "实际乘法位于head内部scale函数；论文乘3与代码乘2冲突",
+    "upstream": [
+      "sym:models/net.py:Net.head:method"
+    ],
+    "downstream": [],
+    "affected_contracts": [
+      "head返回list长度应保持"
+    ],
+    "config_consumers": [],
+    "paper_constraints": [
+      "保留论文×3与源码×2的冲突说明"
+    ],
+    "suggested_checks": [
+      "列表长度与数值变换",
+      "Block零和早退",
+      "total_loss分项",
+      "eval返回指标"
+    ],
+    "limitations": [
+      "model(batch)未解析；候选影响不等于必然损坏。"
+    ]
+  }
+]

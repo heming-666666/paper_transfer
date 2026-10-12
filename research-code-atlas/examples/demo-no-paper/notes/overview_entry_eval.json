@@ -1,0 +1,78 @@
+{
+  "entry_id": "entry:eval",
+  "summary": "自有教学fixture：构造Net→显式forward→共享loss→指标字典；未执行。",
+  "stages": [
+    {
+      "order": 1,
+      "title": "入口控制与构造",
+      "description": "静态入口和参数/构造源码，未运行。",
+      "symbols": [
+        "sym:eval.py:evaluate:function"
+      ]
+    },
+    {
+      "order": 2,
+      "title": "计算与结果",
+      "description": "只展示已解析/候选关系；参数可调用model仍未知。",
+      "symbols": [
+        "sym:losses.py:total_loss:function",
+        "sym:losses.py:normalize:function",
+        "sym:utils/helpers.py:normalize:function",
+        "sym:models/net.py:Net.forward:method",
+        "sym:models/net.py:Net.head:method"
+      ]
+    }
+  ],
+  "core_symbols": [
+    {
+      "id": "sym:eval.py:evaluate:function",
+      "reason": "入口闭包中的控制/模型/loss关键函数"
+    },
+    {
+      "id": "sym:losses.py:total_loss:function",
+      "reason": "入口闭包中的控制/模型/loss关键函数"
+    },
+    {
+      "id": "sym:losses.py:normalize:function",
+      "reason": "入口闭包中的控制/模型/loss关键函数"
+    },
+    {
+      "id": "sym:utils/helpers.py:normalize:function",
+      "reason": "入口闭包中的控制/模型/loss关键函数"
+    },
+    {
+      "id": "sym:models/net.py:Net.forward:method",
+      "reason": "入口闭包中的控制/模型/loss关键函数"
+    },
+    {
+      "id": "sym:models/net.py:Net.head:method",
+      "reason": "入口闭包中的控制/模型/loss关键函数"
+    }
+  ],
+  "learning_path": [
+    "sym:eval.py:evaluate:function",
+    "sym:losses.py:total_loss:function",
+    "sym:losses.py:normalize:function",
+    "sym:utils/helpers.py:normalize:function",
+    "sym:models/net.py:Net.forward:method",
+    "sym:models/net.py:Net.head:method"
+  ],
+  "dataflow": [
+    {
+      "order": 1,
+      "symbol_id": "sym:losses.py:total_loss:function",
+      "line_ref": "losses.py:5-8",
+      "variable": "batch → model(batch) → parts → (total,parts)",
+      "container_path": [
+        "batch"
+      ],
+      "shape": null,
+      "meaning": "示意静态流程；model是参数，未知实际可调用对象。mse字段只是sum(out)，不是均方误差公式。",
+      "status": "unknown",
+      "reason": "缺运行样例及参数可调用对象的确认",
+      "evidence": [
+        "losses.py:5-8"
+      ]
+    }
+  ]
+}

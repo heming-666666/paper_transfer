@@ -1,0 +1,5 @@
+{
+  "python": "runtime/windows/python.exe",
+  "reports_root": "reports",
+  "note": "相对于Skill根目录；示例不是自动执行配置。其他平台使用已有兼容Python。"
+}

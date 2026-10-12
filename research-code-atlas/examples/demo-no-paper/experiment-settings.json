@@ -1,0 +1,123 @@
+[
+  {
+    "id": "lr",
+    "entry_id": "entry:train",
+    "setting": "学习率",
+    "paper_value": {
+      "value": null,
+      "evidence": []
+    },
+    "repo_default": {
+      "value": 0.001,
+      "evidence": [
+        "train.py:14-14"
+      ]
+    },
+    "selected_value": {
+      "value": 0.001,
+      "source": "源码argparse默认，fixture未指定覆盖；并非运行结果",
+      "status": "confirmed_source",
+      "evidence": [
+        "train.py:14-14"
+      ],
+      "reason": "测试请求没有覆盖线索"
+    },
+    "precedence": "fixture只有argparse，没有YAML加载/覆盖；真实启动参数仍需提供",
+    "consumed_by": [
+      {
+        "evidence": "train.py:20-20",
+        "symbol_id": "sym:train.py:main:function",
+        "how": "print(\"lr\", args.lr)"
+      }
+    ],
+    "status": "code_only",
+    "impact": "消费者按源码核对；lr只print，不声称传入优化器。"
+  },
+  {
+    "id": "epochs",
+    "entry_id": "entry:train",
+    "setting": "epoch次数",
+    "paper_value": {
+      "value": null,
+      "evidence": []
+    },
+    "repo_default": {
+      "value": 2,
+      "evidence": [
+        "train.py:15-15"
+      ]
+    },
+    "selected_value": {
+      "value": 2,
+      "source": "源码argparse默认，fixture未指定覆盖；并非运行结果",
+      "status": "confirmed_source",
+      "evidence": [
+        "train.py:15-15"
+      ],
+      "reason": "测试请求没有覆盖线索"
+    },
+    "precedence": "fixture只有argparse，没有YAML加载/覆盖；真实启动参数仍需提供",
+    "consumed_by": [
+      {
+        "evidence": "train.py:21-21",
+        "symbol_id": "sym:train.py:main:function",
+        "how": "for epoch in range(args.epochs):"
+      }
+    ],
+    "status": "code_only",
+    "impact": "消费者按源码核对；lr只print，不声称传入优化器。"
+  },
+  {
+    "id": "unused_flag",
+    "entry_id": "entry:train",
+    "setting": "未消费标志",
+    "paper_value": {
+      "value": null,
+      "evidence": []
+    },
+    "repo_default": {
+      "value": 0,
+      "evidence": [
+        "train.py:16-16"
+      ]
+    },
+    "selected_value": {
+      "value": 0,
+      "source": "源码argparse默认，fixture未指定覆盖；并非运行结果",
+      "status": "confirmed_source",
+      "evidence": [
+        "train.py:16-16"
+      ],
+      "reason": "测试请求没有覆盖线索"
+    },
+    "precedence": "fixture只有argparse，没有YAML加载/覆盖；真实启动参数仍需提供",
+    "consumed_by": [],
+    "status": "defined_not_consumed",
+    "impact": "消费者按源码核对；lr只print，不声称传入优化器。"
+  },
+  {
+    "id": "batch_size",
+    "entry_id": "entry:train",
+    "setting": "批大小",
+    "paper_value": {
+      "value": null,
+      "evidence": []
+    },
+    "repo_default": {
+      "value": null,
+      "evidence": []
+    },
+    "selected_value": {
+      "value": null,
+      "source": "源码argparse默认，fixture未指定覆盖；并非运行结果",
+      "status": "unknown",
+      "evidence": [],
+      "reason": "无代码批大小定义/消费"
+    },
+    "precedence": "fixture只有argparse，没有YAML加载/覆盖；真实启动参数仍需提供",
+    "consumed_by": [],
+    "status": "unknown",
+    "impact": "消费者按源码核对；lr只print，不声称传入优化器。",
+    "reason": "没有论文，且未找到相应默认/消费定义"
+  }
+]

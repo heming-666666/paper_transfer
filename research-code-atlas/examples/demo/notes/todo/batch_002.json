@@ -1,0 +1,631 @@
+{
+  "schema_version": "1.0",
+  "items": [
+    {
+      "symbol_id": "sym:models/net.py:Net.forward:method",
+      "prefilled": {
+        "signature": "forward(self, x)",
+        "definition_range": [
+          9,
+          11
+        ],
+        "docstring": null,
+        "callers": [
+          {
+            "id": "e:1:sym:eval.py:evaluate:function@eval.py:7",
+            "caller": "sym:eval.py:evaluate:function",
+            "callee": "sym:models/net.py:Net.forward:method",
+            "candidates": [],
+            "relation": "calls",
+            "resolution": "candidate",
+            "callsite": {
+              "file": "eval.py",
+              "line": 7,
+              "end_line": 7
+            },
+            "expression": "net.forward([1.0, 2.0, 3.0])",
+            "conditions": [],
+            "note": "由实例属性/局部构造/基类/同名方法推断；动态分派可能不同"
+          },
+          {
+            "id": "e:25:sym:models/net.py:Net.__call__:method@models/net.py:20",
+            "caller": "sym:models/net.py:Net.__call__:method",
+            "callee": "sym:models/net.py:Net.forward:method",
+            "candidates": [],
+            "relation": "calls",
+            "resolution": "resolved_static",
+            "callsite": {
+              "file": "models/net.py",
+              "line": 20,
+              "end_line": 20
+            },
+            "expression": "self.forward(x)",
+            "conditions": [],
+            "note": ""
+          }
+        ],
+        "callees": [
+          {
+            "id": "e:22:sym:models/net.py:Net.forward:method@models/net.py:10",
+            "caller": "sym:models/net.py:Net.forward:method",
+            "callee": "sym:models/blocks.py:Block.run:method",
+            "candidates": [],
+            "relation": "calls",
+            "resolution": "candidate",
+            "callsite": {
+              "file": "models/net.py",
+              "line": 10,
+              "end_line": 10
+            },
+            "expression": "self.block.run(x)",
+            "conditions": [],
+            "note": "由实例属性/局部构造/基类/同名方法推断；动态分派可能不同"
+          },
+          {
+            "id": "e:23:sym:models/net.py:Net.forward:method@models/net.py:11",
+            "caller": "sym:models/net.py:Net.forward:method",
+            "callee": "sym:models/net.py:Net.head:method",
+            "candidates": [],
+            "relation": "calls",
+            "resolution": "resolved_static",
+            "callsite": {
+              "file": "models/net.py",
+              "line": 11,
+              "end_line": 11
+            },
+            "expression": "self.head(h)",
+            "conditions": [],
+            "note": ""
+          }
+        ],
+        "returns": [
+          {
+            "line": 11,
+            "expression": "self.head(h)"
+          }
+        ],
+        "yields": [],
+        "raises": [],
+        "asserts": [],
+        "shape_hints": [],
+        "step_skeleton": [
+          {
+            "id": "s1",
+            "order": 1,
+            "kind": "assign",
+            "source_range": [
+              10,
+              10
+            ],
+            "first_line_text": "h = self.block.run(x)",
+            "calls": [
+              "sym:models/blocks.py:Block.run:method"
+            ],
+            "children": []
+          },
+          {
+            "id": "s2",
+            "order": 2,
+            "kind": "return",
+            "source_range": [
+              11,
+              11
+            ],
+            "first_line_text": "return self.head(h)",
+            "calls": [
+              "sym:models/net.py:Net.head:method"
+            ],
+            "children": []
+          }
+        ]
+      },
+      "role": "other",
+      "summary": "",
+      "purpose": "",
+      "inputs": [],
+      "outputs": [],
+      "side_effects": [],
+      "exceptions": [],
+      "steps": [
+        {
+          "id": "s1",
+          "order": 1,
+          "kind": "assign",
+          "source_range": [
+            10,
+            10
+          ],
+          "first_line_text": "h = self.block.run(x)",
+          "calls": [
+            "sym:models/blocks.py:Block.run:method"
+          ],
+          "children": []
+        },
+        {
+          "id": "s2",
+          "order": 2,
+          "kind": "return",
+          "source_range": [
+            11,
+            11
+          ],
+          "first_line_text": "return self.head(h)",
+          "calls": [
+            "sym:models/net.py:Net.head:method"
+          ],
+          "children": []
+        }
+      ],
+      "paper_refs": [],
+      "config_refs": [],
+      "scenario_contracts": [],
+      "change_notes": "",
+      "needs_context": [
+        "待Agent按reading-protocol深读"
+      ],
+      "analysis_status": "pending"
+    },
+    {
+      "symbol_id": "sym:train.py:build:function",
+      "prefilled": {
+        "signature": "build(cfg)",
+        "definition_range": [
+          8,
+          9
+        ],
+        "docstring": null,
+        "callers": [
+          {
+            "id": "e:14:sym:train.py:main:function@train.py:19",
+            "caller": "sym:train.py:main:function",
+            "callee": "sym:train.py:build:function",
+            "candidates": [],
+            "relation": "calls",
+            "resolution": "resolved_static",
+            "callsite": {
+              "file": "train.py",
+              "line": 19,
+              "end_line": 19
+            },
+            "expression": "build({\"dim\": 4})",
+            "conditions": [],
+            "note": ""
+          }
+        ],
+        "callees": [
+          {
+            "id": "e:7:sym:train.py:build:function@train.py:9",
+            "caller": "sym:train.py:build:function",
+            "callee": "sym:models/net.py:Net.__init__:method",
+            "candidates": [],
+            "relation": "constructs",
+            "resolution": "resolved_static",
+            "callsite": {
+              "file": "train.py",
+              "line": 9,
+              "end_line": 9
+            },
+            "expression": "Model(cfg[\"dim\"])",
+            "conditions": [],
+            "note": ""
+          }
+        ],
+        "returns": [
+          {
+            "line": 9,
+            "expression": "Model(cfg[\"dim\"])"
+          }
+        ],
+        "yields": [],
+        "raises": [],
+        "asserts": [],
+        "shape_hints": [],
+        "step_skeleton": [
+          {
+            "id": "s1",
+            "order": 1,
+            "kind": "return",
+            "source_range": [
+              9,
+              9
+            ],
+            "first_line_text": "return Model(cfg[\"dim\"])",
+            "calls": [
+              "sym:models/net.py:Net.__init__:method"
+            ],
+            "children": []
+          }
+        ]
+      },
+      "role": "other",
+      "summary": "",
+      "purpose": "",
+      "inputs": [],
+      "outputs": [],
+      "side_effects": [],
+      "exceptions": [],
+      "steps": [
+        {
+          "id": "s1",
+          "order": 1,
+          "kind": "return",
+          "source_range": [
+            9,
+            9
+          ],
+          "first_line_text": "return Model(cfg[\"dim\"])",
+          "calls": [
+            "sym:models/net.py:Net.__init__:method"
+          ],
+          "children": []
+        }
+      ],
+      "paper_refs": [],
+      "config_refs": [],
+      "scenario_contracts": [],
+      "change_notes": "",
+      "needs_context": [
+        "待Agent按reading-protocol深读"
+      ],
+      "analysis_status": "pending"
+    },
+    {
+      "symbol_id": "sym:utils/helpers.py:fact:function",
+      "prefilled": {
+        "signature": "fact(n)",
+        "definition_range": [
+          31,
+          34
+        ],
+        "docstring": null,
+        "callers": [
+          {
+            "id": "e:18:sym:train.py:main:function@train.py:28",
+            "caller": "sym:train.py:main:function",
+            "callee": "sym:utils/helpers.py:fact:function",
+            "candidates": [],
+            "relation": "calls",
+            "resolution": "resolved_static",
+            "callsite": {
+              "file": "train.py",
+              "line": 28,
+              "end_line": 28
+            },
+            "expression": "helpers.fact(3)",
+            "conditions": [],
+            "note": ""
+          },
+          {
+            "id": "e:29:sym:utils/helpers.py:fact:function@utils/helpers.py:34",
+            "caller": "sym:utils/helpers.py:fact:function",
+            "callee": "sym:utils/helpers.py:fact:function",
+            "candidates": [],
+            "relation": "calls",
+            "resolution": "resolved_static",
+            "callsite": {
+              "file": "utils/helpers.py",
+              "line": 34,
+              "end_line": 34
+            },
+            "expression": "fact(n - 1)",
+            "conditions": [],
+            "note": ""
+          }
+        ],
+        "callees": [
+          {
+            "id": "e:29:sym:utils/helpers.py:fact:function@utils/helpers.py:34",
+            "caller": "sym:utils/helpers.py:fact:function",
+            "callee": "sym:utils/helpers.py:fact:function",
+            "candidates": [],
+            "relation": "calls",
+            "resolution": "resolved_static",
+            "callsite": {
+              "file": "utils/helpers.py",
+              "line": 34,
+              "end_line": 34
+            },
+            "expression": "fact(n - 1)",
+            "conditions": [],
+            "note": ""
+          }
+        ],
+        "returns": [
+          {
+            "line": 33,
+            "expression": "1"
+          },
+          {
+            "line": 34,
+            "expression": "n * fact(n - 1)"
+          }
+        ],
+        "yields": [],
+        "raises": [],
+        "asserts": [],
+        "shape_hints": [],
+        "step_skeleton": [
+          {
+            "id": "s1",
+            "order": 1,
+            "kind": "if",
+            "source_range": [
+              32,
+              33
+            ],
+            "first_line_text": "if n <= 1:",
+            "calls": [],
+            "children": [
+              {
+                "id": "s1.b.1",
+                "order": 1,
+                "kind": "return",
+                "source_range": [
+                  33,
+                  33
+                ],
+                "first_line_text": "return 1",
+                "calls": [],
+                "children": [],
+                "branch": "是/循环体"
+              }
+            ]
+          },
+          {
+            "id": "s2",
+            "order": 2,
+            "kind": "return",
+            "source_range": [
+              34,
+              34
+            ],
+            "first_line_text": "return n * fact(n - 1)",
+            "calls": [
+              "sym:utils/helpers.py:fact:function"
+            ],
+            "children": []
+          }
+        ]
+      },
+      "role": "other",
+      "summary": "",
+      "purpose": "",
+      "inputs": [],
+      "outputs": [],
+      "side_effects": [],
+      "exceptions": [],
+      "steps": [
+        {
+          "id": "s1",
+          "order": 1,
+          "kind": "if",
+          "source_range": [
+            32,
+            33
+          ],
+          "first_line_text": "if n <= 1:",
+          "calls": [],
+          "children": [
+            {
+              "id": "s1.b.1",
+              "order": 1,
+              "kind": "return",
+              "source_range": [
+                33,
+                33
+              ],
+              "first_line_text": "return 1",
+              "calls": [],
+              "children": [],
+              "branch": "是/循环体"
+            }
+          ]
+        },
+        {
+          "id": "s2",
+          "order": 2,
+          "kind": "return",
+          "source_range": [
+            34,
+            34
+          ],
+          "first_line_text": "return n * fact(n - 1)",
+          "calls": [
+            "sym:utils/helpers.py:fact:function"
+          ],
+          "children": []
+        }
+      ],
+      "paper_refs": [],
+      "config_refs": [],
+      "scenario_contracts": [],
+      "change_notes": "",
+      "needs_context": [
+        "待Agent按reading-protocol深读"
+      ],
+      "analysis_status": "pending"
+    },
+    {
+      "symbol_id": "sym:utils/helpers.py:normalize:function",
+      "prefilled": {
+        "signature": "normalize(x)",
+        "definition_range": [
+          11,
+          15
+        ],
+        "docstring": null,
+        "callers": [
+          {
+            "id": "e:16:sym:train.py:main:function@train.py:25",
+            "caller": "sym:train.py:main:function",
+            "callee": "sym:utils/helpers.py:normalize:function",
+            "candidates": [],
+            "relation": "calls",
+            "resolution": "resolved_static",
+            "callsite": {
+              "file": "train.py",
+              "line": 25,
+              "end_line": 25
+            },
+            "expression": "helpers.normalize([3.0, 4.0])",
+            "conditions": [
+              "for epoch in range(args.epochs)",
+              "else (not epoch % 2 == 0)"
+            ],
+            "note": ""
+          },
+          {
+            "id": "e:20:sym:models/blocks.py:Block.run:method@models/blocks.py:10",
+            "caller": "sym:models/blocks.py:Block.run:method",
+            "callee": "sym:utils/helpers.py:normalize:function",
+            "candidates": [],
+            "relation": "calls",
+            "resolution": "resolved_static",
+            "callsite": {
+              "file": "models/blocks.py",
+              "line": 10,
+              "end_line": 10
+            },
+            "expression": "normalize(x)",
+            "conditions": [],
+            "note": ""
+          }
+        ],
+        "callees": [],
+        "returns": [
+          {
+            "line": 14,
+            "expression": "x"
+          },
+          {
+            "line": 15,
+            "expression": "[v / s for v in x]"
+          }
+        ],
+        "yields": [],
+        "raises": [],
+        "asserts": [],
+        "shape_hints": [],
+        "step_skeleton": [
+          {
+            "id": "s1",
+            "order": 1,
+            "kind": "assign",
+            "source_range": [
+              12,
+              12
+            ],
+            "first_line_text": "s = sum(x)",
+            "calls": [],
+            "children": []
+          },
+          {
+            "id": "s2",
+            "order": 2,
+            "kind": "if",
+            "source_range": [
+              13,
+              14
+            ],
+            "first_line_text": "if s == 0:",
+            "calls": [],
+            "children": [
+              {
+                "id": "s2.b.1",
+                "order": 1,
+                "kind": "return",
+                "source_range": [
+                  14,
+                  14
+                ],
+                "first_line_text": "return x",
+                "calls": [],
+                "children": [],
+                "branch": "是/循环体"
+              }
+            ]
+          },
+          {
+            "id": "s3",
+            "order": 3,
+            "kind": "return",
+            "source_range": [
+              15,
+              15
+            ],
+            "first_line_text": "return [v / s for v in x]",
+            "calls": [],
+            "children": []
+          }
+        ]
+      },
+      "role": "other",
+      "summary": "",
+      "purpose": "",
+      "inputs": [],
+      "outputs": [],
+      "side_effects": [],
+      "exceptions": [],
+      "steps": [
+        {
+          "id": "s1",
+          "order": 1,
+          "kind": "assign",
+          "source_range": [
+            12,
+            12
+          ],
+          "first_line_text": "s = sum(x)",
+          "calls": [],
+          "children": []
+        },
+        {
+          "id": "s2",
+          "order": 2,
+          "kind": "if",
+          "source_range": [
+            13,
+            14
+          ],
+          "first_line_text": "if s == 0:",
+          "calls": [],
+          "children": [
+            {
+              "id": "s2.b.1",
+              "order": 1,
+              "kind": "return",
+              "source_range": [
+                14,
+                14
+              ],
+              "first_line_text": "return x",
+              "calls": [],
+              "children": [],
+              "branch": "是/循环体"
+            }
+          ]
+        },
+        {
+          "id": "s3",
+          "order": 3,
+          "kind": "return",
+          "source_range": [
+            15,
+            15
+          ],
+          "first_line_text": "return [v / s for v in x]",
+          "calls": [],
+          "children": []
+        }
+      ],
+      "paper_refs": [],
+      "config_refs": [],
+      "scenario_contracts": [],
+      "change_notes": "",
+      "needs_context": [
+        "待Agent按reading-protocol深读"
+      ],
+      "analysis_status": "pending"
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+Experiments. We train for 2 epochs with a learning rate of 3e-4 and batch size 64.

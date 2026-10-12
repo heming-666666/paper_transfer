@@ -1,0 +1,1 @@
+Method. The block normalizes the input so that it sums to one. The head multiplies each feature by 3.

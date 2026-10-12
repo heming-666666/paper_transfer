@@ -1,0 +1,1243 @@
+{
+  "schema_version": "1.0",
+  "items": [
+    {
+      "symbol_id": "sym:eval.py:evaluate:function",
+      "prefilled": {
+        "signature": "evaluate()",
+        "definition_range": [
+          5,
+          9
+        ],
+        "docstring": null,
+        "callers": [
+          {
+            "id": "e:3:sym:eval.py:<module>:module@eval.py:13",
+            "caller": "sym:eval.py:<module>:module",
+            "callee": "sym:eval.py:evaluate:function",
+            "candidates": [],
+            "relation": "calls",
+            "resolution": "resolved_static",
+            "callsite": {
+              "file": "eval.py",
+              "line": 13,
+              "end_line": 13
+            },
+            "expression": "evaluate()",
+            "conditions": [
+              "if __name__ == \"__main__\""
+            ],
+            "note": ""
+          }
+        ],
+        "callees": [
+          {
+            "id": "e:0:sym:eval.py:evaluate:function@eval.py:6",
+            "caller": "sym:eval.py:evaluate:function",
+            "callee": "sym:models/net.py:Net.__init__:method",
+            "candidates": [],
+            "relation": "constructs",
+            "resolution": "resolved_static",
+            "callsite": {
+              "file": "eval.py",
+              "line": 6,
+              "end_line": 6
+            },
+            "expression": "Net(8)",
+            "conditions": [],
+            "note": ""
+          },
+          {
+            "id": "e:1:sym:eval.py:evaluate:function@eval.py:7",
+            "caller": "sym:eval.py:evaluate:function",
+            "callee": "sym:models/net.py:Net.forward:method",
+            "candidates": [],
+            "relation": "calls",
+            "resolution": "candidate",
+            "callsite": {
+              "file": "eval.py",
+              "line": 7,
+              "end_line": 7
+            },
+            "expression": "net.forward([1.0, 2.0, 3.0])",
+            "conditions": [],
+            "note": "由实例属性/局部构造/基类/同名方法推断；动态分派可能不同"
+          },
+          {
+            "id": "e:2:sym:eval.py:evaluate:function@eval.py:8",
+            "caller": "sym:eval.py:evaluate:function",
+            "callee": "sym:losses.py:total_loss:function",
+            "candidates": [],
+            "relation": "calls",
+            "resolution": "resolved_static",
+            "callsite": {
+              "file": "eval.py",
+              "line": 8,
+              "end_line": 8
+            },
+            "expression": "losses.total_loss(net, out)",
+            "conditions": [],
+            "note": ""
+          }
+        ],
+        "returns": [
+          {
+            "line": 9,
+            "expression": "{\"total\": total, \"n\": len(out)}"
+          }
+        ],
+        "yields": [],
+        "raises": [],
+        "asserts": [],
+        "shape_hints": [],
+        "step_skeleton": [
+          {
+            "id": "s1",
+            "order": 1,
+            "kind": "assign",
+            "source_range": [
+              6,
+              6
+            ],
+            "first_line_text": "net = Net(8)",
+            "calls": [
+              "sym:models/net.py:Net.__init__:method"
+            ],
+            "children": []
+          },
+          {
+            "id": "s2",
+            "order": 2,
+            "kind": "assign",
+            "source_range": [
+              7,
+              7
+            ],
+            "first_line_text": "out = net.forward([1.0, 2.0, 3.0])",
+            "calls": [
+              "sym:models/net.py:Net.forward:method"
+            ],
+            "children": []
+          },
+          {
+            "id": "s3",
+            "order": 3,
+            "kind": "assign",
+            "source_range": [
+              8,
+              8
+            ],
+            "first_line_text": "total, parts = losses.total_loss(net, out)",
+            "calls": [
+              "sym:losses.py:total_loss:function"
+            ],
+            "children": []
+          },
+          {
+            "id": "s4",
+            "order": 4,
+            "kind": "return",
+            "source_range": [
+              9,
+              9
+            ],
+            "first_line_text": "return {\"total\": total, \"n\": len(out)}",
+            "calls": [],
+            "children": []
+          }
+        ]
+      },
+      "role": "other",
+      "summary": "",
+      "purpose": "",
+      "inputs": [],
+      "outputs": [],
+      "side_effects": [],
+      "exceptions": [],
+      "steps": [
+        {
+          "id": "s1",
+          "order": 1,
+          "kind": "assign",
+          "source_range": [
+            6,
+            6
+          ],
+          "first_line_text": "net = Net(8)",
+          "calls": [
+            "sym:models/net.py:Net.__init__:method"
+          ],
+          "children": []
+        },
+        {
+          "id": "s2",
+          "order": 2,
+          "kind": "assign",
+          "source_range": [
+            7,
+            7
+          ],
+          "first_line_text": "out = net.forward([1.0, 2.0, 3.0])",
+          "calls": [
+            "sym:models/net.py:Net.forward:method"
+          ],
+          "children": []
+        },
+        {
+          "id": "s3",
+          "order": 3,
+          "kind": "assign",
+          "source_range": [
+            8,
+            8
+          ],
+          "first_line_text": "total, parts = losses.total_loss(net, out)",
+          "calls": [
+            "sym:losses.py:total_loss:function"
+          ],
+          "children": []
+        },
+        {
+          "id": "s4",
+          "order": 4,
+          "kind": "return",
+          "source_range": [
+            9,
+            9
+          ],
+          "first_line_text": "return {\"total\": total, \"n\": len(out)}",
+          "calls": [],
+          "children": []
+        }
+      ],
+      "paper_refs": [],
+      "config_refs": [],
+      "scenario_contracts": [],
+      "change_notes": "",
+      "needs_context": [
+        "待Agent按reading-protocol深读"
+      ],
+      "analysis_status": "pending"
+    },
+    {
+      "symbol_id": "sym:train.py:main:function",
+      "prefilled": {
+        "signature": "main()",
+        "definition_range": [
+          12,
+          28
+        ],
+        "docstring": null,
+        "callers": [
+          {
+            "id": "e:19:sym:train.py:<module>:module@train.py:32",
+            "caller": "sym:train.py:<module>:module",
+            "callee": "sym:train.py:main:function",
+            "candidates": [],
+            "relation": "calls",
+            "resolution": "resolved_static",
+            "callsite": {
+              "file": "train.py",
+              "line": 32,
+              "end_line": 32
+            },
+            "expression": "main()",
+            "conditions": [
+              "if __name__ == \"__main__\""
+            ],
+            "note": ""
+          }
+        ],
+        "callees": [
+          {
+            "id": "e:8:sym:train.py:main:function@train.py:13",
+            "caller": "sym:train.py:main:function",
+            "callee": "ext:argparse.ArgumentParser",
+            "candidates": [],
+            "relation": "calls",
+            "resolution": "external",
+            "callsite": {
+              "file": "train.py",
+              "line": 13,
+              "end_line": 13
+            },
+            "expression": "argparse.ArgumentParser()",
+            "conditions": [],
+            "note": "项目外调用，未解析其内部实现"
+          },
+          {
+            "id": "e:9:sym:train.py:main:function@train.py:14",
+            "caller": "sym:train.py:main:function",
+            "callee": null,
+            "candidates": [],
+            "relation": "calls",
+            "resolution": "unresolved",
+            "callsite": {
+              "file": "train.py",
+              "line": 14,
+              "end_line": 14
+            },
+            "expression": "p.add_argument(\"--lr\", type=float, default=1e-3)",
+            "conditions": [],
+            "note": "调用参数/局部变量中的可调用对象或动态调用，静态无法确定"
+          },
+          {
+            "id": "e:10:sym:train.py:main:function@train.py:15",
+            "caller": "sym:train.py:main:function",
+            "callee": null,
+            "candidates": [],
+            "relation": "calls",
+            "resolution": "unresolved",
+            "callsite": {
+              "file": "train.py",
+              "line": 15,
+              "end_line": 15
+            },
+            "expression": "p.add_argument(\"--epochs\", type=int, default=2)",
+            "conditions": [],
+            "note": "调用参数/局部变量中的可调用对象或动态调用，静态无法确定"
+          },
+          {
+            "id": "e:11:sym:train.py:main:function@train.py:16",
+            "caller": "sym:train.py:main:function",
+            "callee": null,
+            "candidates": [],
+            "relation": "calls",
+            "resolution": "unresolved",
+            "callsite": {
+              "file": "train.py",
+              "line": 16,
+              "end_line": 16
+            },
+            "expression": "p.add_argument(\"--unused_flag\", default=0)",
+            "conditions": [],
+            "note": "调用参数/局部变量中的可调用对象或动态调用，静态无法确定"
+          },
+          {
+            "id": "e:12:sym:train.py:main:function@train.py:17",
+            "caller": "sym:train.py:main:function",
+            "callee": null,
+            "candidates": [],
+            "relation": "calls",
+            "resolution": "unresolved",
+            "callsite": {
+              "file": "train.py",
+              "line": 17,
+              "end_line": 17
+            },
+            "expression": "p.parse_args()",
+            "conditions": [],
+            "note": "调用参数/局部变量中的可调用对象或动态调用，静态无法确定"
+          },
+          {
+            "id": "e:13:sym:train.py:main:function@train.py:18",
+            "caller": "sym:train.py:main:function",
+            "callee": "sym:utils/helpers.py:seed_all:function",
+            "candidates": [],
+            "relation": "calls",
+            "resolution": "resolved_static",
+            "callsite": {
+              "file": "train.py",
+              "line": 18,
+              "end_line": 18
+            },
+            "expression": "seed_all(0)",
+            "conditions": [],
+            "note": ""
+          },
+          {
+            "id": "e:14:sym:train.py:main:function@train.py:19",
+            "caller": "sym:train.py:main:function",
+            "callee": "sym:train.py:build:function",
+            "candidates": [],
+            "relation": "calls",
+            "resolution": "resolved_static",
+            "callsite": {
+              "file": "train.py",
+              "line": 19,
+              "end_line": 19
+            },
+            "expression": "build({\"dim\": 4})",
+            "conditions": [],
+            "note": ""
+          },
+          {
+            "id": "e:15:sym:train.py:main:function@train.py:23",
+            "caller": "sym:train.py:main:function",
+            "callee": "sym:losses.py:total_loss:function",
+            "candidates": [],
+            "relation": "calls",
+            "resolution": "resolved_static",
+            "callsite": {
+              "file": "train.py",
+              "line": 23,
+              "end_line": 23
+            },
+            "expression": "losses.total_loss(model, [1.0, 2.0])",
+            "conditions": [
+              "for epoch in range(args.epochs)",
+              "if epoch % 2 == 0"
+            ],
+            "note": ""
+          },
+          {
+            "id": "e:16:sym:train.py:main:function@train.py:25",
+            "caller": "sym:train.py:main:function",
+            "callee": "sym:utils/helpers.py:normalize:function",
+            "candidates": [],
+            "relation": "calls",
+            "resolution": "resolved_static",
+            "callsite": {
+              "file": "train.py",
+              "line": 25,
+              "end_line": 25
+            },
+            "expression": "helpers.normalize([3.0, 4.0])",
+            "conditions": [
+              "for epoch in range(args.epochs)",
+              "else (not epoch % 2 == 0)"
+            ],
+            "note": ""
+          },
+          {
+            "id": "e:17:sym:train.py:main:function@train.py:27",
+            "caller": "sym:train.py:main:function",
+            "callee": null,
+            "candidates": [],
+            "relation": "calls",
+            "resolution": "unresolved",
+            "callsite": {
+              "file": "train.py",
+              "line": 27,
+              "end_line": 27
+            },
+            "expression": "fn()",
+            "conditions": [],
+            "note": "调用参数/局部变量中的可调用对象或动态调用，静态无法确定"
+          },
+          {
+            "id": "e:18:sym:train.py:main:function@train.py:28",
+            "caller": "sym:train.py:main:function",
+            "callee": "sym:utils/helpers.py:fact:function",
+            "candidates": [],
+            "relation": "calls",
+            "resolution": "resolved_static",
+            "callsite": {
+              "file": "train.py",
+              "line": 28,
+              "end_line": 28
+            },
+            "expression": "helpers.fact(3)",
+            "conditions": [],
+            "note": ""
+          }
+        ],
+        "returns": [
+          {
+            "line": 28,
+            "expression": "helpers.fact(3)"
+          }
+        ],
+        "yields": [],
+        "raises": [],
+        "asserts": [],
+        "shape_hints": [],
+        "step_skeleton": [
+          {
+            "id": "s1",
+            "order": 1,
+            "kind": "assign",
+            "source_range": [
+              13,
+              13
+            ],
+            "first_line_text": "p = argparse.ArgumentParser()",
+            "calls": [
+              "ext:argparse.ArgumentParser"
+            ],
+            "children": []
+          },
+          {
+            "id": "s2",
+            "order": 2,
+            "kind": "expr",
+            "source_range": [
+              14,
+              14
+            ],
+            "first_line_text": "p.add_argument(\"--lr\", type=float, default=1e-3)",
+            "calls": [
+              "p.add_argument(\"--lr\", type=float, default=1e-3)"
+            ],
+            "children": []
+          },
+          {
+            "id": "s3",
+            "order": 3,
+            "kind": "expr",
+            "source_range": [
+              15,
+              15
+            ],
+            "first_line_text": "p.add_argument(\"--epochs\", type=int, default=2)",
+            "calls": [
+              "p.add_argument(\"--epochs\", type=int, default=2)"
+            ],
+            "children": []
+          },
+          {
+            "id": "s4",
+            "order": 4,
+            "kind": "expr",
+            "source_range": [
+              16,
+              16
+            ],
+            "first_line_text": "p.add_argument(\"--unused_flag\", default=0)",
+            "calls": [
+              "p.add_argument(\"--unused_flag\", default=0)"
+            ],
+            "children": []
+          },
+          {
+            "id": "s5",
+            "order": 5,
+            "kind": "assign",
+            "source_range": [
+              17,
+              17
+            ],
+            "first_line_text": "args = p.parse_args()",
+            "calls": [
+              "p.parse_args()"
+            ],
+            "children": []
+          },
+          {
+            "id": "s6",
+            "order": 6,
+            "kind": "expr",
+            "source_range": [
+              18,
+              18
+            ],
+            "first_line_text": "seed_all(0)",
+            "calls": [
+              "sym:utils/helpers.py:seed_all:function"
+            ],
+            "children": []
+          },
+          {
+            "id": "s7",
+            "order": 7,
+            "kind": "assign",
+            "source_range": [
+              19,
+              19
+            ],
+            "first_line_text": "model = build({\"dim\": 4})",
+            "calls": [
+              "sym:train.py:build:function"
+            ],
+            "children": []
+          },
+          {
+            "id": "s8",
+            "order": 8,
+            "kind": "expr",
+            "source_range": [
+              20,
+              20
+            ],
+            "first_line_text": "print(\"lr\", args.lr)",
+            "calls": [],
+            "children": []
+          },
+          {
+            "id": "s9",
+            "order": 9,
+            "kind": "for",
+            "source_range": [
+              21,
+              25
+            ],
+            "first_line_text": "for epoch in range(args.epochs):",
+            "calls": [
+              "sym:losses.py:total_loss:function",
+              "sym:utils/helpers.py:normalize:function"
+            ],
+            "children": [
+              {
+                "id": "s9.b.1",
+                "order": 1,
+                "kind": "if",
+                "source_range": [
+                  22,
+                  25
+                ],
+                "first_line_text": "if epoch % 2 == 0:",
+                "calls": [
+                  "sym:losses.py:total_loss:function",
+                  "sym:utils/helpers.py:normalize:function"
+                ],
+                "children": [
+                  {
+                    "id": "s9.b.1.b.1",
+                    "order": 1,
+                    "kind": "assign",
+                    "source_range": [
+                      23,
+                      23
+                    ],
+                    "first_line_text": "loss, parts = losses.total_loss(model, [1.0, 2.0])",
+                    "calls": [
+                      "sym:losses.py:total_loss:function"
+                    ],
+                    "children": [],
+                    "branch": "是/循环体"
+                  },
+                  {
+                    "id": "s9.b.1.o.1",
+                    "order": 1,
+                    "kind": "assign",
+                    "source_range": [
+                      25,
+                      25
+                    ],
+                    "first_line_text": "loss = helpers.normalize([3.0, 4.0])",
+                    "calls": [
+                      "sym:utils/helpers.py:normalize:function"
+                    ],
+                    "children": [],
+                    "branch": "否/else"
+                  }
+                ],
+                "branch": "是/循环体"
+              }
+            ]
+          },
+          {
+            "id": "s10",
+            "order": 10,
+            "kind": "assign",
+            "source_range": [
+              26,
+              26
+            ],
+            "first_line_text": "fn = getattr(helpers, \"dyn_\" + \"x\")",
+            "calls": [],
+            "children": []
+          },
+          {
+            "id": "s11",
+            "order": 11,
+            "kind": "expr",
+            "source_range": [
+              27,
+              27
+            ],
+            "first_line_text": "fn()",
+            "calls": [
+              "fn()"
+            ],
+            "children": []
+          },
+          {
+            "id": "s12",
+            "order": 12,
+            "kind": "return",
+            "source_range": [
+              28,
+              28
+            ],
+            "first_line_text": "return helpers.fact(3)",
+            "calls": [
+              "sym:utils/helpers.py:fact:function"
+            ],
+            "children": []
+          }
+        ]
+      },
+      "role": "other",
+      "summary": "",
+      "purpose": "",
+      "inputs": [],
+      "outputs": [],
+      "side_effects": [],
+      "exceptions": [],
+      "steps": [
+        {
+          "id": "s1",
+          "order": 1,
+          "kind": "assign",
+          "source_range": [
+            13,
+            13
+          ],
+          "first_line_text": "p = argparse.ArgumentParser()",
+          "calls": [
+            "ext:argparse.ArgumentParser"
+          ],
+          "children": []
+        },
+        {
+          "id": "s2",
+          "order": 2,
+          "kind": "expr",
+          "source_range": [
+            14,
+            14
+          ],
+          "first_line_text": "p.add_argument(\"--lr\", type=float, default=1e-3)",
+          "calls": [
+            "p.add_argument(\"--lr\", type=float, default=1e-3)"
+          ],
+          "children": []
+        },
+        {
+          "id": "s3",
+          "order": 3,
+          "kind": "expr",
+          "source_range": [
+            15,
+            15
+          ],
+          "first_line_text": "p.add_argument(\"--epochs\", type=int, default=2)",
+          "calls": [
+            "p.add_argument(\"--epochs\", type=int, default=2)"
+          ],
+          "children": []
+        },
+        {
+          "id": "s4",
+          "order": 4,
+          "kind": "expr",
+          "source_range": [
+            16,
+            16
+          ],
+          "first_line_text": "p.add_argument(\"--unused_flag\", default=0)",
+          "calls": [
+            "p.add_argument(\"--unused_flag\", default=0)"
+          ],
+          "children": []
+        },
+        {
+          "id": "s5",
+          "order": 5,
+          "kind": "assign",
+          "source_range": [
+            17,
+            17
+          ],
+          "first_line_text": "args = p.parse_args()",
+          "calls": [
+            "p.parse_args()"
+          ],
+          "children": []
+        },
+        {
+          "id": "s6",
+          "order": 6,
+          "kind": "expr",
+          "source_range": [
+            18,
+            18
+          ],
+          "first_line_text": "seed_all(0)",
+          "calls": [
+            "sym:utils/helpers.py:seed_all:function"
+          ],
+          "children": []
+        },
+        {
+          "id": "s7",
+          "order": 7,
+          "kind": "assign",
+          "source_range": [
+            19,
+            19
+          ],
+          "first_line_text": "model = build({\"dim\": 4})",
+          "calls": [
+            "sym:train.py:build:function"
+          ],
+          "children": []
+        },
+        {
+          "id": "s8",
+          "order": 8,
+          "kind": "expr",
+          "source_range": [
+            20,
+            20
+          ],
+          "first_line_text": "print(\"lr\", args.lr)",
+          "calls": [],
+          "children": []
+        },
+        {
+          "id": "s9",
+          "order": 9,
+          "kind": "for",
+          "source_range": [
+            21,
+            25
+          ],
+          "first_line_text": "for epoch in range(args.epochs):",
+          "calls": [
+            "sym:losses.py:total_loss:function",
+            "sym:utils/helpers.py:normalize:function"
+          ],
+          "children": [
+            {
+              "id": "s9.b.1",
+              "order": 1,
+              "kind": "if",
+              "source_range": [
+                22,
+                25
+              ],
+              "first_line_text": "if epoch % 2 == 0:",
+              "calls": [
+                "sym:losses.py:total_loss:function",
+                "sym:utils/helpers.py:normalize:function"
+              ],
+              "children": [
+                {
+                  "id": "s9.b.1.b.1",
+                  "order": 1,
+                  "kind": "assign",
+                  "source_range": [
+                    23,
+                    23
+                  ],
+                  "first_line_text": "loss, parts = losses.total_loss(model, [1.0, 2.0])",
+                  "calls": [
+                    "sym:losses.py:total_loss:function"
+                  ],
+                  "children": [],
+                  "branch": "是/循环体"
+                },
+                {
+                  "id": "s9.b.1.o.1",
+                  "order": 1,
+                  "kind": "assign",
+                  "source_range": [
+                    25,
+                    25
+                  ],
+                  "first_line_text": "loss = helpers.normalize([3.0, 4.0])",
+                  "calls": [
+                    "sym:utils/helpers.py:normalize:function"
+                  ],
+                  "children": [],
+                  "branch": "否/else"
+                }
+              ],
+              "branch": "是/循环体"
+            }
+          ]
+        },
+        {
+          "id": "s10",
+          "order": 10,
+          "kind": "assign",
+          "source_range": [
+            26,
+            26
+          ],
+          "first_line_text": "fn = getattr(helpers, \"dyn_\" + \"x\")",
+          "calls": [],
+          "children": []
+        },
+        {
+          "id": "s11",
+          "order": 11,
+          "kind": "expr",
+          "source_range": [
+            27,
+            27
+          ],
+          "first_line_text": "fn()",
+          "calls": [
+            "fn()"
+          ],
+          "children": []
+        },
+        {
+          "id": "s12",
+          "order": 12,
+          "kind": "return",
+          "source_range": [
+            28,
+            28
+          ],
+          "first_line_text": "return helpers.fact(3)",
+          "calls": [
+            "sym:utils/helpers.py:fact:function"
+          ],
+          "children": []
+        }
+      ],
+      "paper_refs": [],
+      "config_refs": [],
+      "scenario_contracts": [],
+      "change_notes": "",
+      "needs_context": [
+        "待Agent按reading-protocol深读"
+      ],
+      "analysis_status": "pending"
+    },
+    {
+      "symbol_id": "sym:losses.py:total_loss:function",
+      "prefilled": {
+        "signature": "total_loss(model, batch)",
+        "definition_range": [
+          5,
+          8
+        ],
+        "docstring": null,
+        "callers": [
+          {
+            "id": "e:2:sym:eval.py:evaluate:function@eval.py:8",
+            "caller": "sym:eval.py:evaluate:function",
+            "callee": "sym:losses.py:total_loss:function",
+            "candidates": [],
+            "relation": "calls",
+            "resolution": "resolved_static",
+            "callsite": {
+              "file": "eval.py",
+              "line": 8,
+              "end_line": 8
+            },
+            "expression": "losses.total_loss(net, out)",
+            "conditions": [],
+            "note": ""
+          },
+          {
+            "id": "e:15:sym:train.py:main:function@train.py:23",
+            "caller": "sym:train.py:main:function",
+            "callee": "sym:losses.py:total_loss:function",
+            "candidates": [],
+            "relation": "calls",
+            "resolution": "resolved_static",
+            "callsite": {
+              "file": "train.py",
+              "line": 23,
+              "end_line": 23
+            },
+            "expression": "losses.total_loss(model, [1.0, 2.0])",
+            "conditions": [
+              "for epoch in range(args.epochs)",
+              "if epoch % 2 == 0"
+            ],
+            "note": ""
+          }
+        ],
+        "callees": [
+          {
+            "id": "e:4:sym:losses.py:total_loss:function@losses.py:6",
+            "caller": "sym:losses.py:total_loss:function",
+            "callee": null,
+            "candidates": [],
+            "relation": "calls",
+            "resolution": "unresolved",
+            "callsite": {
+              "file": "losses.py",
+              "line": 6,
+              "end_line": 6
+            },
+            "expression": "model(batch)",
+            "conditions": [],
+            "note": "调用参数/局部变量中的可调用对象或动态调用，静态无法确定"
+          },
+          {
+            "id": "e:5:sym:losses.py:total_loss:function@losses.py:7",
+            "caller": "sym:losses.py:total_loss:function",
+            "callee": "sym:losses.py:normalize:function",
+            "candidates": [],
+            "relation": "calls",
+            "resolution": "resolved_static",
+            "callsite": {
+              "file": "losses.py",
+              "line": 7,
+              "end_line": 7
+            },
+            "expression": "normalize(out)",
+            "conditions": [],
+            "note": ""
+          },
+          {
+            "id": "e:6:sym:losses.py:total_loss:function@losses.py:8",
+            "caller": "sym:losses.py:total_loss:function",
+            "callee": null,
+            "candidates": [],
+            "relation": "calls",
+            "resolution": "unresolved",
+            "callsite": {
+              "file": "losses.py",
+              "line": 8,
+              "end_line": 8
+            },
+            "expression": "parts.values()",
+            "conditions": [],
+            "note": "调用参数/局部变量中的可调用对象或动态调用，静态无法确定"
+          }
+        ],
+        "returns": [
+          {
+            "line": 8,
+            "expression": "sum(parts.values()), parts"
+          }
+        ],
+        "yields": [],
+        "raises": [],
+        "asserts": [],
+        "shape_hints": [],
+        "step_skeleton": [
+          {
+            "id": "s1",
+            "order": 1,
+            "kind": "assign",
+            "source_range": [
+              6,
+              6
+            ],
+            "first_line_text": "out = model(batch)",
+            "calls": [
+              "model(batch)"
+            ],
+            "children": []
+          },
+          {
+            "id": "s2",
+            "order": 2,
+            "kind": "assign",
+            "source_range": [
+              7,
+              7
+            ],
+            "first_line_text": "parts = {\"mse\": sum(out), \"reg\": len(normalize(out))}",
+            "calls": [
+              "sym:losses.py:normalize:function"
+            ],
+            "children": []
+          },
+          {
+            "id": "s3",
+            "order": 3,
+            "kind": "return",
+            "source_range": [
+              8,
+              8
+            ],
+            "first_line_text": "return sum(parts.values()), parts",
+            "calls": [
+              "parts.values()"
+            ],
+            "children": []
+          }
+        ]
+      },
+      "role": "other",
+      "summary": "",
+      "purpose": "",
+      "inputs": [],
+      "outputs": [],
+      "side_effects": [],
+      "exceptions": [],
+      "steps": [
+        {
+          "id": "s1",
+          "order": 1,
+          "kind": "assign",
+          "source_range": [
+            6,
+            6
+          ],
+          "first_line_text": "out = model(batch)",
+          "calls": [
+            "model(batch)"
+          ],
+          "children": []
+        },
+        {
+          "id": "s2",
+          "order": 2,
+          "kind": "assign",
+          "source_range": [
+            7,
+            7
+          ],
+          "first_line_text": "parts = {\"mse\": sum(out), \"reg\": len(normalize(out))}",
+          "calls": [
+            "sym:losses.py:normalize:function"
+          ],
+          "children": []
+        },
+        {
+          "id": "s3",
+          "order": 3,
+          "kind": "return",
+          "source_range": [
+            8,
+            8
+          ],
+          "first_line_text": "return sum(parts.values()), parts",
+          "calls": [
+            "parts.values()"
+          ],
+          "children": []
+        }
+      ],
+      "paper_refs": [],
+      "config_refs": [],
+      "scenario_contracts": [],
+      "change_notes": "",
+      "needs_context": [
+        "待Agent按reading-protocol深读"
+      ],
+      "analysis_status": "pending"
+    },
+    {
+      "symbol_id": "sym:models/net.py:Net.__init__:method",
+      "prefilled": {
+        "signature": "__init__(self, dim)",
+        "definition_range": [
+          5,
+          7
+        ],
+        "docstring": null,
+        "callers": [
+          {
+            "id": "e:0:sym:eval.py:evaluate:function@eval.py:6",
+            "caller": "sym:eval.py:evaluate:function",
+            "callee": "sym:models/net.py:Net.__init__:method",
+            "candidates": [],
+            "relation": "constructs",
+            "resolution": "resolved_static",
+            "callsite": {
+              "file": "eval.py",
+              "line": 6,
+              "end_line": 6
+            },
+            "expression": "Net(8)",
+            "conditions": [],
+            "note": ""
+          },
+          {
+            "id": "e:7:sym:train.py:build:function@train.py:9",
+            "caller": "sym:train.py:build:function",
+            "callee": "sym:models/net.py:Net.__init__:method",
+            "candidates": [],
+            "relation": "constructs",
+            "resolution": "resolved_static",
+            "callsite": {
+              "file": "train.py",
+              "line": 9,
+              "end_line": 9
+            },
+            "expression": "Model(cfg[\"dim\"])",
+            "conditions": [],
+            "note": ""
+          }
+        ],
+        "callees": [
+          {
+            "id": "e:21:sym:models/net.py:Net.__init__:method@models/net.py:6",
+            "caller": "sym:models/net.py:Net.__init__:method",
+            "callee": "sym:models/blocks.py:Block.__init__:method",
+            "candidates": [],
+            "relation": "constructs",
+            "resolution": "resolved_static",
+            "callsite": {
+              "file": "models/net.py",
+              "line": 6,
+              "end_line": 6
+            },
+            "expression": "Block(dim)",
+            "conditions": [],
+            "note": ""
+          }
+        ],
+        "returns": [],
+        "yields": [],
+        "raises": [],
+        "asserts": [],
+        "shape_hints": [],
+        "step_skeleton": [
+          {
+            "id": "s1",
+            "order": 1,
+            "kind": "assign",
+            "source_range": [
+              6,
+              6
+            ],
+            "first_line_text": "self.block = Block(dim)",
+            "calls": [
+              "sym:models/blocks.py:Block.__init__:method"
+            ],
+            "children": []
+          },
+          {
+            "id": "s2",
+            "order": 2,
+            "kind": "assign",
+            "source_range": [
+              7,
+              7
+            ],
+            "first_line_text": "self.dim = dim",
+            "calls": [],
+            "children": []
+          }
+        ]
+      },
+      "role": "other",
+      "summary": "",
+      "purpose": "",
+      "inputs": [],
+      "outputs": [],
+      "side_effects": [],
+      "exceptions": [],
+      "steps": [
+        {
+          "id": "s1",
+          "order": 1,
+          "kind": "assign",
+          "source_range": [
+            6,
+            6
+          ],
+          "first_line_text": "self.block = Block(dim)",
+          "calls": [
+            "sym:models/blocks.py:Block.__init__:method"
+          ],
+          "children": []
+        },
+        {
+          "id": "s2",
+          "order": 2,
+          "kind": "assign",
+          "source_range": [
+            7,
+            7
+          ],
+          "first_line_text": "self.dim = dim",
+          "calls": [],
+          "children": []
+        }
+      ],
+      "paper_refs": [],
+      "config_refs": [],
+      "scenario_contracts": [],
+      "change_notes": "",
+      "needs_context": [
+        "待Agent按reading-protocol深读"
+      ],
+      "analysis_status": "pending"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "project_root": "D:\\Code\\byd_transfer\\research-code-atlas\\tests\\fixtures\\mini_proj",
+  "entries": [
+    {
+      "entry_id": "entry:train",
+      "path": "train.py",
+      "scenario": "train",
+      "configs": [],
+      "args": [],
+      "overrides": []
+    },
+    {
+      "entry_id": "entry:eval",
+      "path": "eval.py",
+      "scenario": "eval",
+      "configs": [],
+      "args": [],
+      "overrides": []
+    }
+  ],
+  "paper": {},
+  "focus": "fixture静态学习，不运行训练",
+  "output_dir": "D:\\Code\\byd_transfer\\research-code-atlas\\reports\\no-paper",
+  "limits": {
+    "max_depth": 8,
+    "max_symbols": 300
+  },
+  "runtime": {
+    "enabled": false
+  }
+}

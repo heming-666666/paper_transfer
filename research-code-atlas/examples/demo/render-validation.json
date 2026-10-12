@@ -1,0 +1,10 @@
+{
+  "command": [
+    "D:\\APP\\code_package\\nodejs\\node.EXE",
+    "-e",
+    "global.window={};require('./atlas-data.js');require('./atlas-sources.js');console.log('DATA_JS_OK',window.ATLAS_DATA.symbols.length)"
+  ],
+  "exit_code": 0,
+  "stdout": "DATA_JS_OK 29\n",
+  "stderr": ""
+}

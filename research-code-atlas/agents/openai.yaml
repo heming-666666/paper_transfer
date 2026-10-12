@@ -1,0 +1,4 @@
+interface:
+  display_name: "论文与代码执行图谱"
+  short_description: "静态理解研究代码、论文创新与实验设置，生成可点击源码的中文离线学习界面"
+  default_prompt: "使用 $research-code-atlas 静态分析这个项目与入口，并生成可点击源码的中文离线图谱。"

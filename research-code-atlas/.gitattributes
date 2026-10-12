@@ -1,0 +1,7 @@
+* -text whitespace=cr-at-eol
+runtime/** whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab,cr-at-eol
+assets/viewer/vendor/** whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab,cr-at-eol
+examples/**/viewer/vendor/** whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab,cr-at-eol
+references/source-spec/** whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab,cr-at-eol
+runtime/browsers/chromium_headless_shell-1243/chrome-headless-shell-win64/chrome-headless-shell.exe filter=lfs diff=lfs merge=lfs -text
+runtime/windows/site-packages/playwright/driver/node.exe filter=lfs diff=lfs merge=lfs -text

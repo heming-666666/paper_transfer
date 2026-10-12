@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0",
+  "snapshot_at": "2026-10-12T13:01:53.652436+00:00",
+  "files": [
+    {
+      "file": "eval.py",
+      "sha256": "d7524b0b835480bb41a8b4db3750207fc349b4f19d7ed421b05d114c7b6032ba",
+      "original_sha256": "e95129b1c8766c67cf1c7740eeb642a40b9dcd7dc9690f7b6dcb986a070f74a6",
+      "line_count": 13
+    },
+    {
+      "file": "losses.py",
+      "sha256": "d6eec21ec2960df1efb48a000810af21b8f70cfe3c78e4cc3c55eae8bc385d97",
+      "original_sha256": "8b5897edc674420fbfa9d66ddf9d4e05a3a801d7294bfb60df771d321fff3577",
+      "line_count": 8
+    },
+    {
+      "file": "train.py",
+      "sha256": "fa9ccbc0f09d7510e3dc57ffa1045bb78d69236d7271bc46642aa63b19687128",
+      "original_sha256": "3dd2c79905ce61f109f1d7d2462db420fbcc2a3d270b91db09606750bc6bba62",
+      "line_count": 32
+    },
+    {
+      "file": "models/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "line_count": 1
+    },
+    {
+      "file": "models/blocks.py",
+      "sha256": "331383a8cd3d88d66619f42b006dddd9fcfc5dbcaf144478938d5faf570f9dd0",
+      "original_sha256": "08bf179418414575f19fff83c2d3da6f0e43a1543a4c47ede97f11b75c8b75e3",
+      "line_count": 10
+    },
+    {
+      "file": "models/net.py",
+      "sha256": "77c11d66d33d595be40ef21759f100d33765575589c1c66b159d8452b3e0727d",
+      "original_sha256": "3faae27163172a49d787ecb2304e87b8bdb9c22487e71185950529e7bd110d78",
+      "line_count": 20
+    },
+    {
+      "file": "utils/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "line_count": 1
+    },
+    {
+      "file": "utils/helpers.py",
+      "sha256": "fc6059f61c69763d0fb6a3ee290c23b97e95e33657cd1c4b92ec8b689e7364ad",
+      "original_sha256": "35f8f0eacfc1e83f1fcfb7d731f71fa210f7aa49415b331ae4794ed7a5d3831b",
+      "line_count": 38
+    }
+  ],
+  "request_sha256": "1e993336cadf12a13172caa9c221cf13e35bffb110ffc445de407d6105e04bb0",
+  "structure_sha256": "9c1673be4df2963e52ee001ff73d693954c86cf25e98bd7472ce5288a244f29e"
+}

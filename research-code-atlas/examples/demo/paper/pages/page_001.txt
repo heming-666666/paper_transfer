@@ -1,0 +1,1 @@
+Mini Paper. Contributions: (1) a scaled head that rescales block features; (2) a normalized block; (3) a contrastive memory bank.

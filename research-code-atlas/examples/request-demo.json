@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "project_root": "../tests/fixtures/mini_proj",
+  "entries": [
+    {
+      "entry_id": "entry:train",
+      "path": "train.py",
+      "scenario": "train",
+      "configs": [],
+      "args": [],
+      "overrides": []
+    },
+    {
+      "entry_id": "entry:eval",
+      "path": "eval.py",
+      "scenario": "eval",
+      "configs": [],
+      "args": [],
+      "overrides": []
+    }
+  ],
+  "paper": {
+    "path": "../tests/fixtures/mini_paper.md",
+    "url": null
+  },
+  "focus": "fixture静态学习，不运行训练",
+  "output_dir": "../reports/demo",
+  "limits": {
+    "max_depth": 8,
+    "max_symbols": 300
+  },
+  "runtime": {
+    "enabled": false
+  }
+}

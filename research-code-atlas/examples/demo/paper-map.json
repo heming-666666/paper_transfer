@@ -1,0 +1,118 @@
+{
+  "status": "available",
+  "paper": {
+    "title": "Mini Paper（测试材料，非真实论文）",
+    "source": "D:\\Code\\byd_transfer\\research-code-atlas\\tests\\fixtures\\mini_paper.md",
+    "pages": 3
+  },
+  "contributions": [
+    {
+      "id": "c1",
+      "claim": "缩放头（存在冲突）",
+      "compared_to": null,
+      "mechanism": "论文乘3，代码内部scale乘2。",
+      "paper_evidence": [
+        {
+          "page": 2,
+          "quote": "The head multiplies each feature by 3."
+        }
+      ],
+      "code_mappings": [
+        {
+          "symbol_id": "sym:models/net.py:Net.head.scale:function",
+          "evidence": [
+            "models/net.py:14-15"
+          ],
+          "status": "conflict",
+          "step_alignment": [
+            {
+              "paper_step": "逐项乘3",
+              "code_step": "s1",
+              "note": "fixture逐步源码对照"
+            }
+          ],
+          "on_entry_path": null
+        }
+      ],
+      "key_configs": [],
+      "io_change": "fixture数值列表；不是张量观测",
+      "modification_constraints": "保持原论文/源码冲突，不擅自裁决或改项目",
+      "conflicts": [
+        "论文×3与源码×2不一致"
+      ]
+    },
+    {
+      "id": "c2",
+      "claim": "归一化块",
+      "compared_to": null,
+      "mechanism": "非零和分支归一化；零和早退是适用边界。",
+      "paper_evidence": [
+        {
+          "page": 2,
+          "quote": "The block normalizes the input so that it sums to one."
+        }
+      ],
+      "code_mappings": [
+        {
+          "symbol_id": "sym:models/blocks.py:Block.run:method",
+          "evidence": [
+            "models/blocks.py:8-10"
+          ],
+          "status": "direct",
+          "step_alignment": [
+            {
+              "paper_step": "调用归一化",
+              "code_step": "s1",
+              "note": "fixture逐步源码对照"
+            }
+          ],
+          "on_entry_path": null
+        },
+        {
+          "symbol_id": "sym:utils/helpers.py:normalize:function",
+          "evidence": [
+            "utils/helpers.py:11-15"
+          ],
+          "status": "direct",
+          "step_alignment": [
+            {
+              "paper_step": "逐元素除以和",
+              "code_step": "s3",
+              "note": "fixture逐步源码对照"
+            }
+          ],
+          "on_entry_path": null
+        }
+      ],
+      "key_configs": [],
+      "io_change": "fixture数值列表；不是张量观测",
+      "modification_constraints": "保持原论文/源码冲突，不擅自裁决或改项目",
+      "conflicts": []
+    },
+    {
+      "id": "c3",
+      "claim": "对比记忆库未找到",
+      "compared_to": null,
+      "mechanism": "教学代码中未实现记忆库。",
+      "paper_evidence": [
+        {
+          "page": 1,
+          "quote": "(3) a contrastive memory bank."
+        }
+      ],
+      "code_mappings": [
+        {
+          "symbol_id": null,
+          "evidence": [],
+          "status": "not_found",
+          "step_alignment": [],
+          "on_entry_path": null
+        }
+      ],
+      "key_configs": [],
+      "io_change": "fixture数值列表；不是张量观测",
+      "modification_constraints": "保持原论文/源码冲突，不擅自裁决或改项目",
+      "conflicts": []
+    }
+  ]
+}

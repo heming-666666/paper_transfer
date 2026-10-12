@@ -1,0 +1,58 @@
+[
+  {
+    "name": "greenlet",
+    "version": "3.5.6",
+    "license": "MIT AND PSF-2.0",
+    "notice_files": [
+      "runtime/windows/site-packages/greenlet-3.5.6.dist-info/licenses/LICENSE",
+      "runtime/windows/site-packages/greenlet-3.5.6.dist-info/licenses/LICENSE.PSF"
+    ]
+  },
+  {
+    "name": "playwright",
+    "version": "1.63.0",
+    "license": "Apache-2.0",
+    "notice_files": [
+      "runtime/windows/site-packages/playwright-1.63.0.dist-info/licenses/LICENSE",
+      "runtime/windows/site-packages/playwright/driver/LICENSE",
+      "runtime/windows/site-packages/playwright/driver/package/LICENSE",
+      "runtime/windows/site-packages/playwright/driver/package/NOTICE",
+      "runtime/windows/site-packages/playwright/driver/package/ThirdPartyNotices.txt",
+      "runtime/windows/site-packages/playwright/driver/package/lib/serverRegistry.js.LICENSE",
+      "runtime/windows/site-packages/playwright/driver/package/lib/utilsBundle.js.LICENSE",
+      "runtime/windows/site-packages/playwright/driver/package/lib/webp_codec.LICENSE"
+    ]
+  },
+  {
+    "name": "pyee",
+    "version": "13.0.1",
+    "license": "MIT",
+    "notice_files": [
+      "runtime/windows/site-packages/pyee-13.0.1.dist-info/licenses/LICENSE"
+    ]
+  },
+  {
+    "name": "pypdf",
+    "version": "6.20.0",
+    "license": "BSD-3-Clause",
+    "notice_files": [
+      "runtime/windows/site-packages/pypdf-6.20.0.dist-info/licenses/LICENSE"
+    ]
+  },
+  {
+    "name": "PyYAML",
+    "version": "6.0.3",
+    "license": "MIT",
+    "notice_files": [
+      "runtime/windows/site-packages/pyyaml-6.0.3.dist-info/licenses/LICENSE"
+    ]
+  },
+  {
+    "name": "typing_extensions",
+    "version": "4.16.0",
+    "license": "PSF-2.0",
+    "notice_files": [
+      "runtime/windows/site-packages/typing_extensions-4.16.0.dist-info/licenses/LICENSE"
+    ]
+  }
+]

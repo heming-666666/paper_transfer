@@ -1,0 +1,3783 @@
+{
+  "schema_version": "1.0",
+  "symbols": [
+    {
+      "id": "sym:eval.py:<module>:module",
+      "file": "eval.py",
+      "qualname": "<module>",
+      "kind": "module",
+      "definition_range": [
+        1,
+        13
+      ],
+      "body_start": 1,
+      "parent": null,
+      "signature": "<module>",
+      "decorators": [],
+      "docstring": null,
+      "params": [],
+      "locals": [],
+      "bases": [],
+      "returns": [],
+      "yields": [],
+      "raises": [],
+      "asserts": [],
+      "shape_hints": [],
+      "step_skeleton": [
+        {
+          "id": "s1",
+          "order": 1,
+          "kind": "importfrom",
+          "source_range": [
+            1,
+            1
+          ],
+          "first_line_text": "from models.net import Net",
+          "calls": [],
+          "children": []
+        },
+        {
+          "id": "s2",
+          "order": 2,
+          "kind": "import",
+          "source_range": [
+            2,
+            2
+          ],
+          "first_line_text": "import losses",
+          "calls": [],
+          "children": []
+        },
+        {
+          "id": "s3",
+          "order": 3,
+          "kind": "functiondef",
+          "source_range": [
+            5,
+            9
+          ],
+          "first_line_text": "def evaluate():",
+          "calls": [],
+          "children": []
+        },
+        {
+          "id": "s4",
+          "order": 4,
+          "kind": "if",
+          "source_range": [
+            12,
+            13
+          ],
+          "first_line_text": "if __name__ == \"__main__\":",
+          "calls": [
+            "sym:eval.py:evaluate:function"
+          ],
+          "children": [
+            {
+              "id": "s4.b.1",
+              "order": 1,
+              "kind": "expr",
+              "source_range": [
+                13,
+                13
+              ],
+              "first_line_text": "evaluate()",
+              "calls": [
+                "sym:eval.py:evaluate:function"
+              ],
+              "children": [],
+              "branch": "是/循环体"
+            }
+          ]
+        }
+      ],
+      "source_sha256": "d7524b0b835480bb41a8b4db3750207fc349b4f19d7ed421b05d114c7b6032ba",
+      "callers": [],
+      "callees": [
+        {
+          "id": "e:3:sym:eval.py:<module>:module@eval.py:13",
+          "caller": "sym:eval.py:<module>:module",
+          "callee": "sym:eval.py:evaluate:function",
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "resolved_static",
+          "callsite": {
+            "file": "eval.py",
+            "line": 13,
+            "end_line": 13
+          },
+          "expression": "evaluate()",
+          "conditions": [
+            "if __name__ == \"__main__\""
+          ],
+          "note": ""
+        }
+      ],
+      "in_entries": [
+        "entry:eval"
+      ]
+    },
+    {
+      "id": "sym:eval.py:evaluate:function",
+      "file": "eval.py",
+      "qualname": "evaluate",
+      "kind": "function",
+      "definition_range": [
+        5,
+        9
+      ],
+      "body_start": 6,
+      "parent": "sym:eval.py:<module>:module",
+      "signature": "evaluate()",
+      "decorators": [],
+      "docstring": null,
+      "params": [],
+      "locals": [
+        "net",
+        "out",
+        "total",
+        "parts"
+      ],
+      "bases": [],
+      "returns": [
+        {
+          "line": 9,
+          "expression": "{\"total\": total, \"n\": len(out)}"
+        }
+      ],
+      "yields": [],
+      "raises": [],
+      "asserts": [],
+      "shape_hints": [],
+      "step_skeleton": [
+        {
+          "id": "s1",
+          "order": 1,
+          "kind": "assign",
+          "source_range": [
+            6,
+            6
+          ],
+          "first_line_text": "net = Net(8)",
+          "calls": [
+            "sym:models/net.py:Net.__init__:method"
+          ],
+          "children": []
+        },
+        {
+          "id": "s2",
+          "order": 2,
+          "kind": "assign",
+          "source_range": [
+            7,
+            7
+          ],
+          "first_line_text": "out = net.forward([1.0, 2.0, 3.0])",
+          "calls": [
+            "sym:models/net.py:Net.forward:method"
+          ],
+          "children": []
+        },
+        {
+          "id": "s3",
+          "order": 3,
+          "kind": "assign",
+          "source_range": [
+            8,
+            8
+          ],
+          "first_line_text": "total, parts = losses.total_loss(net, out)",
+          "calls": [
+            "sym:losses.py:total_loss:function"
+          ],
+          "children": []
+        },
+        {
+          "id": "s4",
+          "order": 4,
+          "kind": "return",
+          "source_range": [
+            9,
+            9
+          ],
+          "first_line_text": "return {\"total\": total, \"n\": len(out)}",
+          "calls": [],
+          "children": []
+        }
+      ],
+      "return_annotation": null,
+      "source_sha256": "d7524b0b835480bb41a8b4db3750207fc349b4f19d7ed421b05d114c7b6032ba",
+      "callers": [
+        {
+          "id": "e:3:sym:eval.py:<module>:module@eval.py:13",
+          "caller": "sym:eval.py:<module>:module",
+          "callee": "sym:eval.py:evaluate:function",
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "resolved_static",
+          "callsite": {
+            "file": "eval.py",
+            "line": 13,
+            "end_line": 13
+          },
+          "expression": "evaluate()",
+          "conditions": [
+            "if __name__ == \"__main__\""
+          ],
+          "note": ""
+        }
+      ],
+      "callees": [
+        {
+          "id": "e:0:sym:eval.py:evaluate:function@eval.py:6",
+          "caller": "sym:eval.py:evaluate:function",
+          "callee": "sym:models/net.py:Net.__init__:method",
+          "candidates": [],
+          "relation": "constructs",
+          "resolution": "resolved_static",
+          "callsite": {
+            "file": "eval.py",
+            "line": 6,
+            "end_line": 6
+          },
+          "expression": "Net(8)",
+          "conditions": [],
+          "note": ""
+        },
+        {
+          "id": "e:1:sym:eval.py:evaluate:function@eval.py:7",
+          "caller": "sym:eval.py:evaluate:function",
+          "callee": "sym:models/net.py:Net.forward:method",
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "candidate",
+          "callsite": {
+            "file": "eval.py",
+            "line": 7,
+            "end_line": 7
+          },
+          "expression": "net.forward([1.0, 2.0, 3.0])",
+          "conditions": [],
+          "note": "由实例属性/局部构造/基类/同名方法推断；动态分派可能不同"
+        },
+        {
+          "id": "e:2:sym:eval.py:evaluate:function@eval.py:8",
+          "caller": "sym:eval.py:evaluate:function",
+          "callee": "sym:losses.py:total_loss:function",
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "resolved_static",
+          "callsite": {
+            "file": "eval.py",
+            "line": 8,
+            "end_line": 8
+          },
+          "expression": "losses.total_loss(net, out)",
+          "conditions": [],
+          "note": ""
+        }
+      ],
+      "in_entries": [
+        "entry:eval"
+      ]
+    },
+    {
+      "id": "sym:losses.py:<module>:module",
+      "file": "losses.py",
+      "qualname": "<module>",
+      "kind": "module",
+      "definition_range": [
+        1,
+        8
+      ],
+      "body_start": 1,
+      "parent": null,
+      "signature": "<module>",
+      "decorators": [],
+      "docstring": null,
+      "params": [],
+      "locals": [],
+      "bases": [],
+      "returns": [],
+      "yields": [],
+      "raises": [],
+      "asserts": [],
+      "shape_hints": [],
+      "step_skeleton": [
+        {
+          "id": "s1",
+          "order": 1,
+          "kind": "functiondef",
+          "source_range": [
+            1,
+            2
+          ],
+          "first_line_text": "def normalize(v):",
+          "calls": [],
+          "children": []
+        },
+        {
+          "id": "s2",
+          "order": 2,
+          "kind": "functiondef",
+          "source_range": [
+            5,
+            8
+          ],
+          "first_line_text": "def total_loss(model, batch):",
+          "calls": [],
+          "children": []
+        }
+      ],
+      "source_sha256": "d6eec21ec2960df1efb48a000810af21b8f70cfe3c78e4cc3c55eae8bc385d97",
+      "callers": [],
+      "callees": [],
+      "in_entries": []
+    },
+    {
+      "id": "sym:losses.py:normalize:function",
+      "file": "losses.py",
+      "qualname": "normalize",
+      "kind": "function",
+      "definition_range": [
+        1,
+        2
+      ],
+      "body_start": 2,
+      "parent": "sym:losses.py:<module>:module",
+      "signature": "normalize(v)",
+      "decorators": [],
+      "docstring": null,
+      "params": [
+        {
+          "name": "v",
+          "kind": "positional",
+          "annotation": null,
+          "default": null
+        }
+      ],
+      "locals": [],
+      "bases": [],
+      "returns": [
+        {
+          "line": 2,
+          "expression": "[abs(t) for t in v]"
+        }
+      ],
+      "yields": [],
+      "raises": [],
+      "asserts": [],
+      "shape_hints": [],
+      "step_skeleton": [
+        {
+          "id": "s1",
+          "order": 1,
+          "kind": "return",
+          "source_range": [
+            2,
+            2
+          ],
+          "first_line_text": "return [abs(t) for t in v]",
+          "calls": [],
+          "children": []
+        }
+      ],
+      "return_annotation": null,
+      "source_sha256": "d6eec21ec2960df1efb48a000810af21b8f70cfe3c78e4cc3c55eae8bc385d97",
+      "callers": [
+        {
+          "id": "e:5:sym:losses.py:total_loss:function@losses.py:7",
+          "caller": "sym:losses.py:total_loss:function",
+          "callee": "sym:losses.py:normalize:function",
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "resolved_static",
+          "callsite": {
+            "file": "losses.py",
+            "line": 7,
+            "end_line": 7
+          },
+          "expression": "normalize(out)",
+          "conditions": [],
+          "note": ""
+        }
+      ],
+      "callees": [],
+      "in_entries": [
+        "entry:train",
+        "entry:eval"
+      ]
+    },
+    {
+      "id": "sym:losses.py:total_loss:function",
+      "file": "losses.py",
+      "qualname": "total_loss",
+      "kind": "function",
+      "definition_range": [
+        5,
+        8
+      ],
+      "body_start": 6,
+      "parent": "sym:losses.py:<module>:module",
+      "signature": "total_loss(model, batch)",
+      "decorators": [],
+      "docstring": null,
+      "params": [
+        {
+          "name": "model",
+          "kind": "positional",
+          "annotation": null,
+          "default": null
+        },
+        {
+          "name": "batch",
+          "kind": "positional",
+          "annotation": null,
+          "default": null
+        }
+      ],
+      "locals": [
+        "out",
+        "parts"
+      ],
+      "bases": [],
+      "returns": [
+        {
+          "line": 8,
+          "expression": "sum(parts.values()), parts"
+        }
+      ],
+      "yields": [],
+      "raises": [],
+      "asserts": [],
+      "shape_hints": [],
+      "step_skeleton": [
+        {
+          "id": "s1",
+          "order": 1,
+          "kind": "assign",
+          "source_range": [
+            6,
+            6
+          ],
+          "first_line_text": "out = model(batch)",
+          "calls": [
+            "model(batch)"
+          ],
+          "children": []
+        },
+        {
+          "id": "s2",
+          "order": 2,
+          "kind": "assign",
+          "source_range": [
+            7,
+            7
+          ],
+          "first_line_text": "parts = {\"mse\": sum(out), \"reg\": len(normalize(out))}",
+          "calls": [
+            "sym:losses.py:normalize:function"
+          ],
+          "children": []
+        },
+        {
+          "id": "s3",
+          "order": 3,
+          "kind": "return",
+          "source_range": [
+            8,
+            8
+          ],
+          "first_line_text": "return sum(parts.values()), parts",
+          "calls": [
+            "parts.values()"
+          ],
+          "children": []
+        }
+      ],
+      "return_annotation": null,
+      "source_sha256": "d6eec21ec2960df1efb48a000810af21b8f70cfe3c78e4cc3c55eae8bc385d97",
+      "callers": [
+        {
+          "id": "e:2:sym:eval.py:evaluate:function@eval.py:8",
+          "caller": "sym:eval.py:evaluate:function",
+          "callee": "sym:losses.py:total_loss:function",
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "resolved_static",
+          "callsite": {
+            "file": "eval.py",
+            "line": 8,
+            "end_line": 8
+          },
+          "expression": "losses.total_loss(net, out)",
+          "conditions": [],
+          "note": ""
+        },
+        {
+          "id": "e:15:sym:train.py:main:function@train.py:23",
+          "caller": "sym:train.py:main:function",
+          "callee": "sym:losses.py:total_loss:function",
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "resolved_static",
+          "callsite": {
+            "file": "train.py",
+            "line": 23,
+            "end_line": 23
+          },
+          "expression": "losses.total_loss(model, [1.0, 2.0])",
+          "conditions": [
+            "for epoch in range(args.epochs)",
+            "if epoch % 2 == 0"
+          ],
+          "note": ""
+        }
+      ],
+      "callees": [
+        {
+          "id": "e:4:sym:losses.py:total_loss:function@losses.py:6",
+          "caller": "sym:losses.py:total_loss:function",
+          "callee": null,
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "unresolved",
+          "callsite": {
+            "file": "losses.py",
+            "line": 6,
+            "end_line": 6
+          },
+          "expression": "model(batch)",
+          "conditions": [],
+          "note": "调用参数/局部变量中的可调用对象或动态调用，静态无法确定"
+        },
+        {
+          "id": "e:5:sym:losses.py:total_loss:function@losses.py:7",
+          "caller": "sym:losses.py:total_loss:function",
+          "callee": "sym:losses.py:normalize:function",
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "resolved_static",
+          "callsite": {
+            "file": "losses.py",
+            "line": 7,
+            "end_line": 7
+          },
+          "expression": "normalize(out)",
+          "conditions": [],
+          "note": ""
+        },
+        {
+          "id": "e:6:sym:losses.py:total_loss:function@losses.py:8",
+          "caller": "sym:losses.py:total_loss:function",
+          "callee": null,
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "unresolved",
+          "callsite": {
+            "file": "losses.py",
+            "line": 8,
+            "end_line": 8
+          },
+          "expression": "parts.values()",
+          "conditions": [],
+          "note": "调用参数/局部变量中的可调用对象或动态调用，静态无法确定"
+        }
+      ],
+      "in_entries": [
+        "entry:train",
+        "entry:eval"
+      ]
+    },
+    {
+      "id": "sym:train.py:<module>:module",
+      "file": "train.py",
+      "qualname": "<module>",
+      "kind": "module",
+      "definition_range": [
+        1,
+        32
+      ],
+      "body_start": 1,
+      "parent": null,
+      "signature": "<module>",
+      "decorators": [],
+      "docstring": null,
+      "params": [],
+      "locals": [],
+      "bases": [],
+      "returns": [],
+      "yields": [],
+      "raises": [],
+      "asserts": [],
+      "shape_hints": [],
+      "step_skeleton": [
+        {
+          "id": "s1",
+          "order": 1,
+          "kind": "import",
+          "source_range": [
+            1,
+            1
+          ],
+          "first_line_text": "import argparse",
+          "calls": [],
+          "children": []
+        },
+        {
+          "id": "s2",
+          "order": 2,
+          "kind": "importfrom",
+          "source_range": [
+            2,
+            2
+          ],
+          "first_line_text": "from models.net import Net as Model",
+          "calls": [],
+          "children": []
+        },
+        {
+          "id": "s3",
+          "order": 3,
+          "kind": "importfrom",
+          "source_range": [
+            3,
+            3
+          ],
+          "first_line_text": "from utils import helpers",
+          "calls": [],
+          "children": []
+        },
+        {
+          "id": "s4",
+          "order": 4,
+          "kind": "importfrom",
+          "source_range": [
+            4,
+            4
+          ],
+          "first_line_text": "from utils.helpers import seed_all",
+          "calls": [],
+          "children": []
+        },
+        {
+          "id": "s5",
+          "order": 5,
+          "kind": "import",
+          "source_range": [
+            5,
+            5
+          ],
+          "first_line_text": "import losses",
+          "calls": [],
+          "children": []
+        },
+        {
+          "id": "s6",
+          "order": 6,
+          "kind": "functiondef",
+          "source_range": [
+            8,
+            9
+          ],
+          "first_line_text": "def build(cfg):",
+          "calls": [],
+          "children": []
+        },
+        {
+          "id": "s7",
+          "order": 7,
+          "kind": "functiondef",
+          "source_range": [
+            12,
+            28
+          ],
+          "first_line_text": "def main():",
+          "calls": [],
+          "children": []
+        },
+        {
+          "id": "s8",
+          "order": 8,
+          "kind": "if",
+          "source_range": [
+            31,
+            32
+          ],
+          "first_line_text": "if __name__ == \"__main__\":",
+          "calls": [
+            "sym:train.py:main:function"
+          ],
+          "children": [
+            {
+              "id": "s8.b.1",
+              "order": 1,
+              "kind": "expr",
+              "source_range": [
+                32,
+                32
+              ],
+              "first_line_text": "main()",
+              "calls": [
+                "sym:train.py:main:function"
+              ],
+              "children": [],
+              "branch": "是/循环体"
+            }
+          ]
+        }
+      ],
+      "source_sha256": "fa9ccbc0f09d7510e3dc57ffa1045bb78d69236d7271bc46642aa63b19687128",
+      "callers": [],
+      "callees": [
+        {
+          "id": "e:19:sym:train.py:<module>:module@train.py:32",
+          "caller": "sym:train.py:<module>:module",
+          "callee": "sym:train.py:main:function",
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "resolved_static",
+          "callsite": {
+            "file": "train.py",
+            "line": 32,
+            "end_line": 32
+          },
+          "expression": "main()",
+          "conditions": [
+            "if __name__ == \"__main__\""
+          ],
+          "note": ""
+        }
+      ],
+      "in_entries": [
+        "entry:train"
+      ]
+    },
+    {
+      "id": "sym:train.py:build:function",
+      "file": "train.py",
+      "qualname": "build",
+      "kind": "function",
+      "definition_range": [
+        8,
+        9
+      ],
+      "body_start": 9,
+      "parent": "sym:train.py:<module>:module",
+      "signature": "build(cfg)",
+      "decorators": [],
+      "docstring": null,
+      "params": [
+        {
+          "name": "cfg",
+          "kind": "positional",
+          "annotation": null,
+          "default": null
+        }
+      ],
+      "locals": [],
+      "bases": [],
+      "returns": [
+        {
+          "line": 9,
+          "expression": "Model(cfg[\"dim\"])"
+        }
+      ],
+      "yields": [],
+      "raises": [],
+      "asserts": [],
+      "shape_hints": [],
+      "step_skeleton": [
+        {
+          "id": "s1",
+          "order": 1,
+          "kind": "return",
+          "source_range": [
+            9,
+            9
+          ],
+          "first_line_text": "return Model(cfg[\"dim\"])",
+          "calls": [
+            "sym:models/net.py:Net.__init__:method"
+          ],
+          "children": []
+        }
+      ],
+      "return_annotation": null,
+      "source_sha256": "fa9ccbc0f09d7510e3dc57ffa1045bb78d69236d7271bc46642aa63b19687128",
+      "callers": [
+        {
+          "id": "e:14:sym:train.py:main:function@train.py:19",
+          "caller": "sym:train.py:main:function",
+          "callee": "sym:train.py:build:function",
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "resolved_static",
+          "callsite": {
+            "file": "train.py",
+            "line": 19,
+            "end_line": 19
+          },
+          "expression": "build({\"dim\": 4})",
+          "conditions": [],
+          "note": ""
+        }
+      ],
+      "callees": [
+        {
+          "id": "e:7:sym:train.py:build:function@train.py:9",
+          "caller": "sym:train.py:build:function",
+          "callee": "sym:models/net.py:Net.__init__:method",
+          "candidates": [],
+          "relation": "constructs",
+          "resolution": "resolved_static",
+          "callsite": {
+            "file": "train.py",
+            "line": 9,
+            "end_line": 9
+          },
+          "expression": "Model(cfg[\"dim\"])",
+          "conditions": [],
+          "note": ""
+        }
+      ],
+      "in_entries": [
+        "entry:train"
+      ]
+    },
+    {
+      "id": "sym:train.py:main:function",
+      "file": "train.py",
+      "qualname": "main",
+      "kind": "function",
+      "definition_range": [
+        12,
+        28
+      ],
+      "body_start": 13,
+      "parent": "sym:train.py:<module>:module",
+      "signature": "main()",
+      "decorators": [],
+      "docstring": null,
+      "params": [],
+      "locals": [
+        "p",
+        "args",
+        "model",
+        "loss",
+        "parts",
+        "fn"
+      ],
+      "bases": [],
+      "returns": [
+        {
+          "line": 28,
+          "expression": "helpers.fact(3)"
+        }
+      ],
+      "yields": [],
+      "raises": [],
+      "asserts": [],
+      "shape_hints": [],
+      "step_skeleton": [
+        {
+          "id": "s1",
+          "order": 1,
+          "kind": "assign",
+          "source_range": [
+            13,
+            13
+          ],
+          "first_line_text": "p = argparse.ArgumentParser()",
+          "calls": [
+            "ext:argparse.ArgumentParser"
+          ],
+          "children": []
+        },
+        {
+          "id": "s2",
+          "order": 2,
+          "kind": "expr",
+          "source_range": [
+            14,
+            14
+          ],
+          "first_line_text": "p.add_argument(\"--lr\", type=float, default=1e-3)",
+          "calls": [
+            "p.add_argument(\"--lr\", type=float, default=1e-3)"
+          ],
+          "children": []
+        },
+        {
+          "id": "s3",
+          "order": 3,
+          "kind": "expr",
+          "source_range": [
+            15,
+            15
+          ],
+          "first_line_text": "p.add_argument(\"--epochs\", type=int, default=2)",
+          "calls": [
+            "p.add_argument(\"--epochs\", type=int, default=2)"
+          ],
+          "children": []
+        },
+        {
+          "id": "s4",
+          "order": 4,
+          "kind": "expr",
+          "source_range": [
+            16,
+            16
+          ],
+          "first_line_text": "p.add_argument(\"--unused_flag\", default=0)",
+          "calls": [
+            "p.add_argument(\"--unused_flag\", default=0)"
+          ],
+          "children": []
+        },
+        {
+          "id": "s5",
+          "order": 5,
+          "kind": "assign",
+          "source_range": [
+            17,
+            17
+          ],
+          "first_line_text": "args = p.parse_args()",
+          "calls": [
+            "p.parse_args()"
+          ],
+          "children": []
+        },
+        {
+          "id": "s6",
+          "order": 6,
+          "kind": "expr",
+          "source_range": [
+            18,
+            18
+          ],
+          "first_line_text": "seed_all(0)",
+          "calls": [
+            "sym:utils/helpers.py:seed_all:function"
+          ],
+          "children": []
+        },
+        {
+          "id": "s7",
+          "order": 7,
+          "kind": "assign",
+          "source_range": [
+            19,
+            19
+          ],
+          "first_line_text": "model = build({\"dim\": 4})",
+          "calls": [
+            "sym:train.py:build:function"
+          ],
+          "children": []
+        },
+        {
+          "id": "s8",
+          "order": 8,
+          "kind": "expr",
+          "source_range": [
+            20,
+            20
+          ],
+          "first_line_text": "print(\"lr\", args.lr)",
+          "calls": [],
+          "children": []
+        },
+        {
+          "id": "s9",
+          "order": 9,
+          "kind": "for",
+          "source_range": [
+            21,
+            25
+          ],
+          "first_line_text": "for epoch in range(args.epochs):",
+          "calls": [
+            "sym:losses.py:total_loss:function",
+            "sym:utils/helpers.py:normalize:function"
+          ],
+          "children": [
+            {
+              "id": "s9.b.1",
+              "order": 1,
+              "kind": "if",
+              "source_range": [
+                22,
+                25
+              ],
+              "first_line_text": "if epoch % 2 == 0:",
+              "calls": [
+                "sym:losses.py:total_loss:function",
+                "sym:utils/helpers.py:normalize:function"
+              ],
+              "children": [
+                {
+                  "id": "s9.b.1.b.1",
+                  "order": 1,
+                  "kind": "assign",
+                  "source_range": [
+                    23,
+                    23
+                  ],
+                  "first_line_text": "loss, parts = losses.total_loss(model, [1.0, 2.0])",
+                  "calls": [
+                    "sym:losses.py:total_loss:function"
+                  ],
+                  "children": [],
+                  "branch": "是/循环体"
+                },
+                {
+                  "id": "s9.b.1.o.1",
+                  "order": 1,
+                  "kind": "assign",
+                  "source_range": [
+                    25,
+                    25
+                  ],
+                  "first_line_text": "loss = helpers.normalize([3.0, 4.0])",
+                  "calls": [
+                    "sym:utils/helpers.py:normalize:function"
+                  ],
+                  "children": [],
+                  "branch": "否/else"
+                }
+              ],
+              "branch": "是/循环体"
+            }
+          ]
+        },
+        {
+          "id": "s10",
+          "order": 10,
+          "kind": "assign",
+          "source_range": [
+            26,
+            26
+          ],
+          "first_line_text": "fn = getattr(helpers, \"dyn_\" + \"x\")",
+          "calls": [],
+          "children": []
+        },
+        {
+          "id": "s11",
+          "order": 11,
+          "kind": "expr",
+          "source_range": [
+            27,
+            27
+          ],
+          "first_line_text": "fn()",
+          "calls": [
+            "fn()"
+          ],
+          "children": []
+        },
+        {
+          "id": "s12",
+          "order": 12,
+          "kind": "return",
+          "source_range": [
+            28,
+            28
+          ],
+          "first_line_text": "return helpers.fact(3)",
+          "calls": [
+            "sym:utils/helpers.py:fact:function"
+          ],
+          "children": []
+        }
+      ],
+      "return_annotation": null,
+      "source_sha256": "fa9ccbc0f09d7510e3dc57ffa1045bb78d69236d7271bc46642aa63b19687128",
+      "callers": [
+        {
+          "id": "e:19:sym:train.py:<module>:module@train.py:32",
+          "caller": "sym:train.py:<module>:module",
+          "callee": "sym:train.py:main:function",
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "resolved_static",
+          "callsite": {
+            "file": "train.py",
+            "line": 32,
+            "end_line": 32
+          },
+          "expression": "main()",
+          "conditions": [
+            "if __name__ == \"__main__\""
+          ],
+          "note": ""
+        }
+      ],
+      "callees": [
+        {
+          "id": "e:8:sym:train.py:main:function@train.py:13",
+          "caller": "sym:train.py:main:function",
+          "callee": "ext:argparse.ArgumentParser",
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "external",
+          "callsite": {
+            "file": "train.py",
+            "line": 13,
+            "end_line": 13
+          },
+          "expression": "argparse.ArgumentParser()",
+          "conditions": [],
+          "note": "项目外调用，未解析其内部实现"
+        },
+        {
+          "id": "e:9:sym:train.py:main:function@train.py:14",
+          "caller": "sym:train.py:main:function",
+          "callee": null,
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "unresolved",
+          "callsite": {
+            "file": "train.py",
+            "line": 14,
+            "end_line": 14
+          },
+          "expression": "p.add_argument(\"--lr\", type=float, default=1e-3)",
+          "conditions": [],
+          "note": "调用参数/局部变量中的可调用对象或动态调用，静态无法确定"
+        },
+        {
+          "id": "e:10:sym:train.py:main:function@train.py:15",
+          "caller": "sym:train.py:main:function",
+          "callee": null,
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "unresolved",
+          "callsite": {
+            "file": "train.py",
+            "line": 15,
+            "end_line": 15
+          },
+          "expression": "p.add_argument(\"--epochs\", type=int, default=2)",
+          "conditions": [],
+          "note": "调用参数/局部变量中的可调用对象或动态调用，静态无法确定"
+        },
+        {
+          "id": "e:11:sym:train.py:main:function@train.py:16",
+          "caller": "sym:train.py:main:function",
+          "callee": null,
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "unresolved",
+          "callsite": {
+            "file": "train.py",
+            "line": 16,
+            "end_line": 16
+          },
+          "expression": "p.add_argument(\"--unused_flag\", default=0)",
+          "conditions": [],
+          "note": "调用参数/局部变量中的可调用对象或动态调用，静态无法确定"
+        },
+        {
+          "id": "e:12:sym:train.py:main:function@train.py:17",
+          "caller": "sym:train.py:main:function",
+          "callee": null,
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "unresolved",
+          "callsite": {
+            "file": "train.py",
+            "line": 17,
+            "end_line": 17
+          },
+          "expression": "p.parse_args()",
+          "conditions": [],
+          "note": "调用参数/局部变量中的可调用对象或动态调用，静态无法确定"
+        },
+        {
+          "id": "e:13:sym:train.py:main:function@train.py:18",
+          "caller": "sym:train.py:main:function",
+          "callee": "sym:utils/helpers.py:seed_all:function",
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "resolved_static",
+          "callsite": {
+            "file": "train.py",
+            "line": 18,
+            "end_line": 18
+          },
+          "expression": "seed_all(0)",
+          "conditions": [],
+          "note": ""
+        },
+        {
+          "id": "e:14:sym:train.py:main:function@train.py:19",
+          "caller": "sym:train.py:main:function",
+          "callee": "sym:train.py:build:function",
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "resolved_static",
+          "callsite": {
+            "file": "train.py",
+            "line": 19,
+            "end_line": 19
+          },
+          "expression": "build({\"dim\": 4})",
+          "conditions": [],
+          "note": ""
+        },
+        {
+          "id": "e:15:sym:train.py:main:function@train.py:23",
+          "caller": "sym:train.py:main:function",
+          "callee": "sym:losses.py:total_loss:function",
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "resolved_static",
+          "callsite": {
+            "file": "train.py",
+            "line": 23,
+            "end_line": 23
+          },
+          "expression": "losses.total_loss(model, [1.0, 2.0])",
+          "conditions": [
+            "for epoch in range(args.epochs)",
+            "if epoch % 2 == 0"
+          ],
+          "note": ""
+        },
+        {
+          "id": "e:16:sym:train.py:main:function@train.py:25",
+          "caller": "sym:train.py:main:function",
+          "callee": "sym:utils/helpers.py:normalize:function",
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "resolved_static",
+          "callsite": {
+            "file": "train.py",
+            "line": 25,
+            "end_line": 25
+          },
+          "expression": "helpers.normalize([3.0, 4.0])",
+          "conditions": [
+            "for epoch in range(args.epochs)",
+            "else (not epoch % 2 == 0)"
+          ],
+          "note": ""
+        },
+        {
+          "id": "e:17:sym:train.py:main:function@train.py:27",
+          "caller": "sym:train.py:main:function",
+          "callee": null,
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "unresolved",
+          "callsite": {
+            "file": "train.py",
+            "line": 27,
+            "end_line": 27
+          },
+          "expression": "fn()",
+          "conditions": [],
+          "note": "调用参数/局部变量中的可调用对象或动态调用，静态无法确定"
+        },
+        {
+          "id": "e:18:sym:train.py:main:function@train.py:28",
+          "caller": "sym:train.py:main:function",
+          "callee": "sym:utils/helpers.py:fact:function",
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "resolved_static",
+          "callsite": {
+            "file": "train.py",
+            "line": 28,
+            "end_line": 28
+          },
+          "expression": "helpers.fact(3)",
+          "conditions": [],
+          "note": ""
+        }
+      ],
+      "in_entries": [
+        "entry:train"
+      ]
+    },
+    {
+      "id": "sym:models/__init__.py:<module>:module",
+      "file": "models/__init__.py",
+      "qualname": "<module>",
+      "kind": "module",
+      "definition_range": [
+        1,
+        1
+      ],
+      "body_start": 1,
+      "parent": null,
+      "signature": "<module>",
+      "decorators": [],
+      "docstring": null,
+      "params": [],
+      "locals": [],
+      "bases": [],
+      "returns": [],
+      "yields": [],
+      "raises": [],
+      "asserts": [],
+      "shape_hints": [],
+      "step_skeleton": [],
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "callers": [],
+      "callees": [],
+      "in_entries": []
+    },
+    {
+      "id": "sym:models/blocks.py:<module>:module",
+      "file": "models/blocks.py",
+      "qualname": "<module>",
+      "kind": "module",
+      "definition_range": [
+        1,
+        10
+      ],
+      "body_start": 1,
+      "parent": null,
+      "signature": "<module>",
+      "decorators": [],
+      "docstring": null,
+      "params": [],
+      "locals": [],
+      "bases": [],
+      "returns": [],
+      "yields": [],
+      "raises": [],
+      "asserts": [],
+      "shape_hints": [],
+      "step_skeleton": [
+        {
+          "id": "s1",
+          "order": 1,
+          "kind": "importfrom",
+          "source_range": [
+            1,
+            1
+          ],
+          "first_line_text": "from utils.helpers import normalize",
+          "calls": [],
+          "children": []
+        },
+        {
+          "id": "s2",
+          "order": 2,
+          "kind": "classdef",
+          "source_range": [
+            4,
+            10
+          ],
+          "first_line_text": "class Block:",
+          "calls": [],
+          "children": []
+        }
+      ],
+      "source_sha256": "331383a8cd3d88d66619f42b006dddd9fcfc5dbcaf144478938d5faf570f9dd0",
+      "callers": [],
+      "callees": [],
+      "in_entries": []
+    },
+    {
+      "id": "sym:models/blocks.py:Block:class",
+      "file": "models/blocks.py",
+      "qualname": "Block",
+      "kind": "class",
+      "definition_range": [
+        4,
+        10
+      ],
+      "body_start": 5,
+      "parent": "sym:models/blocks.py:<module>:module",
+      "signature": "Block",
+      "decorators": [],
+      "docstring": null,
+      "params": [],
+      "locals": [],
+      "bases": [],
+      "returns": [],
+      "yields": [],
+      "raises": [],
+      "asserts": [],
+      "shape_hints": [],
+      "step_skeleton": [
+        {
+          "id": "s1",
+          "order": 1,
+          "kind": "functiondef",
+          "source_range": [
+            5,
+            6
+          ],
+          "first_line_text": "def __init__(self, dim):",
+          "calls": [],
+          "children": []
+        },
+        {
+          "id": "s2",
+          "order": 2,
+          "kind": "functiondef",
+          "source_range": [
+            8,
+            10
+          ],
+          "first_line_text": "def run(self, x):",
+          "calls": [],
+          "children": []
+        }
+      ],
+      "return_annotation": null,
+      "source_sha256": "331383a8cd3d88d66619f42b006dddd9fcfc5dbcaf144478938d5faf570f9dd0",
+      "callers": [],
+      "callees": [],
+      "in_entries": []
+    },
+    {
+      "id": "sym:models/blocks.py:Block.__init__:method",
+      "file": "models/blocks.py",
+      "qualname": "Block.__init__",
+      "kind": "method",
+      "definition_range": [
+        5,
+        6
+      ],
+      "body_start": 6,
+      "parent": "sym:models/blocks.py:Block:class",
+      "signature": "__init__(self, dim)",
+      "decorators": [],
+      "docstring": null,
+      "params": [
+        {
+          "name": "self",
+          "kind": "positional",
+          "annotation": null,
+          "default": null
+        },
+        {
+          "name": "dim",
+          "kind": "positional",
+          "annotation": null,
+          "default": null
+        }
+      ],
+      "locals": [],
+      "bases": [],
+      "returns": [],
+      "yields": [],
+      "raises": [],
+      "asserts": [],
+      "shape_hints": [],
+      "step_skeleton": [
+        {
+          "id": "s1",
+          "order": 1,
+          "kind": "assign",
+          "source_range": [
+            6,
+            6
+          ],
+          "first_line_text": "self.dim = dim",
+          "calls": [],
+          "children": []
+        }
+      ],
+      "return_annotation": null,
+      "source_sha256": "331383a8cd3d88d66619f42b006dddd9fcfc5dbcaf144478938d5faf570f9dd0",
+      "callers": [
+        {
+          "id": "e:21:sym:models/net.py:Net.__init__:method@models/net.py:6",
+          "caller": "sym:models/net.py:Net.__init__:method",
+          "callee": "sym:models/blocks.py:Block.__init__:method",
+          "candidates": [],
+          "relation": "constructs",
+          "resolution": "resolved_static",
+          "callsite": {
+            "file": "models/net.py",
+            "line": 6,
+            "end_line": 6
+          },
+          "expression": "Block(dim)",
+          "conditions": [],
+          "note": ""
+        }
+      ],
+      "callees": [],
+      "in_entries": [
+        "entry:train",
+        "entry:eval"
+      ]
+    },
+    {
+      "id": "sym:models/blocks.py:Block.run:method",
+      "file": "models/blocks.py",
+      "qualname": "Block.run",
+      "kind": "method",
+      "definition_range": [
+        8,
+        10
+      ],
+      "body_start": 10,
+      "parent": "sym:models/blocks.py:Block:class",
+      "signature": "run(self, x)",
+      "decorators": [],
+      "docstring": null,
+      "params": [
+        {
+          "name": "self",
+          "kind": "positional",
+          "annotation": null,
+          "default": null
+        },
+        {
+          "name": "x",
+          "kind": "positional",
+          "annotation": null,
+          "default": null
+        }
+      ],
+      "locals": [],
+      "bases": [],
+      "returns": [
+        {
+          "line": 10,
+          "expression": "normalize(x)"
+        }
+      ],
+      "yields": [],
+      "raises": [],
+      "asserts": [],
+      "shape_hints": [],
+      "step_skeleton": [
+        {
+          "id": "s1",
+          "order": 1,
+          "kind": "return",
+          "source_range": [
+            10,
+            10
+          ],
+          "first_line_text": "return normalize(x)",
+          "calls": [
+            "sym:utils/helpers.py:normalize:function"
+          ],
+          "children": []
+        }
+      ],
+      "return_annotation": null,
+      "source_sha256": "331383a8cd3d88d66619f42b006dddd9fcfc5dbcaf144478938d5faf570f9dd0",
+      "callers": [
+        {
+          "id": "e:22:sym:models/net.py:Net.forward:method@models/net.py:10",
+          "caller": "sym:models/net.py:Net.forward:method",
+          "callee": "sym:models/blocks.py:Block.run:method",
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "candidate",
+          "callsite": {
+            "file": "models/net.py",
+            "line": 10,
+            "end_line": 10
+          },
+          "expression": "self.block.run(x)",
+          "conditions": [],
+          "note": "由实例属性/局部构造/基类/同名方法推断；动态分派可能不同"
+        }
+      ],
+      "callees": [
+        {
+          "id": "e:20:sym:models/blocks.py:Block.run:method@models/blocks.py:10",
+          "caller": "sym:models/blocks.py:Block.run:method",
+          "callee": "sym:utils/helpers.py:normalize:function",
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "resolved_static",
+          "callsite": {
+            "file": "models/blocks.py",
+            "line": 10,
+            "end_line": 10
+          },
+          "expression": "normalize(x)",
+          "conditions": [],
+          "note": ""
+        }
+      ],
+      "in_entries": [
+        "entry:eval"
+      ]
+    },
+    {
+      "id": "sym:models/net.py:<module>:module",
+      "file": "models/net.py",
+      "qualname": "<module>",
+      "kind": "module",
+      "definition_range": [
+        1,
+        20
+      ],
+      "body_start": 1,
+      "parent": null,
+      "signature": "<module>",
+      "decorators": [],
+      "docstring": null,
+      "params": [],
+      "locals": [],
+      "bases": [],
+      "returns": [],
+      "yields": [],
+      "raises": [],
+      "asserts": [],
+      "shape_hints": [],
+      "step_skeleton": [
+        {
+          "id": "s1",
+          "order": 1,
+          "kind": "importfrom",
+          "source_range": [
+            1,
+            1
+          ],
+          "first_line_text": "from .blocks import Block",
+          "calls": [],
+          "children": []
+        },
+        {
+          "id": "s2",
+          "order": 2,
+          "kind": "classdef",
+          "source_range": [
+            4,
+            20
+          ],
+          "first_line_text": "class Net:",
+          "calls": [],
+          "children": []
+        }
+      ],
+      "source_sha256": "77c11d66d33d595be40ef21759f100d33765575589c1c66b159d8452b3e0727d",
+      "callers": [],
+      "callees": [],
+      "in_entries": []
+    },
+    {
+      "id": "sym:models/net.py:Net:class",
+      "file": "models/net.py",
+      "qualname": "Net",
+      "kind": "class",
+      "definition_range": [
+        4,
+        20
+      ],
+      "body_start": 5,
+      "parent": "sym:models/net.py:<module>:module",
+      "signature": "Net",
+      "decorators": [],
+      "docstring": null,
+      "params": [],
+      "locals": [],
+      "bases": [],
+      "returns": [],
+      "yields": [],
+      "raises": [],
+      "asserts": [],
+      "shape_hints": [],
+      "step_skeleton": [
+        {
+          "id": "s1",
+          "order": 1,
+          "kind": "functiondef",
+          "source_range": [
+            5,
+            7
+          ],
+          "first_line_text": "def __init__(self, dim):",
+          "calls": [],
+          "children": []
+        },
+        {
+          "id": "s2",
+          "order": 2,
+          "kind": "functiondef",
+          "source_range": [
+            9,
+            11
+          ],
+          "first_line_text": "def forward(self, x):",
+          "calls": [],
+          "children": []
+        },
+        {
+          "id": "s3",
+          "order": 3,
+          "kind": "functiondef",
+          "source_range": [
+            13,
+            17
+          ],
+          "first_line_text": "def head(self, h):",
+          "calls": [],
+          "children": []
+        },
+        {
+          "id": "s4",
+          "order": 4,
+          "kind": "functiondef",
+          "source_range": [
+            19,
+            20
+          ],
+          "first_line_text": "def __call__(self, x):",
+          "calls": [],
+          "children": []
+        }
+      ],
+      "return_annotation": null,
+      "source_sha256": "77c11d66d33d595be40ef21759f100d33765575589c1c66b159d8452b3e0727d",
+      "callers": [],
+      "callees": [],
+      "in_entries": []
+    },
+    {
+      "id": "sym:models/net.py:Net.__init__:method",
+      "file": "models/net.py",
+      "qualname": "Net.__init__",
+      "kind": "method",
+      "definition_range": [
+        5,
+        7
+      ],
+      "body_start": 6,
+      "parent": "sym:models/net.py:Net:class",
+      "signature": "__init__(self, dim)",
+      "decorators": [],
+      "docstring": null,
+      "params": [
+        {
+          "name": "self",
+          "kind": "positional",
+          "annotation": null,
+          "default": null
+        },
+        {
+          "name": "dim",
+          "kind": "positional",
+          "annotation": null,
+          "default": null
+        }
+      ],
+      "locals": [],
+      "bases": [],
+      "returns": [],
+      "yields": [],
+      "raises": [],
+      "asserts": [],
+      "shape_hints": [],
+      "step_skeleton": [
+        {
+          "id": "s1",
+          "order": 1,
+          "kind": "assign",
+          "source_range": [
+            6,
+            6
+          ],
+          "first_line_text": "self.block = Block(dim)",
+          "calls": [
+            "sym:models/blocks.py:Block.__init__:method"
+          ],
+          "children": []
+        },
+        {
+          "id": "s2",
+          "order": 2,
+          "kind": "assign",
+          "source_range": [
+            7,
+            7
+          ],
+          "first_line_text": "self.dim = dim",
+          "calls": [],
+          "children": []
+        }
+      ],
+      "return_annotation": null,
+      "source_sha256": "77c11d66d33d595be40ef21759f100d33765575589c1c66b159d8452b3e0727d",
+      "callers": [
+        {
+          "id": "e:0:sym:eval.py:evaluate:function@eval.py:6",
+          "caller": "sym:eval.py:evaluate:function",
+          "callee": "sym:models/net.py:Net.__init__:method",
+          "candidates": [],
+          "relation": "constructs",
+          "resolution": "resolved_static",
+          "callsite": {
+            "file": "eval.py",
+            "line": 6,
+            "end_line": 6
+          },
+          "expression": "Net(8)",
+          "conditions": [],
+          "note": ""
+        },
+        {
+          "id": "e:7:sym:train.py:build:function@train.py:9",
+          "caller": "sym:train.py:build:function",
+          "callee": "sym:models/net.py:Net.__init__:method",
+          "candidates": [],
+          "relation": "constructs",
+          "resolution": "resolved_static",
+          "callsite": {
+            "file": "train.py",
+            "line": 9,
+            "end_line": 9
+          },
+          "expression": "Model(cfg[\"dim\"])",
+          "conditions": [],
+          "note": ""
+        }
+      ],
+      "callees": [
+        {
+          "id": "e:21:sym:models/net.py:Net.__init__:method@models/net.py:6",
+          "caller": "sym:models/net.py:Net.__init__:method",
+          "callee": "sym:models/blocks.py:Block.__init__:method",
+          "candidates": [],
+          "relation": "constructs",
+          "resolution": "resolved_static",
+          "callsite": {
+            "file": "models/net.py",
+            "line": 6,
+            "end_line": 6
+          },
+          "expression": "Block(dim)",
+          "conditions": [],
+          "note": ""
+        }
+      ],
+      "in_entries": [
+        "entry:train",
+        "entry:eval"
+      ]
+    },
+    {
+      "id": "sym:models/net.py:Net.forward:method",
+      "file": "models/net.py",
+      "qualname": "Net.forward",
+      "kind": "method",
+      "definition_range": [
+        9,
+        11
+      ],
+      "body_start": 10,
+      "parent": "sym:models/net.py:Net:class",
+      "signature": "forward(self, x)",
+      "decorators": [],
+      "docstring": null,
+      "params": [
+        {
+          "name": "self",
+          "kind": "positional",
+          "annotation": null,
+          "default": null
+        },
+        {
+          "name": "x",
+          "kind": "positional",
+          "annotation": null,
+          "default": null
+        }
+      ],
+      "locals": [
+        "h"
+      ],
+      "bases": [],
+      "returns": [
+        {
+          "line": 11,
+          "expression": "self.head(h)"
+        }
+      ],
+      "yields": [],
+      "raises": [],
+      "asserts": [],
+      "shape_hints": [],
+      "step_skeleton": [
+        {
+          "id": "s1",
+          "order": 1,
+          "kind": "assign",
+          "source_range": [
+            10,
+            10
+          ],
+          "first_line_text": "h = self.block.run(x)",
+          "calls": [
+            "sym:models/blocks.py:Block.run:method"
+          ],
+          "children": []
+        },
+        {
+          "id": "s2",
+          "order": 2,
+          "kind": "return",
+          "source_range": [
+            11,
+            11
+          ],
+          "first_line_text": "return self.head(h)",
+          "calls": [
+            "sym:models/net.py:Net.head:method"
+          ],
+          "children": []
+        }
+      ],
+      "return_annotation": null,
+      "source_sha256": "77c11d66d33d595be40ef21759f100d33765575589c1c66b159d8452b3e0727d",
+      "callers": [
+        {
+          "id": "e:1:sym:eval.py:evaluate:function@eval.py:7",
+          "caller": "sym:eval.py:evaluate:function",
+          "callee": "sym:models/net.py:Net.forward:method",
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "candidate",
+          "callsite": {
+            "file": "eval.py",
+            "line": 7,
+            "end_line": 7
+          },
+          "expression": "net.forward([1.0, 2.0, 3.0])",
+          "conditions": [],
+          "note": "由实例属性/局部构造/基类/同名方法推断；动态分派可能不同"
+        },
+        {
+          "id": "e:25:sym:models/net.py:Net.__call__:method@models/net.py:20",
+          "caller": "sym:models/net.py:Net.__call__:method",
+          "callee": "sym:models/net.py:Net.forward:method",
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "resolved_static",
+          "callsite": {
+            "file": "models/net.py",
+            "line": 20,
+            "end_line": 20
+          },
+          "expression": "self.forward(x)",
+          "conditions": [],
+          "note": ""
+        }
+      ],
+      "callees": [
+        {
+          "id": "e:22:sym:models/net.py:Net.forward:method@models/net.py:10",
+          "caller": "sym:models/net.py:Net.forward:method",
+          "callee": "sym:models/blocks.py:Block.run:method",
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "candidate",
+          "callsite": {
+            "file": "models/net.py",
+            "line": 10,
+            "end_line": 10
+          },
+          "expression": "self.block.run(x)",
+          "conditions": [],
+          "note": "由实例属性/局部构造/基类/同名方法推断；动态分派可能不同"
+        },
+        {
+          "id": "e:23:sym:models/net.py:Net.forward:method@models/net.py:11",
+          "caller": "sym:models/net.py:Net.forward:method",
+          "callee": "sym:models/net.py:Net.head:method",
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "resolved_static",
+          "callsite": {
+            "file": "models/net.py",
+            "line": 11,
+            "end_line": 11
+          },
+          "expression": "self.head(h)",
+          "conditions": [],
+          "note": ""
+        }
+      ],
+      "in_entries": [
+        "entry:eval"
+      ]
+    },
+    {
+      "id": "sym:models/net.py:Net.head:method",
+      "file": "models/net.py",
+      "qualname": "Net.head",
+      "kind": "method",
+      "definition_range": [
+        13,
+        17
+      ],
+      "body_start": 14,
+      "parent": "sym:models/net.py:Net:class",
+      "signature": "head(self, h)",
+      "decorators": [],
+      "docstring": null,
+      "params": [
+        {
+          "name": "self",
+          "kind": "positional",
+          "annotation": null,
+          "default": null
+        },
+        {
+          "name": "h",
+          "kind": "positional",
+          "annotation": null,
+          "default": null
+        }
+      ],
+      "locals": [],
+      "bases": [],
+      "returns": [
+        {
+          "line": 17,
+          "expression": "[scale(v) for v in h]"
+        }
+      ],
+      "yields": [],
+      "raises": [],
+      "asserts": [],
+      "shape_hints": [],
+      "step_skeleton": [
+        {
+          "id": "s1",
+          "order": 1,
+          "kind": "functiondef",
+          "source_range": [
+            14,
+            15
+          ],
+          "first_line_text": "def scale(v):",
+          "calls": [],
+          "children": []
+        },
+        {
+          "id": "s2",
+          "order": 2,
+          "kind": "return",
+          "source_range": [
+            17,
+            17
+          ],
+          "first_line_text": "return [scale(v) for v in h]",
+          "calls": [
+            "sym:models/net.py:Net.head.scale:function"
+          ],
+          "children": []
+        }
+      ],
+      "return_annotation": null,
+      "source_sha256": "77c11d66d33d595be40ef21759f100d33765575589c1c66b159d8452b3e0727d",
+      "callers": [
+        {
+          "id": "e:23:sym:models/net.py:Net.forward:method@models/net.py:11",
+          "caller": "sym:models/net.py:Net.forward:method",
+          "callee": "sym:models/net.py:Net.head:method",
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "resolved_static",
+          "callsite": {
+            "file": "models/net.py",
+            "line": 11,
+            "end_line": 11
+          },
+          "expression": "self.head(h)",
+          "conditions": [],
+          "note": ""
+        }
+      ],
+      "callees": [
+        {
+          "id": "e:24:sym:models/net.py:Net.head:method@models/net.py:17",
+          "caller": "sym:models/net.py:Net.head:method",
+          "callee": "sym:models/net.py:Net.head.scale:function",
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "resolved_static",
+          "callsite": {
+            "file": "models/net.py",
+            "line": 17,
+            "end_line": 17
+          },
+          "expression": "scale(v)",
+          "conditions": [],
+          "note": ""
+        }
+      ],
+      "in_entries": [
+        "entry:eval"
+      ]
+    },
+    {
+      "id": "sym:models/net.py:Net.head.scale:function",
+      "file": "models/net.py",
+      "qualname": "Net.head.scale",
+      "kind": "function",
+      "definition_range": [
+        14,
+        15
+      ],
+      "body_start": 15,
+      "parent": "sym:models/net.py:Net.head:method",
+      "signature": "scale(v)",
+      "decorators": [],
+      "docstring": null,
+      "params": [
+        {
+          "name": "v",
+          "kind": "positional",
+          "annotation": null,
+          "default": null
+        }
+      ],
+      "locals": [],
+      "bases": [],
+      "returns": [
+        {
+          "line": 15,
+          "expression": "v * 2"
+        }
+      ],
+      "yields": [],
+      "raises": [],
+      "asserts": [],
+      "shape_hints": [],
+      "step_skeleton": [
+        {
+          "id": "s1",
+          "order": 1,
+          "kind": "return",
+          "source_range": [
+            15,
+            15
+          ],
+          "first_line_text": "return v * 2",
+          "calls": [],
+          "children": []
+        }
+      ],
+      "return_annotation": null,
+      "source_sha256": "77c11d66d33d595be40ef21759f100d33765575589c1c66b159d8452b3e0727d",
+      "callers": [
+        {
+          "id": "e:24:sym:models/net.py:Net.head:method@models/net.py:17",
+          "caller": "sym:models/net.py:Net.head:method",
+          "callee": "sym:models/net.py:Net.head.scale:function",
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "resolved_static",
+          "callsite": {
+            "file": "models/net.py",
+            "line": 17,
+            "end_line": 17
+          },
+          "expression": "scale(v)",
+          "conditions": [],
+          "note": ""
+        }
+      ],
+      "callees": [],
+      "in_entries": [
+        "entry:eval"
+      ]
+    },
+    {
+      "id": "sym:models/net.py:Net.__call__:method",
+      "file": "models/net.py",
+      "qualname": "Net.__call__",
+      "kind": "method",
+      "definition_range": [
+        19,
+        20
+      ],
+      "body_start": 20,
+      "parent": "sym:models/net.py:Net:class",
+      "signature": "__call__(self, x)",
+      "decorators": [],
+      "docstring": null,
+      "params": [
+        {
+          "name": "self",
+          "kind": "positional",
+          "annotation": null,
+          "default": null
+        },
+        {
+          "name": "x",
+          "kind": "positional",
+          "annotation": null,
+          "default": null
+        }
+      ],
+      "locals": [],
+      "bases": [],
+      "returns": [
+        {
+          "line": 20,
+          "expression": "self.forward(x)"
+        }
+      ],
+      "yields": [],
+      "raises": [],
+      "asserts": [],
+      "shape_hints": [],
+      "step_skeleton": [
+        {
+          "id": "s1",
+          "order": 1,
+          "kind": "return",
+          "source_range": [
+            20,
+            20
+          ],
+          "first_line_text": "return self.forward(x)",
+          "calls": [
+            "sym:models/net.py:Net.forward:method"
+          ],
+          "children": []
+        }
+      ],
+      "return_annotation": null,
+      "source_sha256": "77c11d66d33d595be40ef21759f100d33765575589c1c66b159d8452b3e0727d",
+      "callers": [],
+      "callees": [
+        {
+          "id": "e:25:sym:models/net.py:Net.__call__:method@models/net.py:20",
+          "caller": "sym:models/net.py:Net.__call__:method",
+          "callee": "sym:models/net.py:Net.forward:method",
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "resolved_static",
+          "callsite": {
+            "file": "models/net.py",
+            "line": 20,
+            "end_line": 20
+          },
+          "expression": "self.forward(x)",
+          "conditions": [],
+          "note": ""
+        }
+      ],
+      "in_entries": []
+    },
+    {
+      "id": "sym:utils/__init__.py:<module>:module",
+      "file": "utils/__init__.py",
+      "qualname": "<module>",
+      "kind": "module",
+      "definition_range": [
+        1,
+        1
+      ],
+      "body_start": 1,
+      "parent": null,
+      "signature": "<module>",
+      "decorators": [],
+      "docstring": null,
+      "params": [],
+      "locals": [],
+      "bases": [],
+      "returns": [],
+      "yields": [],
+      "raises": [],
+      "asserts": [],
+      "shape_hints": [],
+      "step_skeleton": [],
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "callers": [],
+      "callees": [],
+      "in_entries": []
+    },
+    {
+      "id": "sym:utils/helpers.py:<module>:module",
+      "file": "utils/helpers.py",
+      "qualname": "<module>",
+      "kind": "module",
+      "definition_range": [
+        1,
+        38
+      ],
+      "body_start": 1,
+      "parent": null,
+      "signature": "<module>",
+      "decorators": [],
+      "docstring": null,
+      "params": [],
+      "locals": [
+        "_STATE"
+      ],
+      "bases": [],
+      "returns": [],
+      "yields": [],
+      "raises": [],
+      "asserts": [],
+      "shape_hints": [],
+      "step_skeleton": [
+        {
+          "id": "s1",
+          "order": 1,
+          "kind": "import",
+          "source_range": [
+            1,
+            1
+          ],
+          "first_line_text": "import random",
+          "calls": [],
+          "children": []
+        },
+        {
+          "id": "s2",
+          "order": 2,
+          "kind": "assign",
+          "source_range": [
+            3,
+            3
+          ],
+          "first_line_text": "_STATE = {\"seed\": None}",
+          "calls": [],
+          "children": []
+        },
+        {
+          "id": "s3",
+          "order": 3,
+          "kind": "functiondef",
+          "source_range": [
+            6,
+            8
+          ],
+          "first_line_text": "def seed_all(seed):",
+          "calls": [],
+          "children": []
+        },
+        {
+          "id": "s4",
+          "order": 4,
+          "kind": "functiondef",
+          "source_range": [
+            11,
+            15
+          ],
+          "first_line_text": "def normalize(x):",
+          "calls": [],
+          "children": []
+        },
+        {
+          "id": "s5",
+          "order": 5,
+          "kind": "functiondef",
+          "source_range": [
+            18,
+            19
+          ],
+          "first_line_text": "def compute_default():",
+          "calls": [],
+          "children": []
+        },
+        {
+          "id": "s6",
+          "order": 6,
+          "kind": "functiondef",
+          "source_range": [
+            22,
+            23
+          ],
+          "first_line_text": "def deco(f):",
+          "calls": [],
+          "children": []
+        },
+        {
+          "id": "s7",
+          "order": 7,
+          "kind": "functiondef",
+          "source_range": [
+            27,
+            28
+          ],
+          "first_line_text": "def decorated(x=compute_default()):",
+          "calls": [
+            "sym:utils/helpers.py:compute_default:function"
+          ],
+          "children": []
+        },
+        {
+          "id": "s8",
+          "order": 8,
+          "kind": "functiondef",
+          "source_range": [
+            31,
+            34
+          ],
+          "first_line_text": "def fact(n):",
+          "calls": [],
+          "children": []
+        },
+        {
+          "id": "s9",
+          "order": 9,
+          "kind": "functiondef",
+          "source_range": [
+            37,
+            38
+          ],
+          "first_line_text": "def dyn_x():",
+          "calls": [],
+          "children": []
+        }
+      ],
+      "source_sha256": "fc6059f61c69763d0fb6a3ee290c23b97e95e33657cd1c4b92ec8b689e7364ad",
+      "callers": [],
+      "callees": [
+        {
+          "id": "e:27:sym:utils/helpers.py:<module>:module@utils/helpers.py:26",
+          "caller": "sym:utils/helpers.py:<module>:module",
+          "callee": "sym:utils/helpers.py:deco:function",
+          "candidates": [],
+          "relation": "definition_time",
+          "resolution": "resolved_static",
+          "callsite": {
+            "file": "utils/helpers.py",
+            "line": 26,
+            "end_line": 26
+          },
+          "expression": "@deco",
+          "conditions": [],
+          "note": ""
+        },
+        {
+          "id": "e:28:sym:utils/helpers.py:<module>:module@utils/helpers.py:27",
+          "caller": "sym:utils/helpers.py:<module>:module",
+          "callee": "sym:utils/helpers.py:compute_default:function",
+          "candidates": [],
+          "relation": "definition_time",
+          "resolution": "resolved_static",
+          "callsite": {
+            "file": "utils/helpers.py",
+            "line": 27,
+            "end_line": 27
+          },
+          "expression": "compute_default()",
+          "conditions": [],
+          "note": ""
+        }
+      ],
+      "in_entries": []
+    },
+    {
+      "id": "sym:utils/helpers.py:seed_all:function",
+      "file": "utils/helpers.py",
+      "qualname": "seed_all",
+      "kind": "function",
+      "definition_range": [
+        6,
+        8
+      ],
+      "body_start": 7,
+      "parent": "sym:utils/helpers.py:<module>:module",
+      "signature": "seed_all(seed)",
+      "decorators": [],
+      "docstring": null,
+      "params": [
+        {
+          "name": "seed",
+          "kind": "positional",
+          "annotation": null,
+          "default": null
+        }
+      ],
+      "locals": [],
+      "bases": [],
+      "returns": [],
+      "yields": [],
+      "raises": [],
+      "asserts": [],
+      "shape_hints": [],
+      "step_skeleton": [
+        {
+          "id": "s1",
+          "order": 1,
+          "kind": "expr",
+          "source_range": [
+            7,
+            7
+          ],
+          "first_line_text": "random.seed(seed)",
+          "calls": [
+            "ext:random.seed"
+          ],
+          "children": []
+        },
+        {
+          "id": "s2",
+          "order": 2,
+          "kind": "assign",
+          "source_range": [
+            8,
+            8
+          ],
+          "first_line_text": "_STATE[\"seed\"] = seed",
+          "calls": [],
+          "children": []
+        }
+      ],
+      "return_annotation": null,
+      "source_sha256": "fc6059f61c69763d0fb6a3ee290c23b97e95e33657cd1c4b92ec8b689e7364ad",
+      "callers": [
+        {
+          "id": "e:13:sym:train.py:main:function@train.py:18",
+          "caller": "sym:train.py:main:function",
+          "callee": "sym:utils/helpers.py:seed_all:function",
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "resolved_static",
+          "callsite": {
+            "file": "train.py",
+            "line": 18,
+            "end_line": 18
+          },
+          "expression": "seed_all(0)",
+          "conditions": [],
+          "note": ""
+        }
+      ],
+      "callees": [
+        {
+          "id": "e:26:sym:utils/helpers.py:seed_all:function@utils/helpers.py:7",
+          "caller": "sym:utils/helpers.py:seed_all:function",
+          "callee": "ext:random.seed",
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "external",
+          "callsite": {
+            "file": "utils/helpers.py",
+            "line": 7,
+            "end_line": 7
+          },
+          "expression": "random.seed(seed)",
+          "conditions": [],
+          "note": "项目外调用，未解析其内部实现"
+        }
+      ],
+      "in_entries": [
+        "entry:train"
+      ]
+    },
+    {
+      "id": "sym:utils/helpers.py:normalize:function",
+      "file": "utils/helpers.py",
+      "qualname": "normalize",
+      "kind": "function",
+      "definition_range": [
+        11,
+        15
+      ],
+      "body_start": 12,
+      "parent": "sym:utils/helpers.py:<module>:module",
+      "signature": "normalize(x)",
+      "decorators": [],
+      "docstring": null,
+      "params": [
+        {
+          "name": "x",
+          "kind": "positional",
+          "annotation": null,
+          "default": null
+        }
+      ],
+      "locals": [
+        "s"
+      ],
+      "bases": [],
+      "returns": [
+        {
+          "line": 14,
+          "expression": "x"
+        },
+        {
+          "line": 15,
+          "expression": "[v / s for v in x]"
+        }
+      ],
+      "yields": [],
+      "raises": [],
+      "asserts": [],
+      "shape_hints": [],
+      "step_skeleton": [
+        {
+          "id": "s1",
+          "order": 1,
+          "kind": "assign",
+          "source_range": [
+            12,
+            12
+          ],
+          "first_line_text": "s = sum(x)",
+          "calls": [],
+          "children": []
+        },
+        {
+          "id": "s2",
+          "order": 2,
+          "kind": "if",
+          "source_range": [
+            13,
+            14
+          ],
+          "first_line_text": "if s == 0:",
+          "calls": [],
+          "children": [
+            {
+              "id": "s2.b.1",
+              "order": 1,
+              "kind": "return",
+              "source_range": [
+                14,
+                14
+              ],
+              "first_line_text": "return x",
+              "calls": [],
+              "children": [],
+              "branch": "是/循环体"
+            }
+          ]
+        },
+        {
+          "id": "s3",
+          "order": 3,
+          "kind": "return",
+          "source_range": [
+            15,
+            15
+          ],
+          "first_line_text": "return [v / s for v in x]",
+          "calls": [],
+          "children": []
+        }
+      ],
+      "return_annotation": null,
+      "source_sha256": "fc6059f61c69763d0fb6a3ee290c23b97e95e33657cd1c4b92ec8b689e7364ad",
+      "callers": [
+        {
+          "id": "e:16:sym:train.py:main:function@train.py:25",
+          "caller": "sym:train.py:main:function",
+          "callee": "sym:utils/helpers.py:normalize:function",
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "resolved_static",
+          "callsite": {
+            "file": "train.py",
+            "line": 25,
+            "end_line": 25
+          },
+          "expression": "helpers.normalize([3.0, 4.0])",
+          "conditions": [
+            "for epoch in range(args.epochs)",
+            "else (not epoch % 2 == 0)"
+          ],
+          "note": ""
+        },
+        {
+          "id": "e:20:sym:models/blocks.py:Block.run:method@models/blocks.py:10",
+          "caller": "sym:models/blocks.py:Block.run:method",
+          "callee": "sym:utils/helpers.py:normalize:function",
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "resolved_static",
+          "callsite": {
+            "file": "models/blocks.py",
+            "line": 10,
+            "end_line": 10
+          },
+          "expression": "normalize(x)",
+          "conditions": [],
+          "note": ""
+        }
+      ],
+      "callees": [],
+      "in_entries": [
+        "entry:train",
+        "entry:eval"
+      ]
+    },
+    {
+      "id": "sym:utils/helpers.py:compute_default:function",
+      "file": "utils/helpers.py",
+      "qualname": "compute_default",
+      "kind": "function",
+      "definition_range": [
+        18,
+        19
+      ],
+      "body_start": 19,
+      "parent": "sym:utils/helpers.py:<module>:module",
+      "signature": "compute_default()",
+      "decorators": [],
+      "docstring": null,
+      "params": [],
+      "locals": [],
+      "bases": [],
+      "returns": [
+        {
+          "line": 19,
+          "expression": "1"
+        }
+      ],
+      "yields": [],
+      "raises": [],
+      "asserts": [],
+      "shape_hints": [],
+      "step_skeleton": [
+        {
+          "id": "s1",
+          "order": 1,
+          "kind": "return",
+          "source_range": [
+            19,
+            19
+          ],
+          "first_line_text": "return 1",
+          "calls": [],
+          "children": []
+        }
+      ],
+      "return_annotation": null,
+      "source_sha256": "fc6059f61c69763d0fb6a3ee290c23b97e95e33657cd1c4b92ec8b689e7364ad",
+      "callers": [
+        {
+          "id": "e:28:sym:utils/helpers.py:<module>:module@utils/helpers.py:27",
+          "caller": "sym:utils/helpers.py:<module>:module",
+          "callee": "sym:utils/helpers.py:compute_default:function",
+          "candidates": [],
+          "relation": "definition_time",
+          "resolution": "resolved_static",
+          "callsite": {
+            "file": "utils/helpers.py",
+            "line": 27,
+            "end_line": 27
+          },
+          "expression": "compute_default()",
+          "conditions": [],
+          "note": ""
+        }
+      ],
+      "callees": [],
+      "in_entries": []
+    },
+    {
+      "id": "sym:utils/helpers.py:deco:function",
+      "file": "utils/helpers.py",
+      "qualname": "deco",
+      "kind": "function",
+      "definition_range": [
+        22,
+        23
+      ],
+      "body_start": 23,
+      "parent": "sym:utils/helpers.py:<module>:module",
+      "signature": "deco(f)",
+      "decorators": [],
+      "docstring": null,
+      "params": [
+        {
+          "name": "f",
+          "kind": "positional",
+          "annotation": null,
+          "default": null
+        }
+      ],
+      "locals": [],
+      "bases": [],
+      "returns": [
+        {
+          "line": 23,
+          "expression": "f"
+        }
+      ],
+      "yields": [],
+      "raises": [],
+      "asserts": [],
+      "shape_hints": [],
+      "step_skeleton": [
+        {
+          "id": "s1",
+          "order": 1,
+          "kind": "return",
+          "source_range": [
+            23,
+            23
+          ],
+          "first_line_text": "return f",
+          "calls": [],
+          "children": []
+        }
+      ],
+      "return_annotation": null,
+      "source_sha256": "fc6059f61c69763d0fb6a3ee290c23b97e95e33657cd1c4b92ec8b689e7364ad",
+      "callers": [
+        {
+          "id": "e:27:sym:utils/helpers.py:<module>:module@utils/helpers.py:26",
+          "caller": "sym:utils/helpers.py:<module>:module",
+          "callee": "sym:utils/helpers.py:deco:function",
+          "candidates": [],
+          "relation": "definition_time",
+          "resolution": "resolved_static",
+          "callsite": {
+            "file": "utils/helpers.py",
+            "line": 26,
+            "end_line": 26
+          },
+          "expression": "@deco",
+          "conditions": [],
+          "note": ""
+        }
+      ],
+      "callees": [],
+      "in_entries": []
+    },
+    {
+      "id": "sym:utils/helpers.py:decorated:function",
+      "file": "utils/helpers.py",
+      "qualname": "decorated",
+      "kind": "function",
+      "definition_range": [
+        27,
+        28
+      ],
+      "body_start": 28,
+      "parent": "sym:utils/helpers.py:<module>:module",
+      "signature": "decorated(x=compute_default())",
+      "decorators": [
+        "deco"
+      ],
+      "docstring": null,
+      "params": [
+        {
+          "name": "x",
+          "kind": "positional",
+          "annotation": null,
+          "default": "compute_default()"
+        }
+      ],
+      "locals": [],
+      "bases": [],
+      "returns": [
+        {
+          "line": 28,
+          "expression": "x"
+        }
+      ],
+      "yields": [],
+      "raises": [],
+      "asserts": [],
+      "shape_hints": [],
+      "step_skeleton": [
+        {
+          "id": "s1",
+          "order": 1,
+          "kind": "return",
+          "source_range": [
+            28,
+            28
+          ],
+          "first_line_text": "return x",
+          "calls": [],
+          "children": []
+        }
+      ],
+      "return_annotation": null,
+      "source_sha256": "fc6059f61c69763d0fb6a3ee290c23b97e95e33657cd1c4b92ec8b689e7364ad",
+      "callers": [],
+      "callees": [],
+      "in_entries": []
+    },
+    {
+      "id": "sym:utils/helpers.py:fact:function",
+      "file": "utils/helpers.py",
+      "qualname": "fact",
+      "kind": "function",
+      "definition_range": [
+        31,
+        34
+      ],
+      "body_start": 32,
+      "parent": "sym:utils/helpers.py:<module>:module",
+      "signature": "fact(n)",
+      "decorators": [],
+      "docstring": null,
+      "params": [
+        {
+          "name": "n",
+          "kind": "positional",
+          "annotation": null,
+          "default": null
+        }
+      ],
+      "locals": [],
+      "bases": [],
+      "returns": [
+        {
+          "line": 33,
+          "expression": "1"
+        },
+        {
+          "line": 34,
+          "expression": "n * fact(n - 1)"
+        }
+      ],
+      "yields": [],
+      "raises": [],
+      "asserts": [],
+      "shape_hints": [],
+      "step_skeleton": [
+        {
+          "id": "s1",
+          "order": 1,
+          "kind": "if",
+          "source_range": [
+            32,
+            33
+          ],
+          "first_line_text": "if n <= 1:",
+          "calls": [],
+          "children": [
+            {
+              "id": "s1.b.1",
+              "order": 1,
+              "kind": "return",
+              "source_range": [
+                33,
+                33
+              ],
+              "first_line_text": "return 1",
+              "calls": [],
+              "children": [],
+              "branch": "是/循环体"
+            }
+          ]
+        },
+        {
+          "id": "s2",
+          "order": 2,
+          "kind": "return",
+          "source_range": [
+            34,
+            34
+          ],
+          "first_line_text": "return n * fact(n - 1)",
+          "calls": [
+            "sym:utils/helpers.py:fact:function"
+          ],
+          "children": []
+        }
+      ],
+      "return_annotation": null,
+      "source_sha256": "fc6059f61c69763d0fb6a3ee290c23b97e95e33657cd1c4b92ec8b689e7364ad",
+      "callers": [
+        {
+          "id": "e:18:sym:train.py:main:function@train.py:28",
+          "caller": "sym:train.py:main:function",
+          "callee": "sym:utils/helpers.py:fact:function",
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "resolved_static",
+          "callsite": {
+            "file": "train.py",
+            "line": 28,
+            "end_line": 28
+          },
+          "expression": "helpers.fact(3)",
+          "conditions": [],
+          "note": ""
+        },
+        {
+          "id": "e:29:sym:utils/helpers.py:fact:function@utils/helpers.py:34",
+          "caller": "sym:utils/helpers.py:fact:function",
+          "callee": "sym:utils/helpers.py:fact:function",
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "resolved_static",
+          "callsite": {
+            "file": "utils/helpers.py",
+            "line": 34,
+            "end_line": 34
+          },
+          "expression": "fact(n - 1)",
+          "conditions": [],
+          "note": ""
+        }
+      ],
+      "callees": [
+        {
+          "id": "e:29:sym:utils/helpers.py:fact:function@utils/helpers.py:34",
+          "caller": "sym:utils/helpers.py:fact:function",
+          "callee": "sym:utils/helpers.py:fact:function",
+          "candidates": [],
+          "relation": "calls",
+          "resolution": "resolved_static",
+          "callsite": {
+            "file": "utils/helpers.py",
+            "line": 34,
+            "end_line": 34
+          },
+          "expression": "fact(n - 1)",
+          "conditions": [],
+          "note": ""
+        }
+      ],
+      "in_entries": [
+        "entry:train"
+      ]
+    },
+    {
+      "id": "sym:utils/helpers.py:dyn_x:function",
+      "file": "utils/helpers.py",
+      "qualname": "dyn_x",
+      "kind": "function",
+      "definition_range": [
+        37,
+        38
+      ],
+      "body_start": 38,
+      "parent": "sym:utils/helpers.py:<module>:module",
+      "signature": "dyn_x()",
+      "decorators": [],
+      "docstring": null,
+      "params": [],
+      "locals": [],
+      "bases": [],
+      "returns": [
+        {
+          "line": 38,
+          "expression": "\"dynamic\""
+        }
+      ],
+      "yields": [],
+      "raises": [],
+      "asserts": [],
+      "shape_hints": [],
+      "step_skeleton": [
+        {
+          "id": "s1",
+          "order": 1,
+          "kind": "return",
+          "source_range": [
+            38,
+            38
+          ],
+          "first_line_text": "return \"dynamic\"",
+          "calls": [],
+          "children": []
+        }
+      ],
+      "return_annotation": null,
+      "source_sha256": "fc6059f61c69763d0fb6a3ee290c23b97e95e33657cd1c4b92ec8b689e7364ad",
+      "callers": [],
+      "callees": [],
+      "in_entries": []
+    }
+  ],
+  "edges": [
+    {
+      "id": "e:0:sym:eval.py:evaluate:function@eval.py:6",
+      "caller": "sym:eval.py:evaluate:function",
+      "callee": "sym:models/net.py:Net.__init__:method",
+      "candidates": [],
+      "relation": "constructs",
+      "resolution": "resolved_static",
+      "callsite": {
+        "file": "eval.py",
+        "line": 6,
+        "end_line": 6
+      },
+      "expression": "Net(8)",
+      "conditions": [],
+      "note": ""
+    },
+    {
+      "id": "e:1:sym:eval.py:evaluate:function@eval.py:7",
+      "caller": "sym:eval.py:evaluate:function",
+      "callee": "sym:models/net.py:Net.forward:method",
+      "candidates": [],
+      "relation": "calls",
+      "resolution": "candidate",
+      "callsite": {
+        "file": "eval.py",
+        "line": 7,
+        "end_line": 7
+      },
+      "expression": "net.forward([1.0, 2.0, 3.0])",
+      "conditions": [],
+      "note": "由实例属性/局部构造/基类/同名方法推断；动态分派可能不同"
+    },
+    {
+      "id": "e:2:sym:eval.py:evaluate:function@eval.py:8",
+      "caller": "sym:eval.py:evaluate:function",
+      "callee": "sym:losses.py:total_loss:function",
+      "candidates": [],
+      "relation": "calls",
+      "resolution": "resolved_static",
+      "callsite": {
+        "file": "eval.py",
+        "line": 8,
+        "end_line": 8
+      },
+      "expression": "losses.total_loss(net, out)",
+      "conditions": [],
+      "note": ""
+    },
+    {
+      "id": "e:3:sym:eval.py:<module>:module@eval.py:13",
+      "caller": "sym:eval.py:<module>:module",
+      "callee": "sym:eval.py:evaluate:function",
+      "candidates": [],
+      "relation": "calls",
+      "resolution": "resolved_static",
+      "callsite": {
+        "file": "eval.py",
+        "line": 13,
+        "end_line": 13
+      },
+      "expression": "evaluate()",
+      "conditions": [
+        "if __name__ == \"__main__\""
+      ],
+      "note": ""
+    },
+    {
+      "id": "e:4:sym:losses.py:total_loss:function@losses.py:6",
+      "caller": "sym:losses.py:total_loss:function",
+      "callee": null,
+      "candidates": [],
+      "relation": "calls",
+      "resolution": "unresolved",
+      "callsite": {
+        "file": "losses.py",
+        "line": 6,
+        "end_line": 6
+      },
+      "expression": "model(batch)",
+      "conditions": [],
+      "note": "调用参数/局部变量中的可调用对象或动态调用，静态无法确定"
+    },
+    {
+      "id": "e:5:sym:losses.py:total_loss:function@losses.py:7",
+      "caller": "sym:losses.py:total_loss:function",
+      "callee": "sym:losses.py:normalize:function",
+      "candidates": [],
+      "relation": "calls",
+      "resolution": "resolved_static",
+      "callsite": {
+        "file": "losses.py",
+        "line": 7,
+        "end_line": 7
+      },
+      "expression": "normalize(out)",
+      "conditions": [],
+      "note": ""
+    },
+    {
+      "id": "e:6:sym:losses.py:total_loss:function@losses.py:8",
+      "caller": "sym:losses.py:total_loss:function",
+      "callee": null,
+      "candidates": [],
+      "relation": "calls",
+      "resolution": "unresolved",
+      "callsite": {
+        "file": "losses.py",
+        "line": 8,
+        "end_line": 8
+      },
+      "expression": "parts.values()",
+      "conditions": [],
+      "note": "调用参数/局部变量中的可调用对象或动态调用，静态无法确定"
+    },
+    {
+      "id": "e:7:sym:train.py:build:function@train.py:9",
+      "caller": "sym:train.py:build:function",
+      "callee": "sym:models/net.py:Net.__init__:method",
+      "candidates": [],
+      "relation": "constructs",
+      "resolution": "resolved_static",
+      "callsite": {
+        "file": "train.py",
+        "line": 9,
+        "end_line": 9
+      },
+      "expression": "Model(cfg[\"dim\"])",
+      "conditions": [],
+      "note": ""
+    },
+    {
+      "id": "e:8:sym:train.py:main:function@train.py:13",
+      "caller": "sym:train.py:main:function",
+      "callee": "ext:argparse.ArgumentParser",
+      "candidates": [],
+      "relation": "calls",
+      "resolution": "external",
+      "callsite": {
+        "file": "train.py",
+        "line": 13,
+        "end_line": 13
+      },
+      "expression": "argparse.ArgumentParser()",
+      "conditions": [],
+      "note": "项目外调用，未解析其内部实现"
+    },
+    {
+      "id": "e:9:sym:train.py:main:function@train.py:14",
+      "caller": "sym:train.py:main:function",
+      "callee": null,
+      "candidates": [],
+      "relation": "calls",
+      "resolution": "unresolved",
+      "callsite": {
+        "file": "train.py",
+        "line": 14,
+        "end_line": 14
+      },
+      "expression": "p.add_argument(\"--lr\", type=float, default=1e-3)",
+      "conditions": [],
+      "note": "调用参数/局部变量中的可调用对象或动态调用，静态无法确定"
+    },
+    {
+      "id": "e:10:sym:train.py:main:function@train.py:15",
+      "caller": "sym:train.py:main:function",
+      "callee": null,
+      "candidates": [],
+      "relation": "calls",
+      "resolution": "unresolved",
+      "callsite": {
+        "file": "train.py",
+        "line": 15,
+        "end_line": 15
+      },
+      "expression": "p.add_argument(\"--epochs\", type=int, default=2)",
+      "conditions": [],
+      "note": "调用参数/局部变量中的可调用对象或动态调用，静态无法确定"
+    },
+    {
+      "id": "e:11:sym:train.py:main:function@train.py:16",
+      "caller": "sym:train.py:main:function",
+      "callee": null,
+      "candidates": [],
+      "relation": "calls",
+      "resolution": "unresolved",
+      "callsite": {
+        "file": "train.py",
+        "line": 16,
+        "end_line": 16
+      },
+      "expression": "p.add_argument(\"--unused_flag\", default=0)",
+      "conditions": [],
+      "note": "调用参数/局部变量中的可调用对象或动态调用，静态无法确定"
+    },
+    {
+      "id": "e:12:sym:train.py:main:function@train.py:17",
+      "caller": "sym:train.py:main:function",
+      "callee": null,
+      "candidates": [],
+      "relation": "calls",
+      "resolution": "unresolved",
+      "callsite": {
+        "file": "train.py",
+        "line": 17,
+        "end_line": 17
+      },
+      "expression": "p.parse_args()",
+      "conditions": [],
+      "note": "调用参数/局部变量中的可调用对象或动态调用，静态无法确定"
+    },
+    {
+      "id": "e:13:sym:train.py:main:function@train.py:18",
+      "caller": "sym:train.py:main:function",
+      "callee": "sym:utils/helpers.py:seed_all:function",
+      "candidates": [],
+      "relation": "calls",
+      "resolution": "resolved_static",
+      "callsite": {
+        "file": "train.py",
+        "line": 18,
+        "end_line": 18
+      },
+      "expression": "seed_all(0)",
+      "conditions": [],
+      "note": ""
+    },
+    {
+      "id": "e:14:sym:train.py:main:function@train.py:19",
+      "caller": "sym:train.py:main:function",
+      "callee": "sym:train.py:build:function",
+      "candidates": [],
+      "relation": "calls",
+      "resolution": "resolved_static",
+      "callsite": {
+        "file": "train.py",
+        "line": 19,
+        "end_line": 19
+      },
+      "expression": "build({\"dim\": 4})",
+      "conditions": [],
+      "note": ""
+    },
+    {
+      "id": "e:15:sym:train.py:main:function@train.py:23",
+      "caller": "sym:train.py:main:function",
+      "callee": "sym:losses.py:total_loss:function",
+      "candidates": [],
+      "relation": "calls",
+      "resolution": "resolved_static",
+      "callsite": {
+        "file": "train.py",
+        "line": 23,
+        "end_line": 23
+      },
+      "expression": "losses.total_loss(model, [1.0, 2.0])",
+      "conditions": [
+        "for epoch in range(args.epochs)",
+        "if epoch % 2 == 0"
+      ],
+      "note": ""
+    },
+    {
+      "id": "e:16:sym:train.py:main:function@train.py:25",
+      "caller": "sym:train.py:main:function",
+      "callee": "sym:utils/helpers.py:normalize:function",
+      "candidates": [],
+      "relation": "calls",
+      "resolution": "resolved_static",
+      "callsite": {
+        "file": "train.py",
+        "line": 25,
+        "end_line": 25
+      },
+      "expression": "helpers.normalize([3.0, 4.0])",
+      "conditions": [
+        "for epoch in range(args.epochs)",
+        "else (not epoch % 2 == 0)"
+      ],
+      "note": ""
+    },
+    {
+      "id": "e:17:sym:train.py:main:function@train.py:27",
+      "caller": "sym:train.py:main:function",
+      "callee": null,
+      "candidates": [],
+      "relation": "calls",
+      "resolution": "unresolved",
+      "callsite": {
+        "file": "train.py",
+        "line": 27,
+        "end_line": 27
+      },
+      "expression": "fn()",
+      "conditions": [],
+      "note": "调用参数/局部变量中的可调用对象或动态调用，静态无法确定"
+    },
+    {
+      "id": "e:18:sym:train.py:main:function@train.py:28",
+      "caller": "sym:train.py:main:function",
+      "callee": "sym:utils/helpers.py:fact:function",
+      "candidates": [],
+      "relation": "calls",
+      "resolution": "resolved_static",
+      "callsite": {
+        "file": "train.py",
+        "line": 28,
+        "end_line": 28
+      },
+      "expression": "helpers.fact(3)",
+      "conditions": [],
+      "note": ""
+    },
+    {
+      "id": "e:19:sym:train.py:<module>:module@train.py:32",
+      "caller": "sym:train.py:<module>:module",
+      "callee": "sym:train.py:main:function",
+      "candidates": [],
+      "relation": "calls",
+      "resolution": "resolved_static",
+      "callsite": {
+        "file": "train.py",
+        "line": 32,
+        "end_line": 32
+      },
+      "expression": "main()",
+      "conditions": [
+        "if __name__ == \"__main__\""
+      ],
+      "note": ""
+    },
+    {
+      "id": "e:20:sym:models/blocks.py:Block.run:method@models/blocks.py:10",
+      "caller": "sym:models/blocks.py:Block.run:method",
+      "callee": "sym:utils/helpers.py:normalize:function",
+      "candidates": [],
+      "relation": "calls",
+      "resolution": "resolved_static",
+      "callsite": {
+        "file": "models/blocks.py",
+        "line": 10,
+        "end_line": 10
+      },
+      "expression": "normalize(x)",
+      "conditions": [],
+      "note": ""
+    },
+    {
+      "id": "e:21:sym:models/net.py:Net.__init__:method@models/net.py:6",
+      "caller": "sym:models/net.py:Net.__init__:method",
+      "callee": "sym:models/blocks.py:Block.__init__:method",
+      "candidates": [],
+      "relation": "constructs",
+      "resolution": "resolved_static",
+      "callsite": {
+        "file": "models/net.py",
+        "line": 6,
+        "end_line": 6
+      },
+      "expression": "Block(dim)",
+      "conditions": [],
+      "note": ""
+    },
+    {
+      "id": "e:22:sym:models/net.py:Net.forward:method@models/net.py:10",
+      "caller": "sym:models/net.py:Net.forward:method",
+      "callee": "sym:models/blocks.py:Block.run:method",
+      "candidates": [],
+      "relation": "calls",
+      "resolution": "candidate",
+      "callsite": {
+        "file": "models/net.py",
+        "line": 10,
+        "end_line": 10
+      },
+      "expression": "self.block.run(x)",
+      "conditions": [],
+      "note": "由实例属性/局部构造/基类/同名方法推断；动态分派可能不同"
+    },
+    {
+      "id": "e:23:sym:models/net.py:Net.forward:method@models/net.py:11",
+      "caller": "sym:models/net.py:Net.forward:method",
+      "callee": "sym:models/net.py:Net.head:method",
+      "candidates": [],
+      "relation": "calls",
+      "resolution": "resolved_static",
+      "callsite": {
+        "file": "models/net.py",
+        "line": 11,
+        "end_line": 11
+      },
+      "expression": "self.head(h)",
+      "conditions": [],
+      "note": ""
+    },
+    {
+      "id": "e:24:sym:models/net.py:Net.head:method@models/net.py:17",
+      "caller": "sym:models/net.py:Net.head:method",
+      "callee": "sym:models/net.py:Net.head.scale:function",
+      "candidates": [],
+      "relation": "calls",
+      "resolution": "resolved_static",
+      "callsite": {
+        "file": "models/net.py",
+        "line": 17,
+        "end_line": 17
+      },
+      "expression": "scale(v)",
+      "conditions": [],
+      "note": ""
+    },
+    {
+      "id": "e:25:sym:models/net.py:Net.__call__:method@models/net.py:20",
+      "caller": "sym:models/net.py:Net.__call__:method",
+      "callee": "sym:models/net.py:Net.forward:method",
+      "candidates": [],
+      "relation": "calls",
+      "resolution": "resolved_static",
+      "callsite": {
+        "file": "models/net.py",
+        "line": 20,
+        "end_line": 20
+      },
+      "expression": "self.forward(x)",
+      "conditions": [],
+      "note": ""
+    },
+    {
+      "id": "e:26:sym:utils/helpers.py:seed_all:function@utils/helpers.py:7",
+      "caller": "sym:utils/helpers.py:seed_all:function",
+      "callee": "ext:random.seed",
+      "candidates": [],
+      "relation": "calls",
+      "resolution": "external",
+      "callsite": {
+        "file": "utils/helpers.py",
+        "line": 7,
+        "end_line": 7
+      },
+      "expression": "random.seed(seed)",
+      "conditions": [],
+      "note": "项目外调用，未解析其内部实现"
+    },
+    {
+      "id": "e:27:sym:utils/helpers.py:<module>:module@utils/helpers.py:26",
+      "caller": "sym:utils/helpers.py:<module>:module",
+      "callee": "sym:utils/helpers.py:deco:function",
+      "candidates": [],
+      "relation": "definition_time",
+      "resolution": "resolved_static",
+      "callsite": {
+        "file": "utils/helpers.py",
+        "line": 26,
+        "end_line": 26
+      },
+      "expression": "@deco",
+      "conditions": [],
+      "note": ""
+    },
+    {
+      "id": "e:28:sym:utils/helpers.py:<module>:module@utils/helpers.py:27",
+      "caller": "sym:utils/helpers.py:<module>:module",
+      "callee": "sym:utils/helpers.py:compute_default:function",
+      "candidates": [],
+      "relation": "definition_time",
+      "resolution": "resolved_static",
+      "callsite": {
+        "file": "utils/helpers.py",
+        "line": 27,
+        "end_line": 27
+      },
+      "expression": "compute_default()",
+      "conditions": [],
+      "note": ""
+    },
+    {
+      "id": "e:29:sym:utils/helpers.py:fact:function@utils/helpers.py:34",
+      "caller": "sym:utils/helpers.py:fact:function",
+      "callee": "sym:utils/helpers.py:fact:function",
+      "candidates": [],
+      "relation": "calls",
+      "resolution": "resolved_static",
+      "callsite": {
+        "file": "utils/helpers.py",
+        "line": 34,
+        "end_line": 34
+      },
+      "expression": "fact(n - 1)",
+      "conditions": [],
+      "note": ""
+    }
+  ],
+  "entries": [
+    {
+      "entry_id": "entry:train",
+      "path": "train.py",
+      "scenario": "train",
+      "configs": [],
+      "args": [],
+      "overrides": [],
+      "root_symbol": "sym:train.py:<module>:module",
+      "closure": [
+        "sym:train.py:<module>:module",
+        "sym:train.py:main:function",
+        "sym:utils/helpers.py:seed_all:function",
+        "sym:train.py:build:function",
+        "sym:losses.py:total_loss:function",
+        "sym:utils/helpers.py:normalize:function",
+        "sym:utils/helpers.py:fact:function",
+        "sym:models/net.py:Net.__init__:method",
+        "sym:losses.py:normalize:function",
+        "sym:models/blocks.py:Block.__init__:method"
+      ],
+      "depth_of": {
+        "sym:train.py:<module>:module": 0,
+        "sym:train.py:main:function": 1,
+        "sym:utils/helpers.py:seed_all:function": 2,
+        "sym:train.py:build:function": 2,
+        "sym:losses.py:total_loss:function": 2,
+        "sym:utils/helpers.py:normalize:function": 2,
+        "sym:utils/helpers.py:fact:function": 2,
+        "sym:models/net.py:Net.__init__:method": 3,
+        "sym:losses.py:normalize:function": 3,
+        "sym:models/blocks.py:Block.__init__:method": 4
+      }
+    },
+    {
+      "entry_id": "entry:eval",
+      "path": "eval.py",
+      "scenario": "eval",
+      "configs": [],
+      "args": [],
+      "overrides": [],
+      "root_symbol": "sym:eval.py:<module>:module",
+      "closure": [
+        "sym:eval.py:<module>:module",
+        "sym:eval.py:evaluate:function",
+        "sym:models/net.py:Net.__init__:method",
+        "sym:models/net.py:Net.forward:method",
+        "sym:losses.py:total_loss:function",
+        "sym:models/blocks.py:Block.__init__:method",
+        "sym:models/blocks.py:Block.run:method",
+        "sym:models/net.py:Net.head:method",
+        "sym:losses.py:normalize:function",
+        "sym:utils/helpers.py:normalize:function",
+        "sym:models/net.py:Net.head.scale:function"
+      ],
+      "depth_of": {
+        "sym:eval.py:<module>:module": 0,
+        "sym:eval.py:evaluate:function": 1,
+        "sym:models/net.py:Net.__init__:method": 2,
+        "sym:models/net.py:Net.forward:method": 2,
+        "sym:losses.py:total_loss:function": 2,
+        "sym:models/blocks.py:Block.__init__:method": 3,
+        "sym:models/blocks.py:Block.run:method": 3,
+        "sym:models/net.py:Net.head:method": 3,
+        "sym:losses.py:normalize:function": 3,
+        "sym:utils/helpers.py:normalize:function": 4,
+        "sym:models/net.py:Net.head.scale:function": 4
+      }
+    }
+  ],
+  "file_edges": [
+    {
+      "source": "eval.py",
+      "target": "models/net.py",
+      "relation": "imports",
+      "line": 1
+    },
+    {
+      "source": "eval.py",
+      "target": "losses.py",
+      "relation": "imports",
+      "line": 2
+    },
+    {
+      "source": "train.py",
+      "target": "models/net.py",
+      "relation": "imports",
+      "line": 2
+    },
+    {
+      "source": "train.py",
+      "target": "utils/__init__.py",
+      "relation": "imports",
+      "line": 3
+    },
+    {
+      "source": "train.py",
+      "target": "utils/helpers.py",
+      "relation": "imports",
+      "line": 4
+    },
+    {
+      "source": "train.py",
+      "target": "losses.py",
+      "relation": "imports",
+      "line": 5
+    },
+    {
+      "source": "models/blocks.py",
+      "target": "utils/helpers.py",
+      "relation": "imports",
+      "line": 1
+    },
+    {
+      "source": "models/net.py",
+      "target": "models/blocks.py",
+      "relation": "imports",
+      "line": 1
+    }
+  ],
+  "class_edges": [],
+  "control_regions": [
+    {
+      "file": "eval.py",
+      "source_range": [
+        12,
+        13
+      ],
+      "test": "__name__ == \"__main__\""
+    },
+    {
+      "file": "train.py",
+      "source_range": [
+        31,
+        32
+      ],
+      "test": "__name__ == \"__main__\""
+    }
+  ],
+  "coverage": {
+    "builtin_calls": 9,
+    "unresolved_calls": 7,
+    "truncated": [],
+    "limitations": [
+      "Python静态解析；候选调用不是已观察路径；不导入目标"
+    ],
+    "indexed_files": [
+      {
+        "file": "eval.py",
+        "sha256": "d7524b0b835480bb41a8b4db3750207fc349b4f19d7ed421b05d114c7b6032ba",
+        "original_sha256": "e95129b1c8766c67cf1c7740eeb642a40b9dcd7dc9690f7b6dcb986a070f74a6",
+        "line_count": 13
+      },
+      {
+        "file": "losses.py",
+        "sha256": "d6eec21ec2960df1efb48a000810af21b8f70cfe3c78e4cc3c55eae8bc385d97",
+        "original_sha256": "8b5897edc674420fbfa9d66ddf9d4e05a3a801d7294bfb60df771d321fff3577",
+        "line_count": 8
+      },
+      {
+        "file": "train.py",
+        "sha256": "fa9ccbc0f09d7510e3dc57ffa1045bb78d69236d7271bc46642aa63b19687128",
+        "original_sha256": "3dd2c79905ce61f109f1d7d2462db420fbcc2a3d270b91db09606750bc6bba62",
+        "line_count": 32
+      },
+      {
+        "file": "models/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "line_count": 1
+      },
+      {
+        "file": "models/blocks.py",
+        "sha256": "331383a8cd3d88d66619f42b006dddd9fcfc5dbcaf144478938d5faf570f9dd0",
+        "original_sha256": "08bf179418414575f19fff83c2d3da6f0e43a1543a4c47ede97f11b75c8b75e3",
+        "line_count": 10
+      },
+      {
+        "file": "models/net.py",
+        "sha256": "77c11d66d33d595be40ef21759f100d33765575589c1c66b159d8452b3e0727d",
+        "original_sha256": "3faae27163172a49d787ecb2304e87b8bdb9c22487e71185950529e7bd110d78",
+        "line_count": 20
+      },
+      {
+        "file": "utils/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "line_count": 1
+      },
+      {
+        "file": "utils/helpers.py",
+        "sha256": "fc6059f61c69763d0fb6a3ee290c23b97e95e33657cd1c4b92ec8b689e7364ad",
+        "original_sha256": "35f8f0eacfc1e83f1fcfb7d731f71fa210f7aa49415b331ae4794ed7a5d3831b",
+        "line_count": 38
+      }
+    ],
+    "non_python_files": [],
+    "excluded": [],
+    "parse_failures": []
+  }
+}

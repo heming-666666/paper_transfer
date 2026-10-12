@@ -1,0 +1,386 @@
+{
+  "schema_version": "1.0",
+  "items": [
+    {
+      "symbol_id": "sym:models/net.py:Net.head:method",
+      "prefilled": {
+        "signature": "head(self, h)",
+        "definition_range": [
+          13,
+          17
+        ],
+        "docstring": null,
+        "callers": [
+          {
+            "id": "e:23:sym:models/net.py:Net.forward:method@models/net.py:11",
+            "caller": "sym:models/net.py:Net.forward:method",
+            "callee": "sym:models/net.py:Net.head:method",
+            "candidates": [],
+            "relation": "calls",
+            "resolution": "resolved_static",
+            "callsite": {
+              "file": "models/net.py",
+              "line": 11,
+              "end_line": 11
+            },
+            "expression": "self.head(h)",
+            "conditions": [],
+            "note": ""
+          }
+        ],
+        "callees": [
+          {
+            "id": "e:24:sym:models/net.py:Net.head:method@models/net.py:17",
+            "caller": "sym:models/net.py:Net.head:method",
+            "callee": "sym:models/net.py:Net.head.scale:function",
+            "candidates": [],
+            "relation": "calls",
+            "resolution": "resolved_static",
+            "callsite": {
+              "file": "models/net.py",
+              "line": 17,
+              "end_line": 17
+            },
+            "expression": "scale(v)",
+            "conditions": [],
+            "note": ""
+          }
+        ],
+        "returns": [
+          {
+            "line": 17,
+            "expression": "[scale(v) for v in h]"
+          }
+        ],
+        "yields": [],
+        "raises": [],
+        "asserts": [],
+        "shape_hints": [],
+        "step_skeleton": [
+          {
+            "id": "s1",
+            "order": 1,
+            "kind": "functiondef",
+            "source_range": [
+              14,
+              15
+            ],
+            "first_line_text": "def scale(v):",
+            "calls": [],
+            "children": []
+          },
+          {
+            "id": "s2",
+            "order": 2,
+            "kind": "return",
+            "source_range": [
+              17,
+              17
+            ],
+            "first_line_text": "return [scale(v) for v in h]",
+            "calls": [
+              "sym:models/net.py:Net.head.scale:function"
+            ],
+            "children": []
+          }
+        ]
+      },
+      "role": "other",
+      "summary": "",
+      "purpose": "",
+      "inputs": [],
+      "outputs": [],
+      "side_effects": [],
+      "exceptions": [],
+      "steps": [
+        {
+          "id": "s1",
+          "order": 1,
+          "kind": "functiondef",
+          "source_range": [
+            14,
+            15
+          ],
+          "first_line_text": "def scale(v):",
+          "calls": [],
+          "children": []
+        },
+        {
+          "id": "s2",
+          "order": 2,
+          "kind": "return",
+          "source_range": [
+            17,
+            17
+          ],
+          "first_line_text": "return [scale(v) for v in h]",
+          "calls": [
+            "sym:models/net.py:Net.head.scale:function"
+          ],
+          "children": []
+        }
+      ],
+      "paper_refs": [],
+      "config_refs": [],
+      "scenario_contracts": [],
+      "change_notes": "",
+      "needs_context": [
+        "待Agent按reading-protocol深读"
+      ],
+      "analysis_status": "pending"
+    },
+    {
+      "symbol_id": "sym:models/net.py:Net.head.scale:function",
+      "prefilled": {
+        "signature": "scale(v)",
+        "definition_range": [
+          14,
+          15
+        ],
+        "docstring": null,
+        "callers": [
+          {
+            "id": "e:24:sym:models/net.py:Net.head:method@models/net.py:17",
+            "caller": "sym:models/net.py:Net.head:method",
+            "callee": "sym:models/net.py:Net.head.scale:function",
+            "candidates": [],
+            "relation": "calls",
+            "resolution": "resolved_static",
+            "callsite": {
+              "file": "models/net.py",
+              "line": 17,
+              "end_line": 17
+            },
+            "expression": "scale(v)",
+            "conditions": [],
+            "note": ""
+          }
+        ],
+        "callees": [],
+        "returns": [
+          {
+            "line": 15,
+            "expression": "v * 2"
+          }
+        ],
+        "yields": [],
+        "raises": [],
+        "asserts": [],
+        "shape_hints": [],
+        "step_skeleton": [
+          {
+            "id": "s1",
+            "order": 1,
+            "kind": "return",
+            "source_range": [
+              15,
+              15
+            ],
+            "first_line_text": "return v * 2",
+            "calls": [],
+            "children": []
+          }
+        ]
+      },
+      "role": "other",
+      "summary": "",
+      "purpose": "",
+      "inputs": [],
+      "outputs": [],
+      "side_effects": [],
+      "exceptions": [],
+      "steps": [
+        {
+          "id": "s1",
+          "order": 1,
+          "kind": "return",
+          "source_range": [
+            15,
+            15
+          ],
+          "first_line_text": "return v * 2",
+          "calls": [],
+          "children": []
+        }
+      ],
+      "paper_refs": [],
+      "config_refs": [],
+      "scenario_contracts": [],
+      "change_notes": "",
+      "needs_context": [
+        "待Agent按reading-protocol深读"
+      ],
+      "analysis_status": "pending"
+    },
+    {
+      "symbol_id": "sym:models/net.py:Net.__call__:method",
+      "prefilled": {
+        "signature": "__call__(self, x)",
+        "definition_range": [
+          19,
+          20
+        ],
+        "docstring": null,
+        "callers": [],
+        "callees": [
+          {
+            "id": "e:25:sym:models/net.py:Net.__call__:method@models/net.py:20",
+            "caller": "sym:models/net.py:Net.__call__:method",
+            "callee": "sym:models/net.py:Net.forward:method",
+            "candidates": [],
+            "relation": "calls",
+            "resolution": "resolved_static",
+            "callsite": {
+              "file": "models/net.py",
+              "line": 20,
+              "end_line": 20
+            },
+            "expression": "self.forward(x)",
+            "conditions": [],
+            "note": ""
+          }
+        ],
+        "returns": [
+          {
+            "line": 20,
+            "expression": "self.forward(x)"
+          }
+        ],
+        "yields": [],
+        "raises": [],
+        "asserts": [],
+        "shape_hints": [],
+        "step_skeleton": [
+          {
+            "id": "s1",
+            "order": 1,
+            "kind": "return",
+            "source_range": [
+              20,
+              20
+            ],
+            "first_line_text": "return self.forward(x)",
+            "calls": [
+              "sym:models/net.py:Net.forward:method"
+            ],
+            "children": []
+          }
+        ]
+      },
+      "role": "other",
+      "summary": "",
+      "purpose": "",
+      "inputs": [],
+      "outputs": [],
+      "side_effects": [],
+      "exceptions": [],
+      "steps": [
+        {
+          "id": "s1",
+          "order": 1,
+          "kind": "return",
+          "source_range": [
+            20,
+            20
+          ],
+          "first_line_text": "return self.forward(x)",
+          "calls": [
+            "sym:models/net.py:Net.forward:method"
+          ],
+          "children": []
+        }
+      ],
+      "paper_refs": [],
+      "config_refs": [],
+      "scenario_contracts": [],
+      "change_notes": "",
+      "needs_context": [
+        "待Agent按reading-protocol深读"
+      ],
+      "analysis_status": "pending"
+    },
+    {
+      "symbol_id": "sym:utils/helpers.py:compute_default:function",
+      "prefilled": {
+        "signature": "compute_default()",
+        "definition_range": [
+          18,
+          19
+        ],
+        "docstring": null,
+        "callers": [
+          {
+            "id": "e:28:sym:utils/helpers.py:<module>:module@utils/helpers.py:27",
+            "caller": "sym:utils/helpers.py:<module>:module",
+            "callee": "sym:utils/helpers.py:compute_default:function",
+            "candidates": [],
+            "relation": "definition_time",
+            "resolution": "resolved_static",
+            "callsite": {
+              "file": "utils/helpers.py",
+              "line": 27,
+              "end_line": 27
+            },
+            "expression": "compute_default()",
+            "conditions": [],
+            "note": ""
+          }
+        ],
+        "callees": [],
+        "returns": [
+          {
+            "line": 19,
+            "expression": "1"
+          }
+        ],
+        "yields": [],
+        "raises": [],
+        "asserts": [],
+        "shape_hints": [],
+        "step_skeleton": [
+          {
+            "id": "s1",
+            "order": 1,
+            "kind": "return",
+            "source_range": [
+              19,
+              19
+            ],
+            "first_line_text": "return 1",
+            "calls": [],
+            "children": []
+          }
+        ]
+      },
+      "role": "other",
+      "summary": "",
+      "purpose": "",
+      "inputs": [],
+      "outputs": [],
+      "side_effects": [],
+      "exceptions": [],
+      "steps": [
+        {
+          "id": "s1",
+          "order": 1,
+          "kind": "return",
+          "source_range": [
+            19,
+            19
+          ],
+          "first_line_text": "return 1",
+          "calls": [],
+          "children": []
+        }
+      ],
+      "paper_refs": [],
+      "config_refs": [],
+      "scenario_contracts": [],
+      "change_notes": "",
+      "needs_context": [
+        "待Agent按reading-protocol深读"
+      ],
+      "analysis_status": "pending"
+    }
+  ]
+}
